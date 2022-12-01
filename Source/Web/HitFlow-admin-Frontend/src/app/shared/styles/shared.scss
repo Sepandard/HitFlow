@@ -1,1 +1,14 @@
-@import "./font/font-family/font.scss" 
+
+/* ROOT */
+@import './root/root.scss';
+
+/* Color Styles */
+@import './color/color.scss';
+
+/* Layout Styles */
+@import './layout/container.scss';
+@import './layout/grid.scss';
+@import './layout/spacing.scss';
+
+@import "./font/font-family/font.scss"; 
+@import "./card/card.scss"; 

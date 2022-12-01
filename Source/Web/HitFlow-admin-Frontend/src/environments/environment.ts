@@ -6,7 +6,7 @@ import { Environment } from "@core/interface/env.interface";
 
 export const environment: Environment = {
   production: false,
-  applicationName: 'HitFLow',
+  applicationName: 'Admin Panel',
   baseUrl: '/api/',
 };
 
