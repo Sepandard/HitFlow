@@ -1,9 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'ag-grid-community/styles/ag-grid.css';
+@import 'ag-grid-community/styles/ag-theme-alpine.css';
 @import "./app/shared/styles/shared.scss";
 
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
  //TODO: Fix Scroll bug
-  height: calc(100vh - 65px);
+}
+html, body {
+  height: calc(100% - 35px);
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
 }
