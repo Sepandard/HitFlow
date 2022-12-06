@@ -1,11 +1,11 @@
-<mat-toolbar class="card-shadow">
+<mat-toolbar class="card-shadow " >
   <button mat-icon-button (click)="isExpanded = !isExpanded">
     <mat-icon>menu</mat-icon>
   </button>
   <h1 class="app-name">{{ appEnvironment.applicationName }}</h1>
 </mat-toolbar>
-<mat-sidenav-container class="sidenav-container" autosize>
-  <mat-sidenav #sidenav class="sidenav-sidenav" mode="side" opened="true">
+<mat-sidenav-container class="sidenav-container " autosize>
+  <mat-sidenav #sidenav class="sidenav-sidenav bg-color" mode="side" opened="true">
     <mat-nav-list>
       <mat-list-item
         *ngFor="let link of links"

@@ -11,6 +11,10 @@ export class UserListComponent implements OnInit {
     { field: 'make' },
     { field: 'model' },
     { field: 'price' },
+    { field: 'price' },
+    { field: 'price' },
+    { field: 'price' },
+    { field: 'price' },
   ];
   clientSideData: any[] = [
     {

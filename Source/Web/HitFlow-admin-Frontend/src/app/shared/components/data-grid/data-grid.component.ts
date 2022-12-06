@@ -8,7 +8,7 @@ import {
   Output,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ColDef } from 'ag-grid-community';
+import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { BehaviorSubject, finalize, Observable, of } from 'rxjs';
 
 @Component({
@@ -18,7 +18,7 @@ import { BehaviorSubject, finalize, Observable, of } from 'rxjs';
 })
 export class DataGridComponent implements OnInit, OnDestroy {
   @Input() rowSelection: 'multiple' | 'single' = 'single';
-  @Input() suppressRowNavigate: boolean = true;
+  @Input() suppressRowNavigate: boolean = false;
   @Input() loadingCellRendererParams: any = {
     loadingMessage: 'One moment please...',
   };
@@ -31,6 +31,7 @@ export class DataGridComponent implements OnInit, OnDestroy {
          { field: 'price' }
         ];
   */
+
   @Input() defaultColDef: ColDef = {
     sortable: true,
     filter: true,
@@ -51,10 +52,11 @@ export class DataGridComponent implements OnInit, OnDestroy {
   @Output() onGridReady: EventEmitter<void> = new EventEmitter<void>();
   @Output() currentItemChange: EventEmitter<any> = new EventEmitter<any>();
 
+  private gridApi!: GridApi;
   public rowData$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
   private _currentItem: any;
-  private _loading: boolean = false;
+  private _loading: boolean = true;
 
   constructor(
     private router: Router,
@@ -62,7 +64,8 @@ export class DataGridComponent implements OnInit, OnDestroy {
     private http: HttpClient
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   public get loading(): boolean {
     return this._loading;
@@ -72,17 +75,22 @@ export class DataGridComponent implements OnInit, OnDestroy {
     return this._currentItem;
   }
 
-  protected _onGridReady(event: any) {
+  protected _onGridReady(params: GridReadyEvent) {
+    this.gridApi = params.api
+    this.gridApi.setDomLayout('autoHeight')
+    this.gridApi.sizeColumnsToFit({
+      defaultMinWidth: 100,
+    });
     this.onGridReady.emit();
   }
   protected _onCellDoubleClicked(row: any) {
-    this._currentItem = row;
-    this.currentItemChange.emit(row);
+    if (this.suppressRowNavigate) return;
+    this.router.navigate([`${row.data.id}`], { relativeTo: this.route });
   }
 
   protected _onCellClicked(row: any) {
-    if (this.suppressRowNavigate) return;
-    this.router.navigate([`${row.data.id}`], { relativeTo: this.route });
+    this._currentItem = row;
+    this.currentItemChange.emit(row);
   }
   private _fetchData(params?: any) {
     const url = `${this.listEndpoint}}`;
@@ -102,5 +110,12 @@ export class DataGridComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.rowData$.unsubscribe();
+  }
+  refresh(event:any){
+
+    event.srcElement.classList.remove("refesh-icon-route");
+    setTimeout(()=>{
+      event.srcElement.classList.add("refesh-icon-route");
+    },0)
   }
 }

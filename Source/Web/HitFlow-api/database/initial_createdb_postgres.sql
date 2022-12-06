@@ -5,6 +5,7 @@ CREATE TABLE public."role" (
 	CONSTRAINT role_pk PRIMARY KEY (id)
 );
 
+
 CREATE TABLE public."user" (
 	id serial4 NOT NULL,
 	"name" varchar NOT NULL,
@@ -12,6 +13,7 @@ CREATE TABLE public."user" (
 	"password" varchar NOT NULL,
 	"lastLogin" timestamp NOT NULL,
 	"roleId" int2 NOT NULL,
+	"status" int2 NOT NULL,
 	"phoneNumber" varchar(11) NULL,
 	CONSTRAINT user_pk PRIMARY KEY (id),
 	CONSTRAINT user_fk FOREIGN KEY ("roleId") REFERENCES public."role"(id)
@@ -39,3 +41,10 @@ CREATE TABLE public.cart (
 	CONSTRAINT cart_fk FOREIGN KEY (id) REFERENCES public."user"(id),	
 	CONSTRAINT cart_fk_1 FOREIGN KEY (id) REFERENCES public."product"(id)
 );
+
+-- Role Initial Data
+INSERT INTO public."role" (id, title) VALUES ('Admin');
+INSERT INTO public."role" (id, title) VALUES ('User');
+
+
+-- User Initial Data

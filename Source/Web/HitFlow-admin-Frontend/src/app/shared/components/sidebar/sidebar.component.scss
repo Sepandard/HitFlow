@@ -1,29 +1,41 @@
 .sidenav-container {
-    height: 100%;
-  }
-  .sidenav-sidenav-content {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-  }
-  .sidenav-sidenav {
-     user-select: none;
-  }
+  height: 100%;
+}
+.sidenav-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.sidenav-sidenav {
+  user-select: none;
+}
 
-  .menu-button {
-    transition: 300ms ease-in-out;
-    transform: rotate(0deg);
+.menu-button {
+  transition: 300ms ease-in-out;
+  transform: rotate(0deg);
+}
+.menu-button.rotated {
+  transform: rotate(180deg);
+}
+.submenu {
+  overflow-y: hidden;
+  transition: transform 300ms ease;
+  transform: scaleY(0);
+  transform-origin: top;
+}
+.submenu.expanded {
+  transform: scaleY(1);
+}
+
+.bg-color {
+  background-color: #eaeaea;
+}
+
+.parent {
+  font-size: 0.875rem;
+  .mat-icon {
+    font-size: 1.375rem;
+    color: var(--primary);
   }
-  .menu-button.rotated {
-    transform: rotate(180deg);
-  }
-  .submenu {
-    overflow-y: hidden;
-    transition: transform 300ms ease;
-    transform: scaleY(0);
-    transform-origin: top;
-  }
-  .submenu.expanded {
-    transform: scaleY(1);
-  }
+}
