@@ -21,12 +21,7 @@ const MAT_MODULES: Provider[] = [
 ];
 @NgModule({
   declarations: [COMPONENTS],
-  imports: [
-    MAT_MODULES,
-    CommonModule,
-    HttpClientModule,
-    AgGridModule,
-  ],
-  exports: [COMPONENTS],
+  imports: [MAT_MODULES, CommonModule, HttpClientModule, AgGridModule],
+  exports: [COMPONENTS, MAT_MODULES],
 })
 export class SharedModule {}

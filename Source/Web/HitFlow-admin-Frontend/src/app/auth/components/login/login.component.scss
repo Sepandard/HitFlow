@@ -1,0 +1,16 @@
+.background-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: var(--background);
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.back {
+  background-color: bisque;
+}
