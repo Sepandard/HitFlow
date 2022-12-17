@@ -10,6 +10,9 @@ import { MatCardModule } from '@angular/material/card';
 import { COMPONENTS } from './components';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 const MAT_MODULES: Provider[] = [
   MatCardModule,
@@ -18,6 +21,9 @@ const MAT_MODULES: Provider[] = [
   MatToolbarModule,
   MatListModule,
   MatIconModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatCheckboxModule,
 ];
 @NgModule({
   declarations: [COMPONENTS],

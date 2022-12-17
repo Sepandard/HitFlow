@@ -10,7 +10,41 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .back {
   background-color: bisque;
+}
+
+// .right-side-border {
+//   border-left: 3px solid;
+//   border-color: #aba9a9;
+// }
+
+.right-side {
+  background-color: #dfdfdf;
+}
+
+:host .mat-card {
+  padding: unset;
+}
+:host .mat-form-field {
+  width: 250px;
+}
+:host .row {
+  margin-right: unset;
+  margin-left: unset;
+}
+
+.welcome-container {
+  color: var(--secondary);
+}
+
+.login-btn {
+  font-size: xx-large;
+  margin-top: 4vh;
+  pad: 2vh;
+  height: 5vh;
+  width: 15vh;
+  background-color: var(--primary);
 }
