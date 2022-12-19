@@ -1,4 +1,4 @@
 node_modules/
-/log/
-/public
-/config/config.env
+/src/log/
+/src/public
+/src/config/config.env

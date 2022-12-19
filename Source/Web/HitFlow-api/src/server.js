@@ -61,12 +61,16 @@ app.use("/api/users", user);
 if (fs.existsSync("./log/database-log.txt")) {
   console.log(`Logger File is already exist...`.yellow.bold);
 } else {
-  fs.writeFile("./log/database-log.txt", "Logger File Started...", (err) => {
-    if (err) {
-      console.log(`${err}`.red.bold); 
+  fs.writeFile(
+    "./log/database-log.txt",
+    `Logger File Started...[${new Date()}]`,
+    (err) => {
+      if (err) {
+        console.log(`${err}`.red.bold);
+      }
+      console.log(`Creating Logger File`.bgBlue);
     }
-    console.log(`Creating Logger File`.bgBlue);
-  });
+  );
 }
 
 // start server Configuration
