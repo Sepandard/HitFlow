@@ -1,0 +1,18 @@
+<div
+  class="d-flex direction-column h-100 justify-content-center align-item-center"
+>
+  <div class="border-card d-flex direction-column p-3">
+    <h4>Login Admin</h4>
+    <p>Welcome Back please username and password:</p>
+    <div class="p-3 d-flex direction-column">
+      <ng-container [formGroup]="form" (ngSubmit)="onSubmit()">
+        <hf-admin-input label="email" formControlName="email"></hf-admin-input>
+        <hf-admin-input
+          label="Password"
+          type="password"
+          formControlName="password"
+        ></hf-admin-input>
+      </ng-container>
+    </div>
+  </div>
+</div>
