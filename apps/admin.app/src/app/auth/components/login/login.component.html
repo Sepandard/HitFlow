@@ -2,7 +2,11 @@
   class="d-flex direction-column h-100 justify-content-center align-item-center"
 >
   <div class="border-card d-flex direction-column p-3">
-    <h4>Login Admin</h4>
+    <div class="d-flex justify-content-center">
+
+      <img src="../../../../assets/logo/logo Dark.svg" alt="" height="60">
+    </div>
+    <h3>Login</h3>
     <p>Welcome Back please username and password:</p>
     <div class="p-3 d-flex direction-column">
       <ng-container [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -12,6 +16,7 @@
           type="password"
           formControlName="password"
         ></hf-admin-input>
+        <button class="w-100 btn-primary" mat-flat-button >Login</button>
       </ng-container>
     </div>
   </div>
