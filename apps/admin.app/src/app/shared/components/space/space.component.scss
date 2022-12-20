@@ -1,0 +1,32 @@
+$spacer: 1.142em;
+
+$sizes: (
+  space-0: 0,
+  space-1: $spacer * 0.25,
+  space-2: $spacer * 0.5,
+  space-3: $spacer,
+  space-4: $spacer * 2,
+  space-5: $spacer * 3,
+  space-6: $spacer * 4,
+  space-7: $spacer * 5,
+);
+
+$spacing: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 2,
+  5: $spacer * 3,
+  6: $spacer * 4,
+  7: $spacer * 5,
+);
+
+@mixin spacing {
+  @for $i from 0 through 7 {
+    .spacing-#{$i} {
+      height: map-get($spacing, $i);
+    }
+  }
+}
+@include spacing;
