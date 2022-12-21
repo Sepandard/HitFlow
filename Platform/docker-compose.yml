@@ -1,0 +1,52 @@
+# This file can be used to run all required external services suchas db server and messaging
+
+version: '3.4'
+
+services:
+  pgdb:
+    container_name: pgdb
+    image: postgres:14.2
+    environment:
+      POSTGRES_PASSWORD: ${PG_POSTGRES_PASSWORD:-1234}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdb-data:/var/lib/postgresql/data
+    networks:
+      - hf_network
+    restart: unless-stopped
+
+  pgdbadmin:
+    container_name: pgdbadmin
+    image: dpage/pgadmin4:6.8
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgdbadmin-data:/var/lib/pgadmin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    networks:
+      - hf_network
+    restart: unless-stopped
+
+
+networks:
+  hf_network:
+    driver: bridge
+
+
+volumes:
+  pgdb-data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${VOLUMES_ROOT:-c:/Me/docker-volumes}/hitFlow/postgres-data
+      o: bind
+  pgdbadmin-data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${VOLUMES_ROOT:-c:/Me/docker-volumes}/hitFlow/pgadmin-data
+      o: bind
