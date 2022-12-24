@@ -42,11 +42,11 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: ${VOLUMES_ROOT:-c:/Me/docker-volumes}/hitFlow/postgres-data
+      device: ${VOLUMES_ROOT:-c:/hitFlow/docker-volumes}/hitFlow/postgres-data
       o: bind
   pgdbadmin-data:
     driver: local
     driver_opts:
       type: none
-      device: ${VOLUMES_ROOT:-c:/Me/docker-volumes}/hitFlow/pgadmin-data
+      device: ${VOLUMES_ROOT:-c:/hitFlow/docker-volumes}/hitFlow/pgadmin-data
       o: bind
