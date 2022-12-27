@@ -47,6 +47,8 @@ CREATE TABLE public.product (
 	"categoryId" int4 NOT NULL,
 	"image" varchar NOT NULL,
 	"description" varchar NOT NULL,
+	"amount" int4 NOT NULL default 0,
+	"isDeleted" int2 NOT NULL default 0,
 	"off" int2 NULL,
 	CONSTRAINT product_pk PRIMARY KEY (id),
 	CONSTRAINT product_fk FOREIGN KEY ("categoryId") REFERENCES public."category"(id)	

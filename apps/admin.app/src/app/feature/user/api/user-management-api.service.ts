@@ -10,4 +10,8 @@ export class UserManagementApiService {
   getById(id: number) {
     return this.http.get<User>(UserEndpoint.byId(id));
   }
+
+  update(model: User, id: number) {
+    return this.http.put<void>(UserEndpoint.byId(id), model);
+  }
 }

@@ -29,13 +29,25 @@
 }
 
 .bg-color {
-  background-color: #eaeaea;
+  background-color: var(--gray-9);
+}
+
+.item-color {
+  color: var(--gray-9);
 }
 
 .parent {
   font-size: 0.875rem;
+  font-weight: 400;
   .mat-icon {
+    color: var(--gray-2);
     font-size: 1.375rem;
-    color: var(--primary);
   }
+  .display-text {
+    color: var(--gray-2);
+  }
+}
+
+#navbar-menu ::ng-deep .mdc-list{
+  padding: 0;
 }

@@ -14,17 +14,27 @@ export const sidebarLink: Sidebar[] = [
     id: 2,
     title: 'Product Management',
     displayText: 'Product Management',
-    route: '/feature/product/list',
+    route: '/product',
     icon: {
       matIcon: 'inventory_2',
     },
-  },  {
+  },
+  {
     id: 3,
     title: 'User Management',
-    displayText: 'Product Management',
-    route: '/feature/user/list',
+    displayText: 'User Management',
+    route: '/user',
     icon: {
       matIcon: 'person_filled',
+    },
+  },
+  {
+    id: 4,
+    title: 'Category Management',
+    displayText: 'Category Management',
+    route: '/category',
+    icon: {
+      matIcon: 'category',
     },
   },
 ];

@@ -66,8 +66,20 @@ export class UserViewComponent {
     }
   }
 
-  submitForm(){
+  submitForm() {
+    this.loading = true;
 
+    this.api
+      .update(this.form.value, this.id)
+      .pipe(finalize(() => (this.loading = false)))
+      .subscribe({
+        next: (value) => {
+          this.getDataById();
+        },
+        error: (error) => {
+          this.notification.showError(error)
+        },
+      });
   }
 
   private initForm() {
@@ -80,8 +92,7 @@ export class UserViewComponent {
       phoneNumber: [null],
       password: [null],
     }) as FormGroupType<any>;
-    this.form.disable()
-
+    this.form.disable();
   }
 
   getErrorMessage() {
@@ -92,16 +103,14 @@ export class UserViewComponent {
     return this.form.get('email').hasError('email') ? 'Not a valid email' : '';
   }
 
-  handleEdit(){
-    this._isEditing = true
-    this.getDataById()
-    this.form.enable()
-
-  } 
-  handleCancel(){
-    this._isEditing = false
-    this.getDataById()
-    this.form.disable()
-
+  handleEdit() {
+    this._isEditing = true;
+    this.getDataById();
+    this.form.enable();
+  }
+  handleCancel() {
+    this._isEditing = false;
+    this.getDataById();
+    this.form.disable();
   }
 }

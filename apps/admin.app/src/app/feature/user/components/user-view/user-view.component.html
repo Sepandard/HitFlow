@@ -118,5 +118,8 @@
         </button>
       </ng-template>
     </mat-card-actions>
+    <mat-card-footer *ngIf="loading">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </mat-card-footer>
   </mat-card>
 </ng-container>

@@ -1,11 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-@import "ag-grid-community/styles/ag-grid.css";
-@import "ag-grid-community/styles/ag-theme-alpine.css";
-@import "./app/shared/styles/shared.scss";
+@use '@angular/material' as mat;
+
+@import 'ag-grid-community/styles/ag-grid.css';
+@import 'ag-grid-community/styles/ag-theme-alpine.css';
+@import './app/shared/styles/shared.scss';
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: 'Lato', sans-serif;
   //TODO: Fix Scroll bug
 }
 html,
@@ -17,4 +19,13 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
+$hf-typography: mat.define-typography-config(
+  $font-family: 'Lato',
+);
+$hf-theme: mat.define-light-theme(
+  (
+    typography: $hf-typography,
+  )
+);
 
+@include mat.all-component-themes($hf-theme);
