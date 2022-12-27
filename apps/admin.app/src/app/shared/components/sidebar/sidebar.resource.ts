@@ -12,11 +12,19 @@ export const sidebarLink: Sidebar[] = [
   },
   {
     id: 2,
-    title: 'Product Mangement',
-    displayText: 'Product Mangement',
+    title: 'Product Management',
+    displayText: 'Product Management',
     route: '/feature/product/list',
     icon: {
       matIcon: 'inventory_2',
+    },
+  },  {
+    id: 3,
+    title: 'User Management',
+    displayText: 'Product Management',
+    route: '/feature/user/list',
+    icon: {
+      matIcon: 'person_filled',
     },
   },
 ];

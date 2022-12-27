@@ -37,7 +37,15 @@ export class DataGridComponent implements OnInit, OnDestroy {
     filter: true,
   };
   @Input() set listEndpoint(value: string) {
-    if (value) this._getData();
+    if (value) {
+      this._listEndpoint = value;
+      this._getData();
+    }
+  }
+  private _listEndpoint!: string;
+
+  public get listEndpoint(): string {
+    return this._listEndpoint;
   }
   @Input() set clientSideData(value: any[]) {
     if (value) {
@@ -64,8 +72,7 @@ export class DataGridComponent implements OnInit, OnDestroy {
     private http: HttpClient
   ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public get loading(): boolean {
     return this._loading;
@@ -76,15 +83,18 @@ export class DataGridComponent implements OnInit, OnDestroy {
   }
 
   protected _onGridReady(params: GridReadyEvent) {
-    this.gridApi = params.api
-    this.gridApi.setDomLayout('autoHeight')
+    this.gridApi = params.api;
+    this.gridApi.sizeColumnsToFit();
+    this.gridApi.setDomLayout('autoHeight');
     this.gridApi.sizeColumnsToFit({
       defaultMinWidth: 100,
     });
     this.onGridReady.emit();
   }
   protected _onCellDoubleClicked(row: any) {
+    
     if (this.suppressRowNavigate) return;
+    console.log(row);
     this.router.navigate([`${row.data.id}`], { relativeTo: this.route });
   }
 
@@ -93,7 +103,7 @@ export class DataGridComponent implements OnInit, OnDestroy {
     this.currentItemChange.emit(row);
   }
   private _fetchData(params?: any) {
-    const url = `${this.listEndpoint}}`;
+    const url = `${this.listEndpoint}`;
     return this.http.get<any[]>(url);
   }
 
@@ -105,17 +115,22 @@ export class DataGridComponent implements OnInit, OnDestroy {
           this._loading;
         })
       )
-      .subscribe({});
+      .subscribe({
+        next: (value) => {
+          console.log(value);
+          this.rowData$.next(value);
+        },
+      });
   }
 
   ngOnDestroy(): void {
     this.rowData$.unsubscribe();
   }
-  refresh(event:any){
-
-    event.srcElement.classList.remove("refesh-icon-route");
-    setTimeout(()=>{
-      event.srcElement.classList.add("refesh-icon-route");
-    },0)
+  refresh(event: any) {
+    event.srcElement.classList.remove('refesh-icon-route');
+    setTimeout(() => {
+      event.srcElement.classList.add('refesh-icon-route');
+    }, 0);
+    this._getData()
   }
 }

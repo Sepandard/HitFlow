@@ -13,8 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
 const MAT_MODULES: Provider[] = [
   MatCardModule,
   MatSidenavModule,
@@ -26,6 +26,7 @@ const MAT_MODULES: Provider[] = [
   MatInputModule,
   MatCheckboxModule,
   MatFormFieldModule,
+  MatSelectModule,
 ];
 @NgModule({
   declarations: [COMPONENTS],

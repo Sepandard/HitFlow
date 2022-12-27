@@ -9,12 +9,12 @@ const ErrorHandler = require('../../../utils/errorHandler');
 // @access      Private
 exports.getAll = asyncHandler(async (req, res, next) => {
   await client.query(
-    `SELECT "genderId",
+    `SELECT "id","genderId",
     email,
     "name",
     "phoneNumber",
     "roleId",
-    "lastLogin",
+    TO_CHAR("lastLogin"::DATE, 'dd-mm-yyyy HH:MI:SS') as "lastLogin",
     "statusId"
     from public."user" 
     ORDER BY id ASC`,
@@ -27,6 +27,7 @@ exports.getAll = asyncHandler(async (req, res, next) => {
           res.status(500).json('something went wrong');
         }
       } else {
+        console.log(err);
         res.status(500).json(err);
       }
     }
