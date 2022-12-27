@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingInterceptorService } from '@core/interceptor';
+import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,8 +16,18 @@ import { LoadingInterceptorService } from '@core/interceptor';
     BrowserModule,
     AppRoutingModule,
     CoreModule.forRoot({
-      environment:{applicationName:'HitFlow',baseUrl:'/api',production:false},
-
+      environment: {
+        applicationName: 'HitFlow',
+        baseUrl: '/api',
+        production: false,
+      },
+    }),
+    // http interceptor for authorization will be handled by jwt module
+    JwtModule .forRoot({
+      config: {
+        tokenGetter: () => localStorage.getItem('token'),
+        // Since we are calling http requests from the same domain as app we do not need to specified domains here
+      },
     }),
     BrowserAnimationsModule,
   ],

@@ -5,6 +5,4 @@ import { MatSidenav } from '@angular/material/sidenav';
   selector: 'hf-feature',
   templateUrl: './feature.component.html',
 })
-export class FeatureComponent {
-
-}
+export class FeatureComponent {}
