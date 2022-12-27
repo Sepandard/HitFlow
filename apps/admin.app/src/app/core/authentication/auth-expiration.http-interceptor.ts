@@ -12,10 +12,12 @@ import { throwError, Observable, EMPTY } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { IdentityService } from '../service/identity.service';
 import { Router } from '@angular/router';
+import { NotificationsService } from '@core/service';
 
 @Injectable()
 export class AuthExpirationHttpInterceptor implements HttpInterceptor {
   constructor(
+    private notification : NotificationsService,
     private identityService: IdentityService,
     private router: Router
   ) {}
@@ -33,7 +35,8 @@ export class AuthExpirationHttpInterceptor implements HttpInterceptor {
             this.identityService.isTokenExpired()
           ) {
             // There is no token, or  the token is expired, navigate to login page
-            this.router.navigate(['/login'], {
+            this.notification.showError('Logout!!')
+            this.router.navigate(['auth/login'], {
               queryParams: { returnUrl: this.router.url },
             });
             return EMPTY;

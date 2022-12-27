@@ -94,7 +94,6 @@ export class DataGridComponent implements OnInit, OnDestroy {
   protected _onCellDoubleClicked(row: any) {
     
     if (this.suppressRowNavigate) return;
-    console.log(row);
     this.router.navigate([`${row.data.id}`], { relativeTo: this.route });
   }
 

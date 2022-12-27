@@ -1,0 +1,13 @@
+<hf-admin-space></hf-admin-space>
+<hf-admin-panel label="Product">
+  <hf-admin-data-grid [columnDefs]="columnDefs" [listEndpoint]="endpoint"
+    ><ng-container>
+      <button color="primary" mat-icon-button >
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button color="primary" mat-icon-button routerLink="./create">
+        <mat-icon>add</mat-icon>
+      </button>
+    </ng-container>
+  </hf-admin-data-grid>
+</hf-admin-panel>

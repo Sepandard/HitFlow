@@ -1,7 +1,6 @@
-const base = '/api/user';
+const base = '/api/product';
 
-export const UserEndpoint = {
+export const ProductEndpoint = {
   base: `${base}`,
   byId: (id: number) => `${base}/${id}`,
 } as const;
-

@@ -1,5 +1,8 @@
 .ag-theme-alpine {
-  font-family: Poppins, "Helvetica Neue", sans-serif;
+  font-family: 'Lato';
+}
+div.ag-theme-alpine .ag-ltr .ag-cell {
+  font-weight: 500 !important;
 }
 .refesh-icon {
 
@@ -27,3 +30,6 @@
   animation-iteration-count: 1;
 }
 
+::slotted(*) {
+  align-items: center;
+}

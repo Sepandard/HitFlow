@@ -1,21 +1,42 @@
-<mat-toolbar class="card-shadow " >
-  <button mat-icon-button (click)="isExpanded = !isExpanded">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <h1 class="app-name">{{ applicationName }}</h1>
+<mat-toolbar [style.padding]="'0 7px'" class="card-shadow">
+  <div class="d-flex justify-content-between w-100">
+    <div class="app-info d-flex align-item-center">
+      <button class="mr-3" mat-icon-button (click)="isExpanded = !isExpanded">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h1 class="app-name item-color">{{ applicationName }}</h1>
+    </div>
+
+    <button class="item-color" mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    
+    <mat-menu  #menu="matMenu" >
+      <button (click)="handleLogout()" mat-menu-item>Logout</button>
+    </mat-menu>
+  </div>
 </mat-toolbar>
-<mat-sidenav-container class="sidenav-container " autosize>
-  <mat-sidenav #sidenav class="sidenav-sidenav bg-color" mode="side" opened="true">
+<mat-sidenav-container class="sidenav-container" autosize>
+  <mat-sidenav
+    #sidenav
+    class="sidenav-sidenav bg-color"
+    mode="side"
+    opened="true"
+  >
     <mat-nav-list>
       <mat-list-item
         *ngFor="let link of links"
         (click)="onClick(link)"
         class="parent"
       >
-        <span class="full-width" *ngIf="isExpanded || isShowing">{{
-          link.displayText
-        }}</span>
-        <mat-icon mat-list-icon>{{ link.icon.matIcon }}</mat-icon>
+        <div class="d-flex align-item-center">
+          <span
+            class="full-width display-text"
+            *ngIf="isExpanded || isShowing"
+            >{{ link.displayText }}</span
+          >
+          <mat-icon class="m-1" mat-list-icon>{{ link.icon.matIcon }}</mat-icon>
+        </div>
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>

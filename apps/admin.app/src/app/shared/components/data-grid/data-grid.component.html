@@ -1,15 +1,21 @@
-<div class="d-flex my-2 justify-content-end scale">
-  <button
-    #refresh_button
-    class="refesh-button"
-    mat-icon-button
-    (click)="refresh($event)"
-  >
-    <mat-icon class="refesh-icon">refresh</mat-icon>
-  </button>
+<div class="flex-wrap my-2 justify-content-end scale">
+  <div class="d-flex justify-content-end align-item-center w-100 gap-base">
+    <div class="opeation">
+      <ng-content></ng-content>
+    </div>
+
+    <button
+      #refresh_button
+      class="refesh-button"
+      mat-icon-button
+      (click)="refresh($event)"
+    >
+      <mat-icon class="refesh-icon">refresh</mat-icon>
+    </button>
+  </div>
 </div>
 <ag-grid-angular
-  style="width: 100%; height: 100%; box-sizing: border-box"
+  style="width: 100%; height: 100%; box-sizing: border-box; font-weight: 500"
   class="ag-theme-alpine"
   [columnDefs]="columnDefs"
   [defaultColDef]="defaultColDef"
