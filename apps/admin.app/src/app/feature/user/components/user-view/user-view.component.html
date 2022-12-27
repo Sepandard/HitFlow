@@ -1,1 +1,122 @@
-<p>user-view works!</p>
+
+<hf-admin-space></hf-admin-space>
+<ng-container *ngIf="model">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ model.name }}</mat-card-title>
+      <mat-card-subtitle>Last Login: {{ model.lastLogin }}</mat-card-subtitle>
+    </mat-card-header>
+    <ng-container [formGroup]="form" *ngIf="form">
+      <div class="flex-wrap p-3">
+        <div class="col-3">
+          <div class="m-2">
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" required />
+              <mat-error *ngIf="form.get('email').invalid">{{
+                getErrorMessage()
+              }}</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="m-2">
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="password" />
+              <mat-error *ngIf="form.get('password')?.invalid">{{
+                getErrorMessage()
+              }}</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="m-2">
+            <mat-form-field appearance="outline">
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" required />
+              <mat-error *ngIf="form.get('name').invalid">{{
+                getErrorMessage()
+              }}</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="m-2">
+            <mat-form-field appearance="outline">
+              <mat-label>Status</mat-label>
+              <mat-select formControlName="statusId">
+                <mat-option
+                  *ngFor="let item of statusField"
+                  [value]="item.value"
+                  >{{ item.name }}</mat-option
+                >
+              </mat-select>
+              <mat-error *ngIf="form.get('statusId').invalid">{{
+                getErrorMessage()
+              }}</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="m-2">
+            <mat-form-field appearance="outline">
+              <mat-label>Gender</mat-label>
+              <mat-select formControlName="genderId">
+                <mat-option
+                  *ngFor="let item of genderField"
+                  [value]="item.value"
+                  >{{ item.name }}</mat-option
+                >
+              </mat-select>
+              <mat-error *ngIf="form.get('genderId').invalid">{{
+                getErrorMessage()
+              }}</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="m-2">
+            <mat-form-field appearance="outline">
+              <mat-label>Role</mat-label>
+              <mat-select formControlName="roleId">
+                <mat-option
+                  *ngFor="let item of roleField"
+                  [value]="item.value"
+                  >{{ item.name }}</mat-option
+                >
+              </mat-select>
+              <mat-error *ngIf="form.get('roleId').invalid">{{
+                getErrorMessage()
+              }}</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="m-2">
+            <mat-form-field appearance="outline">
+              <mat-label>Phone Number</mat-label>
+              <input matInput formControlName="phoneNumber" />
+              <mat-error *ngIf="form.get('phoneNumber').invalid">{{
+                getErrorMessage()
+              }}</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <mat-card-actions align="end">
+      <ng-container *ngIf="!isEditing; else editMode">
+        <button mat-button (click)="handleEdit()">Edit</button>
+      </ng-container>
+      <ng-template #editMode>
+        <button class="m-1" mat-button (click)="handleCancel()">Cancel</button>
+        <button class="btn-primary" mat-flat-button (click)="submitForm()">
+          Save Changes
+        </button>
+      </ng-template>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>

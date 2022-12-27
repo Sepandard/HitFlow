@@ -17,7 +17,7 @@ exports.getById = asyncHandler(async (req, res, next) => {
     "name",
     "phoneNumber",
     "roleId",
-    "lastLogin",
+    TO_CHAR("lastLogin"::DATE, 'dd-mm-yyyy HH:MI:SS') as "lastLogin",
     "statusId"
     from public."user" 
     WHERE "id" = $1`,

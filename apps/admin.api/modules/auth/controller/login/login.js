@@ -2,6 +2,7 @@ const asyncHandler = require('../../../../middlewares/async');
 const bcrypt = require('bcryptjs');
 const client = require('../../../../config/db.js');
 const ResponseMessages = require('../../../../contract/responseMessages');
+const LoginStatus = require('../../../../contract/loginStatus');
 const ErrorHandler = require('../../../../utils/errorHandler');
 const jwt = require('jsonwebtoken');
 
@@ -10,9 +11,6 @@ const jwt = require('jsonwebtoken');
 // @access      Public
 exports.login = asyncHandler(async (req, res, next) => {
   const { email, password: enterPassword } = req.body;
-
-  console.log(enterPassword);
-  console.log(email === 'admin' && enterPassword === 'admin');
 
   if (!email) {
     return next(new ErrorHandler(res, ResponseMessages.EMAIL_REQUIRED, 400));
@@ -25,30 +23,32 @@ exports.login = asyncHandler(async (req, res, next) => {
   // TODO
   if (email === 'admin@gmail.com' && enterPassword === 'admin') {
     genToken(1).then((token) => {
-      res.status(200).json(token);
+      res.status(200).json({ token: token, loginStatus: LoginStatus.Success });
       updateLoginDate(1);
     });
+  } else {
+    res.status(200).json({ loginStatus: LoginStatus.InvalidCredential });
   }
 
-//   await client.query(
-//     `select id , password from public.user where "email" = $1`,
-//     [email],
-//     (err, result) => {
-//       if (!err) {
-//         const { id, password } = result.rows[0];
-//         bcryptPass(enterdPass, password).then((result) => {
-//           if (result) {
-//             genToken(id).then((token) => {
-//               res.status(200).json(token);
-//               updateLoginDate(id);
-//             });
-//           } else {
-//             res.status(401).json(1);
-//           }
-//         });
-//       }
-//     }
-//   );
+    // await client.query(
+    //   `select id , password from public.user where "email" = $1`,
+    //   [email],
+    //   (err, result) => {
+    //     if (!err) {
+    //       const { id, password } = result.rows[0];
+    //       bcryptPass(enterdPass, password).then((result) => {
+    //         if (result) {
+    //           genToken(id).then((token) => {
+    //             res.status(200).json(token);
+    //             updateLoginDate(id);
+    //           });
+    //         } else {
+    //           res.status(401).json(1);
+    //         }
+    //       });
+    //     }
+    //   }
+    // );
 });
 
 updateLoginDate = async (id) => {
