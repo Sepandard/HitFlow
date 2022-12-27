@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ColDef } from 'ag-grid-community';
+import { UserEndpoint } from '../../api/user.endpoint';
+import {
+  GenderLabel,
+  RoleLabel,
+  StatusLabel,
+  User,
+} from '../../api/user.model';
 
 @Component({
   selector: 'hf-admin-user-list',
@@ -8,51 +15,41 @@ import { ColDef } from 'ag-grid-community';
 })
 export class UserListComponent implements OnInit {
   columnDefs: ColDef[] = [
-    { field: 'make' },
-    { field: 'model' },
-    { field: 'price' },
-    { field: 'price' },
-    { field: 'price' },
-    { field: 'price' },
-    { field: 'price' },
+    { field: 'name' },
+    { field: 'email' },
+    {
+      headerName: 'gender',
+      field: 'genderId',
+      cellRenderer: (cell: any) => {
+        const model: User = cell.data;
+        const { genderId } = model;
+        return GenderLabel[genderId];
+      },
+    },
+
+    {
+      headerName: 'Role',
+      field: 'roleId',
+      cellRenderer: (cell: any) => {
+        const model: User = cell.data;
+        const { roleId } = model;
+        return RoleLabel[roleId];
+      },
+    },
+    {
+      headerName: 'Status',
+      field: 'statusId',
+      cellRenderer: (cell: any) => {
+        const model: User = cell.data;
+        const { statusId } = model;
+        return StatusLabel[statusId];
+      },
+    },
+    { headerName: 'Last Login', field: 'lastLogin' },
+    { headerName: 'Phone Number', field: 'phoneNumber' },
   ];
-  clientSideData: any[] = [
-    {
-      make: 'Porsche',
-      model: 'Boxter',
-      price: 72000,
-    },
-    {
-      make: 'Ford',
-      model: 'Mondeo',
-      price: 32000,
-    },
-    {
-      make: 'Ford',
-      model: 'Mondeo',
-      price: 32000,
-    },
-    {
-      make: 'Toyota',
-      model: 'Celica',
-      price: 35000,
-    },
-    {
-      make: 'Toyota',
-      model: 'Celica',
-      price: 35000,
-    },
-    {
-      make: 'Porsche',
-      model: 'Boxter',
-      price: 72000,
-    },
-    {
-      make: 'Toyota',
-      model: 'Celica',
-      price: 35000,
-    },
-  ];
+  clientSideData: any[] = [];
+  public endpoint = UserEndpoint.base;
   constructor() {}
 
   ngOnInit(): void {}

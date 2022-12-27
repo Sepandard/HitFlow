@@ -5,7 +5,8 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { SharedModule } from '@shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthApiService } from './api/auth-api.service';
+import { AuthApi } from '@core/api';
+import { AuthService } from '@core/authentication';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -16,6 +17,6 @@ import { AuthApiService } from './api/auth-api.service';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers : [AuthApiService]
+  providers: [AuthService,AuthApi],
 })
 export class AuthModule {}
