@@ -60,9 +60,7 @@ app.use(express.static(path.join(__dirname, "/public")));
 initModules(app);
 
 
-app.use("*", (req, res, next) => {
-  res.status(500).json('Database is offline');
-});
+
 
 //check log file
 if (fs.existsSync("./log/database-log.txt")) {
@@ -99,4 +97,9 @@ const server = app.listen(
 process.on("unhandledRejection", (err, promise) => {
   console.log(`Error : ${err.message}`.red);
   server.close(() => process.exit(1));
+});
+
+
+app.use("*", (req, res, next) => {
+  res.status(500).json('Database is offline');
 });

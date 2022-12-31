@@ -45,7 +45,7 @@ exports.login = asyncHandler(async (req, res, next) => {
                 token: token,
                 loginStatus: LoginStatus.Success,
               });
-              updateLoginDate();
+              updateLoginDate(id);
             });
           } else {
             res
