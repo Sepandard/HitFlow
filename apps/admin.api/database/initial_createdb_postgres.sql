@@ -36,7 +36,7 @@ CREATE TABLE public."user" (
 
 CREATE TABLE public."category" (
 	id serial4 NOT NULL,
-	title varchar(4) NOT NULL,
+	title varchar NOT NULL,
 	CONSTRAINT category_pk PRIMARY KEY (id)
 );
 
