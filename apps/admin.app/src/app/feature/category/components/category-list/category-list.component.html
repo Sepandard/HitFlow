@@ -1,0 +1,10 @@
+<hf-admin-space></hf-admin-space>
+<hf-admin-panel label="Category">
+  <hf-admin-data-grid [columnDefs]="columnDefs" [listEndpoint]="endpoint"
+    ><ng-container>
+      <button color="primary" mat-icon-button [routerLink]="['./create']">
+        <mat-icon>add</mat-icon>
+      </button>
+    </ng-container>
+  </hf-admin-data-grid>
+</hf-admin-panel>

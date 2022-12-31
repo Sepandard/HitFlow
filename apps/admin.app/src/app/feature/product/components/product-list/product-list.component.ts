@@ -27,6 +27,5 @@ export class ProductListComponent {
     { headerName: 'Last Login', field: 'lastLogin' },
     { headerName: 'Phone Number', field: 'phoneNumber' },
   ];
-  clientSideData: any[] = [];
   public endpoint = ProductEndpoint.base;
 }

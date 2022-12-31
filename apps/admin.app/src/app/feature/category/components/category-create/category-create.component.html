@@ -1,7 +1,7 @@
 <hf-admin-space></hf-admin-space>
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Create Product</mat-card-title>
+    <mat-card-title>Create Title</mat-card-title>
     <mat-card-subtitle>Please Enter Information</mat-card-subtitle>
   </mat-card-header>
   <ng-container [formGroup]="form" *ngIf="form">
@@ -9,9 +9,9 @@
       <div class="col-3">
         <div class="m-2">
           <mat-form-field appearance="outline">
-            <mat-label>Name</mat-label>
-            <input matInput formControlName="name" required />
-            <mat-error *ngIf="form.get('name').invalid">{{
+            <mat-label>Title</mat-label>
+            <input matInput formControlName="title" required />
+            <mat-error *ngIf="form.get('title').invalid">{{
               getErrorMessage()
             }}</mat-error>
           </mat-form-field>

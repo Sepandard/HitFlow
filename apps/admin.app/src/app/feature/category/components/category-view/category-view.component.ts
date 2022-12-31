@@ -1,42 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroupType } from '@core/interface/form-type.interface';
 import { NotificationsService } from '@core/service';
 import { finalize } from 'rxjs';
-import { UserManagementApiService } from '../../api/user-management-api.service';
-import {
-  GenderField,
-  RoleField,
-  StatusField,
-  User,
-} from '../../api/user.model';
+import { Category } from '../../api/category-api.model';
+import { CategoryApiService } from '../../api/category-api.service';
 
 @Component({
-  selector: 'hf-admin-user-view',
-  templateUrl: './user-view.component.html',
-  styleUrls: ['./user-view.component.scss'],
+  selector: 'hit-flow-category-view',
+  templateUrl: './category-view.component.html',
+  styleUrls: ['./category-view.component.scss'],
 })
-export class UserViewComponent {
-  form!: FormGroupType<User>;
-  statusField = StatusField;
-  roleField = RoleField;
-  genderField = GenderField;
+export class CategoryViewComponent {
+  form!: FormGroupType<Category>;
+
   private _isEditing: boolean = false;
 
   private _id!: number;
   public loading: boolean = false;
-  public model!: User;
+  public model!: Category;
   constructor(
     private route: ActivatedRoute,
-    private api: UserManagementApiService,
+    private api: CategoryApiService,
     private fb: FormBuilder,
     private notification: NotificationsService
   ) {
     this.initForm();
     this.route.paramMap.subscribe((params) => {
       this._id = Number(params.get('id'));
-
       this.getDataById();
     });
   }
@@ -74,34 +66,27 @@ export class UserViewComponent {
       .update(this.form.value, this.id)
       .pipe(finalize(() => (this.loading = false)))
       .subscribe({
-        next: (value) => {
+        next: () => {
+          this.getDataById();
           this.handleDisable()
         },
-        error: (error) => {
-          this.notification.showError(error)
+        error: (error: any) => {
+          this.notification.showError(error);
         },
       });
   }
 
   private initForm() {
     this.form = this.fb.group({
-      name: [null, Validators.required],
-      email: [null, Validators.required],
-      genderId: [null, Validators.required],
-      roleId: [null, Validators.required],
-      statusId: [null, Validators.required],
-      phoneNumber: [null],
-      password: [null],
+      title: [null, Validators.required],
     }) as FormGroupType<any>;
     this.form.disable();
   }
 
   getErrorMessage() {
-    if (this.form.get('email').hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    return this.form.get('email').hasError('email') ? 'Not a valid email' : '';
+    return this.form.get('title').hasError('required')
+      ? 'You must enter a value'
+      : '';
   }
 
   handleEdit() {

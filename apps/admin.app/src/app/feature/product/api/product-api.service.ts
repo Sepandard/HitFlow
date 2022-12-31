@@ -7,7 +7,7 @@ import { Product } from './product-api.model';
 export class ProductApiService {
   constructor(private http: HttpClient) {}
 
-  create(model : Product){
+  create(model : any){
     return this.http.post(ProductEndpoint.base,model)
   }
 }
