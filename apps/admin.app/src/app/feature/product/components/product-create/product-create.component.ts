@@ -1,6 +1,10 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormGroupType } from '@core/interface/form-type.interface';
 import { NotificationsService } from '@core/service';
 import { finalize } from 'rxjs';
@@ -16,7 +20,13 @@ export class ProductCreateComponent {
   form!: FormGroupType<Product>;
   private _isEditing: boolean = false;
   public fileName?: string;
-
+  limitDiscount: any;
+  categories: any[] = [
+    {
+      categoryId: 1,
+      value: 'hello',
+    },
+  ];
   private _id!: number;
   public loading: boolean = false;
   constructor(
@@ -40,7 +50,7 @@ export class ProductCreateComponent {
   submitForm() {
     this.loading = true;
     console.log(this.form.value);
-    
+
     this.api
       .create(this.form.value)
       .pipe(finalize(() => (this.loading = false)))
@@ -61,11 +71,12 @@ export class ProductCreateComponent {
       image: [null, Validators.required],
       description: [null, Validators.required],
       amount: [null, Validators.required],
+      cost: [null, Validators.required],
+      off: [null, Validators.required],
     }) as FormGroupType<any>;
   }
 
   getErrorMessage() {
-    const category =0 
     if (this.form.get('name').hasError('required')) {
       return 'You must enter a value';
     }
@@ -77,5 +88,13 @@ export class ProductCreateComponent {
     this.router.navigate(['../']);
   }
 
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
 
+    if (file) {
+      this.fileName = file.name;
+      const formData = new FormData();
+      this.form.get('image').setValue(file as any);
+    }
+  }
 }
