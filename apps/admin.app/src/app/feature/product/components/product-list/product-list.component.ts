@@ -10,22 +10,14 @@ import { ProductEndpoint } from '../../api/product-api.endpoint';
 export class ProductListComponent {
   columnDefs: ColDef[] = [
     { field: 'name' },
-    { field: 'email' },
     {
-      headerName: 'gender',
-      field: 'genderId',
-    },
-
-    {
-      headerName: 'Role',
-      field: 'roleId',
+      headerName: 'amount',
+      field: 'amount',
     },
     {
-      headerName: 'Status',
-      field: 'statusId',
+      headerName: 'description',
+      field: 'description',
     },
-    { headerName: 'Last Login', field: 'lastLogin' },
-    { headerName: 'Phone Number', field: 'phoneNumber' },
   ];
   public endpoint = ProductEndpoint.base;
 }

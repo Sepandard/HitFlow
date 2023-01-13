@@ -17,7 +17,108 @@
           </mat-form-field>
         </div>
       </div>
- 
+      <div class="col-3">
+        <div class="m-2">
+          <mat-form-field appearance="outline">
+            <mat-label>cost</mat-label>
+            <input type="number" matInput formControlName="cost" required />
+            <mat-error *ngIf="form.get('cost')?.invalid">{{
+              getErrorMessage()
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="m-2">
+          <mat-form-field appearance="outline">
+            <mat-label>amount</mat-label>
+            <input type="number" matInput formControlName="amount" required />
+            <mat-error *ngIf="form.get('amount').invalid">{{
+              getErrorMessage()
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="m-2">
+          <mat-form-field appearance="outline">
+            <mat-label>discount</mat-label>
+            <input
+              type="number"
+              min="0"
+              max="100"
+              matInput
+              [(ngModel)]="limitDiscount"
+              (change)="
+                limitDiscount < 0 ? (limitDiscount = 0) : limitDiscount;
+                limitDiscount > 100 ? (limitDiscount = 100) : limitDiscount
+              "
+              formControlName="off"
+              required
+            />
+            <mat-error *ngIf="form.get('off')?.invalid">{{
+              getErrorMessage()
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="m-2">
+          <mat-form-field appearance="outline">
+            <mat-label>Favorite food</mat-label>
+            <mat-select>
+              <mat-option
+                *ngFor="let category of categories"
+                [value]="category.categoryId"
+              >
+                {{ category.value }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('off')?.invalid">{{
+              getErrorMessage()
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="m-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Description</mat-label>
+            <mat-label></mat-label>
+            <textarea
+              matInput
+              formControlName="description"
+              placeholder="Enter description..."
+            ></textarea>
+            <mat-error *ngIf="form.get('off')?.invalid">{{
+              getErrorMessage()
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="m-2">
+          <input
+            type="file"
+            class="file-input"
+            (change)="onFileSelected($event)"
+            #fileUpload
+          />
+
+          <div class="file-upload">
+            {{ fileName || 'No file uploaded yet.' }}
+
+            <button
+              mat-mini-fab
+              color="primary"
+              class="upload-btn"
+              (click)="fileUpload.click()"
+            >
+              <mat-icon>attach_file</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </ng-container>
   <mat-card-actions align="end">
