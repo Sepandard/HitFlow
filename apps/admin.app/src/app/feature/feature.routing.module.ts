@@ -9,29 +9,25 @@ const routes: Routes = [
     component: FeatureComponent,
     children: [
       {
-          path: 'user',
-          canActivate: [AuthGuard],
-          loadChildren: () =>
-            import('./user/user.module').then(
-              (mod) => mod.UserModule
-            ),
+        path: 'user',
+        canActivate: [AuthGuard],
+        loadChildren: () =>
+          import('./user/user.module').then((mod) => mod.UserModule),
       },
       {
-          path: 'product',
-          canActivate: [AuthGuard],
-          loadChildren: () =>
-            import('./product/product.module').then(
-              (mod) => mod.ProductModule
-            ),
+        path: 'product',
+        canActivate: [AuthGuard],
+        loadChildren: () =>
+          import('./product/product.module').then((mod) => mod.ProductModule),
       },
       {
-          path: 'category',
-          canActivate: [AuthGuard],
-          loadChildren: () =>
-            import('./category/category.module').then(
-              (mod) => mod.CategoryModule
-            ),
-      }
+        path: 'category',
+        canActivate: [AuthGuard],
+        loadChildren: () =>
+          import('./category/category.module').then(
+            (mod) => mod.CategoryModule
+          ),
+      },
     ],
   },
 ];
