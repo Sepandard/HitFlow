@@ -1,34 +1,51 @@
 const asyncHandler = require('../../../middlewares/async');
 const client = require('../../../config/db.js');
+const ResponseMessages = require('../../../contract/responseMessages');
 
-exports.postProduct = asyncHandler(async (req, res, next) => {
-  console.log(req.body);
+exports.create = asyncHandler(async (req, res, next) => {
+  const { categoryId, name, image, cost, description, amount } = req.body;
 
-  const { categoryId, name, image, description, amount } = req.body;
+  //check REQUIRED fields
+  if (!name || !categoryId || !cost || !description || !amount) {
+    // return 400 (BAD REQUEST) STATUS
+    return next(new ErrorHandler(res, ResponseMessages.FIELD_REQUIRED, 400));
 
+  }
+
+  //Field must number
+  if (!Number(cost) || !Number(amount)) {
+    return res.status(400).json(ResponseMessages.INVALID_DATA);
+  }
+
+  //execute insert query....
   await client.query(
     `
-      INSERT INTO public."status"(
+      INSERT INTO public.product(
         "categoryId",
         "name",
         image,
+        cost,
         description,
-        amount,
-      )
-      VALUES ($1,public/${(Math.random() % 6) + 1}.jfif,$3,$4,$5);
-      
-      `,
-    [],
+        amount
+      ) VALUES (
+          $1,
+          $2,
+          $6,
+          $3,
+          $4,
+          $5
+      ); `,
+    [categoryId, name, cost, description, amount, "/public"],
     (err, result) => {
+      // return response
       if (!err) {
-        if (result) {
-          res.status(200).json(true);
-        } else {
-          res.status(500).json('something went wrong');
-        }
+        res.status(200).json(result.fields);
+        console.log(ResponseMessages.POST_PRODUCT_SUCCESS);
       } else {
-        res.status(500).json(err);
+        res.status(500).json(ResponseMessages.UNKNOW_ERROR);
+        console.log(err);
       }
     }
   );
 });
+

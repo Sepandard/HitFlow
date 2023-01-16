@@ -8,13 +8,15 @@ exports.getAll = asyncHandler(async (req, res, next) => {
   await client.query(
     `
     SELECT 
-      "id"
-      ,"categoryId"
-      ,"name"
-      ,image
-      ,description
-      ,amount
-    from public.product
+      prod."id"
+      ,prod."categoryId"
+      ,prod."name"
+      ,prod.image
+      ,prod.description
+      ,prod.amount
+	  ,cat.title as "categoryTitle"
+    from public.product prod
+	INNER JOIN public.category cat  on prod."categoryId" = cat."id"
     WHERE "isDeleted" = 0
     ORDER BY id ASC
   `,
