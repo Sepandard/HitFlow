@@ -13,6 +13,10 @@ export class ProductListComponent {
     {
       headerName: 'amount',
       field: 'amount',
+    },   
+     {
+      headerName: 'category',
+      field: 'categoryTitle',
     },
     {
       headerName: 'description',

@@ -16,6 +16,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { SelectorComponent } from './components/selector/selector.component';
+
 const MAT_MODULES: Provider[] = [
   MatCardModule,
   MatSidenavModule,
@@ -32,7 +34,7 @@ const MAT_MODULES: Provider[] = [
   MatProgressBarModule,
 ];
 @NgModule({
-  declarations: [COMPONENTS],
+  declarations: [COMPONENTS, SelectorComponent],
   imports: [MAT_MODULES, CommonModule, HttpClientModule, AgGridModule],
   exports: [COMPONENTS, MAT_MODULES],
 })
