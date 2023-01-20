@@ -91,10 +91,10 @@ ResponseMessages.ACCOUNT_DEACTIVATE_SUCCESS = 'Account deactivated successfully'
 ResponseMessages.PROFILE_PICTURE_UPLOAD_SUCCESS = 'Profile picture uploaded successfully';
 ResponseMessages.PROFILE_PICTURE_REMOVE_SUCCESS = 'Profile picture removed successfully';
 ResponseMessages.PROFILE_UPDATE_SUCCESS = 'Profile updated successfully';
-ResponseMessages.POST_CREATE_SUCCESS = 'Post created successfully';
-ResponseMessages.POST_UPDATE_SUCCESS = 'Post updated successfully';
-ResponseMessages.POST_DELETE_SUCCESS = 'Post deleted successfully';
-ResponseMessages.POST_DELETE_SUCCESS = 'Post deleted successfully';
+ResponseMessages.CREATE_SUCCESS = 'created successfully';
+ResponseMessages.UPDATE_SUCCESS = 'updated successfully';
+ResponseMessages.DELETE_SUCCESS = 'deleted successfully';
+ResponseMessages.DELETE_SUCCESS = 'deleted successfully';
 ResponseMessages.POST_PRODUCT_SUCCESS = 'Product add successfully';
 
 
