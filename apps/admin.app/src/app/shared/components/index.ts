@@ -16,5 +16,6 @@ export const COMPONENTS: Provider[] = [
   SpaceComponent,
   InputComponent,
   SelectorComponent,
-  BreadcrumbComponent
+  BreadcrumbComponent,
+  SelectorComponent
 ];

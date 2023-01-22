@@ -79,9 +79,7 @@ export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     this._getData();
   }
-   data: any[] = [];
-  
-
+  data: any[] = [];
 
   public get loading(): boolean {
     return this._loading;
@@ -111,15 +109,14 @@ export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private _createQueryParams(filter: any) {
-    console.log(this.filters);
     const _params = new URLSearchParams({});
-    const output = Object.entries(filter).map(([key, value]) => ({
-      key,
-      value,
-    }));
-
-    output.forEach((f: any) => _params.append(f.key, `${f.value}`));
-
+    if (filter) {
+      const output = Object.entries(filter).map(([key, value]) => ({
+        key,
+        value,
+      }));
+      output.forEach((f: any) => _params.append(f.key, `${f.value}`));
+    }
     return _params;
   }
 
@@ -138,9 +135,9 @@ export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
       )
       .subscribe({
         next: (value) => {
-          this.data = value
+          this.data = value;
           this.rowData$.next(value);
-          this.dataInit.emit()
+          this.dataInit.emit();
         },
       });
   }
