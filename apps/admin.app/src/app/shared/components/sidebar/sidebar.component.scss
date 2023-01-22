@@ -36,18 +36,21 @@
   color: var(--gray-9);
 }
 
-.parent {
+.sidebar {
   font-size: 0.875rem;
   font-weight: 400;
-  .mat-icon {
+  padding: var(--space-7) var(--space-5);
+  
+  &-item {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
     color: var(--gray-2);
-    font-size: 1.375rem;
+    gap: var(--space-4);
   }
-  .display-text {
-    color: var(--gray-2);
-  }
+
 }
 
-#navbar-menu ::ng-deep .mdc-list{
+#navbar-menu ::ng-deep .mdc-list {
   padding: 0;
 }

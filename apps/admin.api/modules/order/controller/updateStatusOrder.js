@@ -3,11 +3,11 @@ const asyncHandler = require("../../../middlewares/async");
 const ResponseMessages = require("../../../contract/responseMessages");
 
 
-exports.remove = asyncHandler(async (req, res, next) => {
+exports.update = asyncHandler(async (req, res, next) => {
     const { status } = req.body;
   
     //check REQUIRED fields
-    if (status) {
+    if (!status) {
       // return 400 (BAD REQUEST) STATUS
       return next(new ErrorHandler(res, ResponseMessages.FIELD_REQUIRED, 400));
     }
@@ -17,17 +17,25 @@ exports.remove = asyncHandler(async (req, res, next) => {
     }
   
     await client.query(
-      `UPDATE public.product SET
-      status= $2
-        WHERE "id" = $1`,
+      `UPDATE public."order" SET
+         status = $2,
+         "lastChange" = NOW()
+        WHERE "id" = $1
+        RETURNING 
+        id, 
+        "userId",
+        code,
+        status,
+        TO_CHAR("creationTime"::DATE, 'dd-mm-yyyy HH:MI:SS') as "creationTime",
+        TO_CHAR("lastChange"::DATE, 'dd-mm-yyyy HH:MI:SS') as "lastChange"`,
       [Number(req.params.id), status],
       (err, result) => {
+        console.log(err);
+        console.log(result);
+
         if (!err) {
-          if (result) {
-            res.status(200).json(result.rows);
-          } else {
-            res.status(500).json(ResponseMessages.UNKNOWN_ERROR);
-          }
+            res.status(200).json(result.rows[0]);
+          
         } else {
           console.log(err);
           res.status(500).json(ResponseMessages.UNKNOWN_ERROR);

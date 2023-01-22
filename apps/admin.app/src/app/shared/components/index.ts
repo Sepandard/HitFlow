@@ -1,4 +1,5 @@
 import { Provider } from '@angular/core';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { CustomLoadingCellRenderer } from './data-grid/data-grid-custom/data-grid-custom.component';
 import { DataGridComponent } from './data-grid/data-grid.component';
 import { InputComponent } from './input/input.component';
@@ -14,5 +15,6 @@ export const COMPONENTS: Provider[] = [
   CustomLoadingCellRenderer,
   SpaceComponent,
   InputComponent,
-  SelectorComponent
+  SelectorComponent,
+  BreadcrumbComponent
 ];

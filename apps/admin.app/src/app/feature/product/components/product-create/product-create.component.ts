@@ -10,7 +10,7 @@ import { Product } from '../../api/product-api.model';
 import { ProductApiService } from '../../api/product-api.service';
 
 @Component({
-  selector: 'hit-flow-product-create',
+  selector: 'hf-admin-product-create',
   templateUrl: './product-create.component.html',
   styleUrls: ['./product-create.component.scss'],
 })

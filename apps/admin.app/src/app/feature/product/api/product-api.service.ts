@@ -7,7 +7,15 @@ import { Product } from './product-api.model';
 export class ProductApiService {
   constructor(private http: HttpClient) {}
 
-  create(model : any){
-    return this.http.post(ProductEndpoint.base,model)
+  create(model: Product) {
+    return this.http.post<void>(ProductEndpoint.base, model);
+  }
+
+  getById(id: number) {
+    return this.http.get<Product>(ProductEndpoint.byId(id));
+  }
+
+  update(model:Product , id:number){
+    return this.http.put<void>(ProductEndpoint.byId(id),model);
   }
 }

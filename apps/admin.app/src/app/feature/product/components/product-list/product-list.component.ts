@@ -3,7 +3,7 @@ import { ColDef } from 'ag-grid-community';
 import { ProductEndpoint } from '../../api/product-api.endpoint';
 
 @Component({
-  selector: 'hit-flow-product-list',
+  selector: 'hf-admin-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
 })
