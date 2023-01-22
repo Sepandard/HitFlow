@@ -25,7 +25,6 @@ const MAT_MODULES: Provider[] = [
   MatToolbarModule,
   MatListModule,
   MatIconModule,
-  MatFormFieldModule,
   MatInputModule,
   MatCheckboxModule,
   MatFormFieldModule,
@@ -34,7 +33,7 @@ const MAT_MODULES: Provider[] = [
   MatProgressBarModule,
 ];
 @NgModule({
-  declarations: [COMPONENTS, SelectorComponent],
+  declarations: [COMPONENTS],
   imports: [MAT_MODULES, CommonModule, HttpClientModule, AgGridModule],
   exports: [COMPONENTS, MAT_MODULES],
 })

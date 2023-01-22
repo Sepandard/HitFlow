@@ -32,8 +32,6 @@ export class SidebarComponent {
   }
 
   onClick(node: Sidebar) {
-    console.log(node.route);
-
     this.route.navigate([node.route]);
   }
 
