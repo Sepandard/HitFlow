@@ -13,7 +13,7 @@ import {
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss'],
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent {
   columnDefs: ColDef[] = [
     { field: 'name' },
     { field: 'email' },
@@ -52,5 +52,4 @@ export class UserListComponent implements OnInit {
   public endpoint = UserEndpoint.base;
   constructor() {}
 
-  ngOnInit(): void {}
 }

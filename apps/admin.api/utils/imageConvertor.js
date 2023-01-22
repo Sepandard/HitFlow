@@ -1,6 +1,6 @@
 const path = require("path");
 const fs = require("fs");
-const Logger = require("../utils/logger");
+const Logger = require("./logger");
 
 class ImageConverter {
   imageConvertor = (id, image, img_name) => {

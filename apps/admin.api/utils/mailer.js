@@ -11,7 +11,7 @@ class Mailer {
     });
 
     const option = {
-      from: `"Amertat Medical Tourism 👻" ${process.env.EMAIL_ADDRESS}`,
+      from: `"HitFlow Medical Tourism 👻" ${process.env.EMAIL_ADDRESS}`,
       to: emailAddress,
       subject: "Your From Submited Successfully ... !",
       text: "Thanks For your feedback we will call you soon ... !",

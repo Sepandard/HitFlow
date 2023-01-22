@@ -28,6 +28,12 @@ const routes: Routes = [
             (mod) => mod.CategoryModule
           ),
       },
+      {
+        path: 'order',
+        canActivate: [AuthGuard],
+        loadChildren: () =>
+          import('./order/order.module').then((mod) => mod.OrderModule),
+      },
     ],
   },
 ];

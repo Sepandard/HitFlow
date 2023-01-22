@@ -27,15 +27,16 @@
       <mat-list-item
         *ngFor="let link of links"
         (click)="onClick(link)"
-        class="parent"
+        class="sidebar"
       >
-        <div class="d-flex align-item-center">
+        <div class="sidebar-item">
+          <mat-icon class="m-1" mat-list-icon>{{ link.icon.matIcon }}</mat-icon>
+
           <span
-            class="full-width display-text"
+            class="sidebar-item-display-text"
             *ngIf="isExpanded || isShowing"
             >{{ link.displayText }}</span
           >
-          <mat-icon class="m-1" mat-list-icon>{{ link.icon.matIcon }}</mat-icon>
         </div>
       </mat-list-item>
     </mat-nav-list>

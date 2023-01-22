@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'hit-flow-product-view',
+  selector: 'hf-admin-product-view',
   templateUrl: './product-view.component.html',
   styleUrls: ['./product-view.component.scss'],
 })

@@ -96,6 +96,7 @@ ResponseMessages.UPDATE_SUCCESS = 'updated successfully';
 ResponseMessages.DELETE_SUCCESS = 'deleted successfully';
 ResponseMessages.DELETE_SUCCESS = 'deleted successfully';
 ResponseMessages.POST_PRODUCT_SUCCESS = 'Product add successfully';
+ResponseMessages.POST_PRODUCT_SUCCESS_CART = 'Product add successfully to cart';
 
 
 
