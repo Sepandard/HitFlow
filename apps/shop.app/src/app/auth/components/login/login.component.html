@@ -1,17 +1,18 @@
 <div
   class="d-flex direction-column h-100 justify-content-center align-item-center"
 >
-  <div class="border-card d-flex direction-column p-3">
+  <div class="card d-flex direction-column p-4 direction-rtl">
     <div class="d-flex justify-content-center">
       <img src="../../../../assets/logo/logo Dark.svg" alt="" height="60" />
     </div>
-    <h3>Login</h3>
-    <p>Welcome Back please username and password:</p>
+    <h3>ورود</h3>
+    <p>سلام! اطلاعات فرم زیر را پر کنید</p>
     <div class="p-3 d-flex direction-column">
       <ng-container [formGroup]="form" *ngIf="form">
-        <mat-form-field appearance="outline">
-          <mat-label>Enter your email</mat-label>
+        <mat-form-field dir="rtl" appearance="outline">
+          <mat-label>ایمیل خود را وارد کنید</mat-label>
           <input
+            dir="ltr"
             matInput
             placeholder="pat@example.com"
             formControlName="email"
@@ -22,9 +23,10 @@
           }}</mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Enter your Password</mat-label>
+        <mat-form-field dir="rtl" appearance="outline">
+          <mat-label>رمز عبور خود را وارد کنید</mat-label>
           <input
+            dir="ltr"
             matInput
             type="password"
             placeholder="Password"
@@ -37,7 +39,7 @@
         </mat-form-field>
 
         <button (click)="onLogin()" class="w-100 btn-primary" mat-flat-button>
-          Login
+          ورود
         </button>
       </ng-container>
     </div>

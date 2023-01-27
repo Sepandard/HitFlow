@@ -7,9 +7,10 @@ import { SharedModule } from '@shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthApi } from '@core/api';
 import { AuthService } from '@core/authentication';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, SignupComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,
@@ -17,6 +18,6 @@ import { AuthService } from '@core/authentication';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [AuthService,AuthApi],
+  providers: [AuthService, AuthApi],
 })
 export class AuthModule {}

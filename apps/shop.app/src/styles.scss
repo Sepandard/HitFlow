@@ -1,12 +1,39 @@
+@use '@angular/material' as mat;
 @import "./app/shared/styles/index.scss";
 @import "./assets/css/style.css";
 
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import 'ag-grid-community/styles/ag-grid.css';
+@import 'ag-grid-community/styles/ag-theme-alpine.css';
 
 
-html body {
-    direction: rtl;
-    overflow-x: hidden;
-  }
+body {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  //TODO: Fix Scroll bug
+}
+html,
+body {
+  height: calc(100%);
+  width: 100%;
+  font-weight: 200;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+}
+
+$hf-typography: mat.define-typography-config(
+  $font-family: 'Lato',
+);
+$hf-theme: mat.define-light-theme(
+  (
+    typography: $hf-typography,
+  )
+);
+
+@include mat.all-component-themes($hf-theme);
+
+
+
   
   ::-webkit-scrollbar {
     width: 6px;

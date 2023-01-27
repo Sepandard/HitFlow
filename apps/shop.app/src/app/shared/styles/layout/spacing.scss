@@ -37,6 +37,11 @@
   justify-content: space-around;
 }
 
+.align-item-center {
+  -ms-flex-item-align: center;
+  align-items: center;
+}
+
 .align-self-start {
   -ms-flex-item-align: start;
   align-self: flex-start;
