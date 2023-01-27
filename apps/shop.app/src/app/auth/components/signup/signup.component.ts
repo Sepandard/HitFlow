@@ -1,22 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {  Router } from '@angular/router';
-import {   LoginStatus, UserLogin } from '@core/api';
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import {
+  GenderField,
+  LoginStatus,
+  SignupStatus,
+  UserCreationModel,
+} from '@core/api';
 import { AuthService } from '@core/authentication';
 import { FormGroupType } from '@core/interface/form-type.interface';
 import { NotificationsService } from '@core/service';
 import { finalize } from 'rxjs';
 
 @Component({
-  selector: 'hf-admin-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'hit-flow-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss'],
 })
-export class LoginComponent {
-  form!: FormGroupType<UserLogin>;
+export class SignupComponent {
+  form!: FormGroupType<UserCreationModel>;
   errorMessage?: string;
   private returnUrl!: string;
-
+  public genderField = GenderField;
   public loading: boolean = false;
   constructor(
     private fb: FormBuilder,
@@ -25,7 +30,7 @@ export class LoginComponent {
     private notification: NotificationsService
   ) {
     this.initForm();
-    this.returnUrl =  '/';
+    this.returnUrl = '/';
   }
 
   onLogin() {
@@ -33,18 +38,18 @@ export class LoginComponent {
     if (this.form.invalid) return;
     this.loading = true;
     this.api
-      .login(this.form.value)
+      .signup(this.form.value)
       .pipe(finalize(() => (this.loading = false)))
       .subscribe({
         next: (result: any) => {
-          switch (result.loginStatus) {
-            case LoginStatus.InvalidCredential:
-              this.errorMessage = 'ایمیل یا رمز عبور اشتباه است ';
+          switch (result.SignupStatus) {
+            case SignupStatus.UserExist:
+              this.errorMessage = 'User Already Exist';
               this.notification.showError(this.errorMessage);
-              return;
-            case LoginStatus.Success:
+              break;
+            case SignupStatus.Success:
               this.router.navigateByUrl(this.returnUrl);
-              return;
+              break;
           }
         },
         error: (error) => {
@@ -53,10 +58,14 @@ export class LoginComponent {
       });
   }
 
+
   private initForm() {
     this.form = this.fb.group({
       email: [null, Validators.required],
+      phoneNumber: [null, Validators.required],
       password: [null, Validators.required],
+      name: [null, Validators.required],
+      genderId: [null, Validators.required],
     }) as FormGroupType<any>;
   }
 
@@ -64,7 +73,8 @@ export class LoginComponent {
     if (this.form.get('email').hasError('required')) {
       return 'لطفا این فیلد را خالی نگذارید';
     }
-
-    return this.form.get('email').hasError('email') ? 'Not a valid email' : '';
+    console.log(this.form.get('email').hasError('email'));
+    
+    return this.form.get('email').hasError('email') ? 'ایمیل صحیح نمی‌باشد' : '';
   }
 }

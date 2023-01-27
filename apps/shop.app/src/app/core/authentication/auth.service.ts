@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { IdentityService } from '../service/identity.service';
 import { AuthApi } from '../api/auth-api.service';
-import { LoginResponse, UserLogin } from '../api/auth-api.model';
+import { LoginResponse, UserCreationModel, UserLogin } from '../api/auth-api.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -19,6 +19,10 @@ export class AuthService {
         return result;
       })
     );
+  } 
+  
+  signup(model: UserCreationModel): Observable<LoginResponse> {
+    return this.authApi.signup(model)
   }
 
   logout() {
