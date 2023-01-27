@@ -5,8 +5,8 @@
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js",
-    "start-shop": "nx run shop.app:serve:development --port 4111",
-    "start-admin": "nx run admin.app:serve:development --port 4110",
+    "start:shop": "nx run shop.app:serve:development --port 4111",
+    "start:admin": "nx run admin.app:serve:development --port 4110",
     "build": "nx build",
     "test": "nx test"
   },

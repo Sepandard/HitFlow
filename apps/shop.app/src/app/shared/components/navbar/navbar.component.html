@@ -60,12 +60,14 @@
     <div
       class="col-1 d-none d-lg-flex d-flex justify-content-center align-self-center"
     >
-      <button class="btn">ورود</button>
+      <button class="btn" [routerLink]="['/auth/login']">ورود</button>
     </div>
     <div
       class="col-1 d-none d-lg-flex d-flex justify-content-center align-self-center"
     >
-      <button class="btn bg-primary color-main">ثبت نام</button>
+      <button class="btn bg-primary color-main" [routerLink]="['/auth/signup']">
+        ثبت نام
+      </button>
     </div>
   </div>
 </nav>

@@ -11,8 +11,6 @@ import { linkNavbar } from './navbar.resourse';
 export class NavbarComponent {  
   @Input() navbarItems : NavbarItem[] = linkNavbar 
   constructor(private route : Router){
-    console.log('iam here');
-    
   }
   onClick(node: NavbarItem) {
     this.route.navigate([node.path]);
