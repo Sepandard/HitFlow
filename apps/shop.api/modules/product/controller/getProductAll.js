@@ -5,6 +5,7 @@ const client = require('../../../config/db.js');
 // @route       GET /api/user
 // @access      Private
 exports.getAll = asyncHandler(async (req, res, next) => {
+  console.log(req.headers.host);
   await client.query(
     `
     SELECT 
@@ -14,6 +15,7 @@ exports.getAll = asyncHandler(async (req, res, next) => {
       ,prod.image
       ,prod.description
       ,prod.amount
+      ,prod.cost
 	  ,cat.title as "categoryTitle"
     from public.product prod
 	INNER JOIN public.category cat  on prod."categoryId" = cat."id"
@@ -24,7 +26,13 @@ exports.getAll = asyncHandler(async (req, res, next) => {
     (err, result) => {
       if (!err) {
         if (result) {
-          res.status(200).json(result.rows);
+          const data = result.rows.map((item) => {
+            return {
+              ...item,
+              image: `http://localhost:5020/${item.image}`,
+            };
+          });
+          res.status(200).json(data);
         } else {
           res.status(500).json('something went wrong');
         }

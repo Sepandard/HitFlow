@@ -5,11 +5,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
-import { FooterComponent } from './components/footer/footer.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DIRECTIVE } from './directive';
 import { RouterModule } from '@angular/router';
+import { SpecialOfferComponent } from './components/special-offer/special-offer.component';
 
 const MAT_MODULES: Provider[] = [
   MatIconModule,
@@ -20,8 +20,8 @@ const MAT_MODULES: Provider[] = [
   MatTabsModule,
 ];
 @NgModule({
-  declarations: [COMPONENT, FooterComponent],
-  imports: [MAT_MODULES, CommonModule],
-  exports: [COMPONENT, MAT_MODULES],
+  declarations: [COMPONENT, DIRECTIVE],
+  imports: [MAT_MODULES, CommonModule, RouterModule],
+  exports: [COMPONENT, MAT_MODULES, DIRECTIVE],
 })
 export class SharedModule {}

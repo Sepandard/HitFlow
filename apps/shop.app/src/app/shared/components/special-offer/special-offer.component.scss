@@ -1,0 +1,25 @@
+.ribbon {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+.ribbon > .photo-pr {
+  height: 16rem;
+}
+
+.ribbon > .off-img {
+  display: flex;
+  height: 2.5rem;
+  align-self: center;
+  width: 100%;
+  margin: 2rem;
+}
+
+@media (min-width: 990px) {
+  .ribbon {
+    justify-content: space-between;
+  }
+  .ribbon > .off-img {
+    height: 3.5rem;
+  }
+}
