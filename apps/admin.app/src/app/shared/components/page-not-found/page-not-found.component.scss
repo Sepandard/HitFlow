@@ -1,0 +1,38 @@
+.pageContainer {
+  // background-color: #afa9a2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.errorPageContainer {
+  background-color: #ffff;
+  padding: 20px 200px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.errorCode {
+  padding: 1rem;
+  font-size: 260px;
+  font-family: 'errorNumCode';
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+}
+
+.errorCodeTitle {
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+
+
+.errorCodeDescription {
+  text-align: center;
+}
