@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import {
+  AfterViewInit,
   Component,
   EventEmitter,
   Input,
@@ -16,7 +17,7 @@ import { BehaviorSubject, finalize, Observable, of } from 'rxjs';
   templateUrl: './data-grid.component.html',
   styleUrls: ['./data-grid.component.scss'],
 })
-export class DataGridComponent implements OnInit, OnDestroy {
+export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() rowSelection: 'multiple' | 'single' = 'single';
   @Input() suppressRowNavigate: boolean = false;
   @Input() loadingCellRendererParams: any = {
@@ -39,7 +40,6 @@ export class DataGridComponent implements OnInit, OnDestroy {
   @Input() set listEndpoint(value: string) {
     if (value) {
       this._listEndpoint = value;
-      this._getData();
     }
   }
   private _listEndpoint!: string;
@@ -58,6 +58,7 @@ export class DataGridComponent implements OnInit, OnDestroy {
   }
 
   @Output() onGridReady: EventEmitter<void> = new EventEmitter<void>();
+  @Output() dataInit: EventEmitter<void> = new EventEmitter<void>();
   @Output() currentItemChange: EventEmitter<any> = new EventEmitter<any>();
 
   private gridApi!: GridApi;
@@ -65,7 +66,8 @@ export class DataGridComponent implements OnInit, OnDestroy {
 
   private _currentItem: any;
   private _loading: boolean = true;
-
+  @Input()
+  filters?: { [key: string]: string | number };
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -73,6 +75,11 @@ export class DataGridComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {}
+
+  ngAfterViewInit() {
+    this._getData();
+  }
+  data: any[] = [];
 
   public get loading(): boolean {
     return this._loading;
@@ -92,7 +99,6 @@ export class DataGridComponent implements OnInit, OnDestroy {
     this.onGridReady.emit();
   }
   protected _onCellDoubleClicked(row: any) {
-    
     if (this.suppressRowNavigate) return;
     this.router.navigate([`${row.data.id}`], { relativeTo: this.route });
   }
@@ -101,8 +107,21 @@ export class DataGridComponent implements OnInit, OnDestroy {
     this._currentItem = row;
     this.currentItemChange.emit(row);
   }
+
+  private _createQueryParams(filter: any) {
+    const _params = new URLSearchParams({});
+    if (filter) {
+      const output = Object.entries(filter).map(([key, value]) => ({
+        key,
+        value,
+      }));
+      output.forEach((f: any) => _params.append(f.key, `${f.value}`));
+    }
+    return _params;
+  }
+
   private _fetchData(params?: any) {
-    const url = `${this.listEndpoint}`;
+    const url = `${this.listEndpoint}?${this._createQueryParams(this.filters)}`;
     return this.http.get<any[]>(url);
   }
 
@@ -116,8 +135,9 @@ export class DataGridComponent implements OnInit, OnDestroy {
       )
       .subscribe({
         next: (value) => {
-          console.log(value);
+          this.data = value;
           this.rowData$.next(value);
+          this.dataInit.emit();
         },
       });
   }
@@ -130,6 +150,6 @@ export class DataGridComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       event.srcElement.classList.add('refesh-icon-route');
     }, 0);
-    this._getData()
+    this._getData();
   }
 }

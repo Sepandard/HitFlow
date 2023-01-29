@@ -29,3 +29,25 @@ $hf-theme: mat.define-light-theme(
 );
 
 @include mat.all-component-themes($hf-theme);
+
+
+.title-link {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--pure-black);
+
+  &-active > * {
+    color: var(--link) ;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:after {
+      content: '/';
+      padding: 0 var(--space-2);
+      color: var(--pure-black);
+    }
+  }
+}

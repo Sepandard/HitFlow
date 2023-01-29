@@ -1,18 +1,16 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-inferrable-types */
+
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormGroupType } from '@core/interface/form-type.interface';
 import { NotificationsService } from '@core/service';
 import { finalize } from 'rxjs';
+import { CategoryEndpoint } from '../../../category/api/category-api.endpoint';
 import { Product } from '../../api/product-api.model';
 import { ProductApiService } from '../../api/product-api.service';
 
 @Component({
-  selector: 'hit-flow-product-create',
+  selector: 'hf-admin-product-create',
   templateUrl: './product-create.component.html',
   styleUrls: ['./product-create.component.scss'],
 })
@@ -45,12 +43,13 @@ export class ProductCreateComponent {
     return this._isEditing;
   }
 
+  categoryEndpoint = CategoryEndpoint
+
   getDataById() {}
 
   submitForm() {
     this.loading = true;
-    console.log(this.form.value);
-
+    
     this.api
       .create(this.form.value)
       .pipe(finalize(() => (this.loading = false)))

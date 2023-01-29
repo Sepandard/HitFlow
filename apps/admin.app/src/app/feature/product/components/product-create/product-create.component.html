@@ -64,20 +64,11 @@
       </div>
       <div class="col-3">
         <div class="m-2">
-          <mat-form-field appearance="outline">
-            <mat-label>Favorite food</mat-label>
-            <mat-select>
-              <mat-option
-                *ngFor="let category of categories"
-                [value]="category.categoryId"
-              >
-                {{ category.value }}
-              </mat-option>
-            </mat-select>
-            <mat-error *ngIf="form.get('off')?.invalid">{{
-              getErrorMessage()
-            }}</mat-error>
-          </mat-form-field>
+          <hit-flow-selector
+            displayText="Category"
+            formControlName="categoryId"
+            [endpoint]="categoryEndpoint.base"
+          ></hit-flow-selector>
         </div>
       </div>
       <div class="col-12">

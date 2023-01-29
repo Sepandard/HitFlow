@@ -101,5 +101,5 @@ process.on("unhandledRejection", (err, promise) => {
 
 
 app.use("*", (req, res, next) => {
-  res.status(500).json('Database is offline');
+  res.status(500).json('something went wrong');
 });

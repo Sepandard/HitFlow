@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'hit-flow-root',
+  selector: 'hf-shop-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

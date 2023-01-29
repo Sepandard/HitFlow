@@ -16,6 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+
 const MAT_MODULES: Provider[] = [
   MatCardModule,
   MatSidenavModule,
@@ -23,7 +24,6 @@ const MAT_MODULES: Provider[] = [
   MatToolbarModule,
   MatListModule,
   MatIconModule,
-  MatFormFieldModule,
   MatInputModule,
   MatCheckboxModule,
   MatFormFieldModule,

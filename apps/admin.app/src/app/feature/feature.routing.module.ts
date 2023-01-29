@@ -30,6 +30,12 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'order',
+        canActivate: [AuthGuard],
+        loadChildren: () =>
+          import('./order/order.module').then((mod) => mod.OrderModule),
+      },
+      {
         path: '**',
         component: PageNotFoundComponent,
       },

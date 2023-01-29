@@ -1,0 +1,15 @@
+.card {
+  border: 1px solid #e0e0e2;
+  border-radius: 8px;
+  width:30vw;
+  background-color: transparent;
+}
+
+[dir='rtl'] ::ng-deep .mdc-floating-label--required::after {
+  margin-left: 10px;
+  margin-right: 1px;
+}
+
+.direction-rtl{
+  direction: rtl;
+}

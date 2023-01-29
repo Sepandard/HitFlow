@@ -1,7 +1,7 @@
 const ResponseMessages = {};
 
 /// Required Field Response Messages
-ResponseMessages.FIELD_REQUIRED = 'This field is required';
+ResponseMessages.FIELD_REQUIRED = 'Required fields must not be empty';
 ResponseMessages.EMAIL_REQUIRED = 'Email is required';
 ResponseMessages.EMAIL_USERNAME_REQUIRED = 'Email or username is required';
 ResponseMessages.PASSWORD_REQUIRED = 'Password is required';
@@ -74,6 +74,7 @@ ResponseMessages.INCORRECT_OLD_PASSWORD = 'Incorrect old password';
 /// Success Response Messages
 ResponseMessages.SUCCESS = 'Success';
 ResponseMessages.LOGIN_SUCCESS = 'Login success';
+ResponseMessages.USERNAME_OR_PASSWORD_WRONG = 'Username or Password is Wrong';
 ResponseMessages.SIGNUP_SUCCESS = 'Signup success';
 ResponseMessages.LOGOUT_SUCCESS = 'Logout success';
 ResponseMessages.OTP_SEND_SUCCESS = 'OTP sent successfully';
@@ -90,25 +91,13 @@ ResponseMessages.ACCOUNT_DEACTIVATE_SUCCESS = 'Account deactivated successfully'
 ResponseMessages.PROFILE_PICTURE_UPLOAD_SUCCESS = 'Profile picture uploaded successfully';
 ResponseMessages.PROFILE_PICTURE_REMOVE_SUCCESS = 'Profile picture removed successfully';
 ResponseMessages.PROFILE_UPDATE_SUCCESS = 'Profile updated successfully';
-ResponseMessages.POST_CREATE_SUCCESS = 'Post created successfully';
-ResponseMessages.POST_UPDATE_SUCCESS = 'Post updated successfully';
-ResponseMessages.POST_DELETE_SUCCESS = 'Post deleted successfully';
-ResponseMessages.COMMENT_ADD_SUCCESS = 'Comment added successfully';
-ResponseMessages.COMMENT_UPDATE_SUCCESS = 'Comment updated successfully';
-ResponseMessages.COMMENT_DELETE_SUCCESS = 'Comment deleted successfully';
-ResponseMessages.CHAT_MESSAGE_SENT_SUCCESS = 'Chat message sent successfully';
-ResponseMessages.CHAT_MESSAGE_READ_SUCCESS = 'Chat message read successfully';
-ResponseMessages.CHAT_MESSAGE_DELETE_SUCCESS = 'Chat message deleted successfully';
-ResponseMessages.REPORT_USER_SUCCESS = 'User reported successfully';
-ResponseMessages.REPORT_POST_SUCCESS = 'Post reported successfully';
-ResponseMessages.REPORT_COMMENT_SUCCESS = 'Comment reported successfully';
-ResponseMessages.REPORT_CHAT_MESSAGE_SUCCESS = 'Chat message reported successfully';
-ResponseMessages.BLUE_TICK_REQUEST_SUCCESS = 'Request has been sent successfully';
-ResponseMessages.BLUE_TICK_REQUEST_ACCEPT_SUCCESS = 'Blue tick request accepted successfully';
-ResponseMessages.BLUE_TICK_REQUEST_REJECT_SUCCESS = 'Blue tick request rejected successfully';
-ResponseMessages.BLUE_TICK_REQUEST_CANCEL_SUCCESS = 'Blue tick request cancelled successfully';
-ResponseMessages.BLUE_TICK_REQUEST_DELETE_SUCCESS = 'Blue tick request deleted successfully';
-ResponseMessages.LOGOUT_OTHER_DEVICES_SUCCESS = 'Other devices logged out successfully';
+ResponseMessages.CREATE_SUCCESS = 'created successfully';
+ResponseMessages.UPDATE_SUCCESS = 'updated successfully';
+ResponseMessages.DELETE_SUCCESS = 'deleted successfully';
+ResponseMessages.DELETE_SUCCESS = 'deleted successfully';
+ResponseMessages.POST_PRODUCT_SUCCESS = 'Product add successfully';
+ResponseMessages.POST_PRODUCT_SUCCESS_CART = 'Product add successfully to cart';
+
 
 
 /// Failure Response Messages
@@ -216,16 +205,8 @@ ResponseMessages.DEVICE_ID_NOT_SAVED = 'Device id not saved';
 ResponseMessages.DEVICE_ID_DELETED = 'Device id deleted';
 ResponseMessages.DEVICE_ID_RECEIVED = 'Device id received';
 
-ResponseMessages.FCM_TOKEN_SAVED = 'FCM token saved';
-ResponseMessages.FCM_TOKEN_NOT_SAVED = 'FCM token not saved';
-ResponseMessages.FCM_TOKEN_NOT_FOUND = 'FCM token not found';
-ResponseMessages.FCM_TOKEN_RECEIVED = 'FCM token received';
-ResponseMessages.FCM_TOKEN_NOT_RECEIVED = 'FCM token not received';
-ResponseMessages.FCM_TOKEN_ALREADY_EXISTS = 'FCM token already exists';
 
-ResponseMessages.CANNOT_MESSAGE_YOURSELF = 'You cannot message yourself';
-ResponseMessages.CHAT_MESSAGE_TYPING = 'Chat message typing';
-ResponseMessages.CHAT_MESSAGE_NOT_TYPING = 'Chat message not typing';
+
 
 ResponseMessages.ONLINE_USERS = 'Online users';
 
@@ -294,7 +275,7 @@ ResponseMessages.INVALID_USERNAME = 'Invalid username';
 ResponseMessages.INVALID_USER = 'Invalid user';
 ResponseMessages.INVALID_USER_ID = 'Invalid user id';
 ResponseMessages.INVALID_POST_ID = 'Invalid post id';
-ResponseMessages.INVALID_COMMENT_ID = 'Invalid comment id';
+ResponseMessages.INVALID_ID = 'Invalid id';
 ResponseMessages.INVALID_CHAT_ID = 'Invalid chat id';
 ResponseMessages.INVALID_USER_TYPE = 'Invalid user type';
 ResponseMessages.INVALID_USER_STATUS = 'Invalid user status';
