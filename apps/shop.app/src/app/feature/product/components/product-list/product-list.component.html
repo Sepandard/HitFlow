@@ -1,1 +1,12 @@
-<p>product-list works!</p>
+
+<hit-flow-special-offer></hit-flow-special-offer>
+<div class="row product-list">
+  <ng-container *ngIf="loading; else showLoading">
+    <div *ngFor="let item of data" class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+      <hit-flow-product-card [model]="item"></hit-flow-product-card>
+    </div>
+  </ng-container> 
+  <ng-template #showLoading>
+    <hit-flow-card-skeleton></hit-flow-card-skeleton>
+  </ng-template>
+</div>

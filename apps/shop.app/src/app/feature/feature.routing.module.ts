@@ -9,7 +9,7 @@ const routes: Routes = [
     component: FeatureComponent,
     children: [
       {
-        path: 'product',
+        path: '',
         // canActivate: [AuthGuard],
         loadChildren: () =>
           import('./product/product.module').then((mod) => mod.ProductModule),

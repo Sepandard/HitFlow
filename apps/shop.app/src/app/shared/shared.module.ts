@@ -9,6 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DIRECTIVE } from './directive';
 import { RouterModule } from '@angular/router';
+import { SpecialOfferComponent } from './components/special-offer/special-offer.component';
 
 const MAT_MODULES: Provider[] = [
   MatIconModule,

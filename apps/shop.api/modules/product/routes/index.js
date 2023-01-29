@@ -1,23 +1,16 @@
 const { protect } = require('../../../middlewares/auth');
 const express = require('express');
 const router = express.Router();
-const { getAll, getCount } = require('../controller/getProductAll');
-const { create } = require('../controller/postProduct');
-const { update } = require('../controller/updateProduct');
-const { remove } = require('../controller/deleteProduct');
+const { getAll } = require('../controller/getProductAll');
 
 // GET
-router.route('/').get(protect, getAll);
-router.route('/count').get(protect, getCount);
+router.route('/').get(getAll);
 
 // POST
-router.route('/').post(protect, create);
 
-// PUT
-router.route('/:id').put(protect, update);
+// PUT 
 
 // DELETE
-router.route('/:id').delete(protect, remove);
 
 
 
