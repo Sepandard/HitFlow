@@ -10,6 +10,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { DIRECTIVE } from './directive';
 import { RouterModule } from '@angular/router';
 import { SpecialOfferComponent } from './components/special-offer/special-offer.component';
+import { MatCardModule } from '@angular/material/card';
 
 const MAT_MODULES: Provider[] = [
   MatIconModule,
@@ -18,6 +19,7 @@ const MAT_MODULES: Provider[] = [
   MatButtonModule,
   MatSelectModule,
   MatTabsModule,
+  MatCardModule
 ];
 @NgModule({
   declarations: [COMPONENT, DIRECTIVE],
