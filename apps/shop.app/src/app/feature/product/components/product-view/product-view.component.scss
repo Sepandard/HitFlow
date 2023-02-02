@@ -1,9 +1,132 @@
-.name-seprator {
-  border-bottom: 2px solid rgb(111, 111, 111);
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: 50vh;
+  background: #fff;
+  margin: 20px;
 }
 
-.comment-container {
+.wrapper .imgBx {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  background: #212121;
+}
+
+.img-scale {
+  height: 45vh;
+}
+
+.wrapper .imgBx:before {
+  position: absolute;
+  top: 0px;
+  left: 24px;
+  color: #000;
+  opacity: 0.2;
+  font-size: 8em;
+  font-weight: 800;
+}
+
+.wrapper .details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 40px;
+}
+
+.wrapper .details h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 2.4em;
+  line-height: 1em;
+  color: #444;
+}
+
+.wrapper .details h2 span {
+  font-size: 0.4em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #999;
+}
+
+.wrapper .details p {
+  max-width: 85%;
+  margin-left: 15%;
+  color: #333;
+  font-size: 15px;
+  margin-bottom: 36px;
+}
+
+.wrapper .details h3 {
+  margin: 0;
+  padding: 0;
+  font-size: 2.5em;
+  color: #000;
+  font-weight: 800;
+  float: left;
+}
+
+.product-colors .active:after {
+  content: '';
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  border-radius: 50%;
+  box-sizing: border-box;
+  left: -5px;
+  top: -5px;
+}
+
+/* responsive */
+@media (max-width: 1080px) {
+  .wrapper {
+    height: auto;
+  }
+  .wrapper .imgBx {
+    width: 100%;
+  }
+
+  .details {
+    width: 100% !important;
+    height: auto;
+    padding: 20px;
+  }
+  .wrapper .details p {
+    margin-left: 0;
+    max-width: 100%;
+  }
+}
+
+footer {
+  position: fixed;
+  right: 16px;
+  bottom: 12px;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.name-seprator {
+  // border-bottom: 2px solid rgb(111, 111, 111);
+}
+
+.comment-wrapper {
   width: 90%;
-  background-color: #c4c8d0;
+  border:1px solid #c4c8d0;
   border-radius: 7px;
+}
+
+.no-comment{
+  margin: 2rem 2rem 2rem auto;
 }

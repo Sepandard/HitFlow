@@ -1,56 +1,35 @@
 <div style="direction: rtl">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm">
-        <mat-card class="my-5">
-          <mat-card-content>
-            <img
-              class="my-5"
-              style="width: 300px"
-              src="../../../../../assets/photo/about/bookImage.jpg"
-              alt=""
-            />
-          </mat-card-content>
-        </mat-card>
-      </div>
-      <div class="col-sm">
-        <mat-card class="my-5 mx-4">
-          <mat-card-content>
-            <div>
-              <div>نام محصول: {{ data.name }}</div>
-              <div class="my-2 name-seprator"></div>
-            </div>
+  <div class="wrapper">
+    <div class="imgBx">
+      <img
+        class="img-scale"
+        [src]="data.image"
+        [alt]="data.name"
+      />
+    </div>
+    <div class="details">
+      <div class="content">
+        <h2>
+          {{ data.name }} <br />
+          <span>{{ data.categoryTitle }}</span>
+        </h2>
+        <p>{{ data.description }}</p>
 
-            <div>توضیحات:{{ data.description }}</div>
-            <div>
-              <mat-icon> star </mat-icon>
-            </div>
-            <div>
-              <mat-icon> thumb_up </mat-icon>
-            </div>
-            <div>ویژگی‌ها: {{ data.property }}</div>
-          </mat-card-content>
-        </mat-card>
-      </div>
-      <div class="col-sm">
-        <mat-card class="my-5">
-          <mat-card-content>
-            <div>قیمت مصرف‌کننده:</div>
-            <div class="d-flex justify-content-center">
-              {{ data.price }}
-            </div>
-            <div class="d-flex justify-content-center my-5">
-              <button class="m-1 btn bg-primary color-main">
-                افزودن به سبد خرید
-              </button>
-            </div>
-          </mat-card-content>
-        </mat-card>
+        <h3 >{{ data.cost }} تومان    </h3>
+        <button mat-flat-button class="btn-primary mt-3">
+          اضافه کردن به سبد خرید
+        </button>
       </div>
     </div>
   </div>
+
+  <footer>
+    <a href="https://stylustechnepal.com" target="_blank"
+      >anuzbvbmaniac123@gmail.com</a
+    >
+  </footer>
   <div>
-    <button class="my-4 btn bg-primary color-main">
+    <button mat-flat-button class="my-4">
       ثبت دیدگاه جدید
     </button>
   </div>
@@ -60,14 +39,23 @@
       <mat-card-content>
         <h3>نظرات</h3>
         <div class="row justify-content-center">
-          <div
-            *ngFor="let comment of data.comments"
-            class="p-2 my-3 comment-container"
+          <ng-container
+            *ngIf="data.comment.length > 0; else noComment"
           >
-            <div>{{ comment.personName }}</div>
-            <div class="my-2 name-seprator"></div>
-            <div>{{ comment.commentDescription }}</div>
-          </div>
+            <div
+              *ngFor="let comment of data.comment"
+              class="p-2 my-3 comment-wrapper"
+            >
+              <b>{{ comment.username }}</b>
+              <div class="my-2 name-seprator"></div>
+              <div>{{ comment.content }}</div>
+            </div>
+          </ng-container>
+          <ng-template #noComment>
+            <div class="no-comment">
+              نظری ثبت نشده است
+            </div>
+          </ng-template>
         </div>
       </mat-card-content>
     </mat-card>

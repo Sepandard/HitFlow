@@ -12,10 +12,14 @@ export class ProductListComponent {
   public loading: boolean = false;
   public data: Product[] = [];
   constructor(private api: ProductApiService) {
+    this.getData()
+  }
+
+  getData(){
     this.loading = true;
     this.api
       .getAll()
-      .pipe(finalize(() => (this.loading = true)))
+      .pipe(finalize(() => (this.loading = false)))
       .subscribe({
         next: (result) => {
           this.data = result;

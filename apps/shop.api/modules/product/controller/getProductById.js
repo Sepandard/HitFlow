@@ -1,9 +1,8 @@
+const asyncHandler = require('../../../middlewares/async');
 const client = require('../../../config/db.js');
-const ResponseMessages = require('../../../contract/responseMessages');
-const ErrorHandler = require('../../../utils/errorHandler');
+const ResponseMessages = require('../../../contract/responseMessages')
 
-
-exports.getAll = asyncHandler(async (req, res, next) => {
+exports.getById = asyncHandler(async (req, res, next) => {
     if (!Number(req.params.id)) {
         return next(new ErrorHandler(res, ResponseMessages.INVALID_ID, 400));
       }
@@ -19,9 +18,8 @@ exports.getAll = asyncHandler(async (req, res, next) => {
 	  ,cat.title as categoryTitle
         from public.product prod
 	    INNER JOIN public.category cat  on prod."categoryId" = cat."id"
-        WHERE "isDeleted" = 0
+        WHERE "isDeleted" = 0 AND id = $1
         ORDER BY id ASC
-        WHERE id = $1
     `,
       [Number(req.params.id)],
       (err, result) => {

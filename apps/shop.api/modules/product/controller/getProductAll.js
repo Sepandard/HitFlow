@@ -29,10 +29,12 @@ exports.getAll = asyncHandler(async (req, res, next) => {
           const data = result.rows.map((item) => {
             return {
               ...item,
-              image: `http://localhost:5020/${item.image}`,
+              image: `http://localhost:5020/${item.image}`
             };
           });
-          res.status(200).json(data);
+          setTimeout(() => {
+            res.status(200).json(data);
+          }, 3000);
         } else {
           res.status(500).json('something went wrong');
         }

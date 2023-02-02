@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 })
 export class FeatureComponent {
   constructor(){
-    console.log(123);
     
   }
 }

@@ -10,4 +10,10 @@ export class ProductApiService {
   getAll() {
     return this.http.get<Product[]>(ProductEndpoint.base);
   }
+
+  getById(id: number) {
+    return this.http.get<Product>(
+      ProductEndpoint.getById(id)
+    );
+  }
 }
