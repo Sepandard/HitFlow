@@ -1,4 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ProductCommentDialogComponent } from './product-comment-dialog/product-comment-dialog.component';
 
 @Component({
   selector: 'hit-flow-product-view',
@@ -25,4 +28,21 @@ export class ProductViewComponent {
       }
     ]
   };
+
+  constructor(public dialog: MatDialog) {}
+
+  openDialog(): void {
+     let comment;
+    const dialogRef = this.dialog.open(
+      ProductCommentDialogComponent,
+      {
+        height: '250px',
+        width: '600px'
+      }
+    );
+
+    dialogRef.afterClosed().subscribe((result) => {
+      comment = result;
+    });
+  }
 }
