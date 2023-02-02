@@ -1,0 +1,23 @@
+<div >
+  <h1 style="direction: rtl" mat-dialog-title>ثبت نظر</h1>
+  <div mat-dialog-content>
+    <mat-form-field
+      class="text-area-container mt-2"
+      appearance="outline"
+    >
+      <mat-label>نظر خود را وارد نمایید</mat-label>
+      <textarea
+        matInput
+        [(ngModel)]="data"
+      ></textarea>
+    </mat-form-field>
+  </div>
+  <div
+    mat-dialog-actions
+    class="btns-container"
+    style="direction: rtl"
+  >
+    <button mat-button (click)="onNoClick()">بستن</button>
+    <button mat-button mat-dialog-close>ثبت نظر</button>
+  </div>
+</div>
