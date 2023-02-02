@@ -75,3 +75,15 @@ CREATE TABLE public."orderItem" (
 	CONSTRAINT order_item_fk1 FOREIGN KEY ("productId") REFERENCES public."product"(id),	
 	CONSTRAINT order_item_fk2 FOREIGN KEY ("orderId") REFERENCES public."order"(id)
 );
+
+
+CREATE TABLE public.comment (
+	id serial4 NOT NULL,
+	"userId" int4 NOT NULL,
+	"productId" int4 NOT NULL,
+	"isConfirmed" int4 NOT NULL default 0, 
+	"creationTime" timestamp NOT NULL default NOW(),
+	CONSTRAINT comment_item_pk PRIMARY KEY (id),
+	CONSTRAINT comment_item_fk1 FOREIGN KEY ("productId") REFERENCES public."product"(id),	
+	CONSTRAINT comment_item_fk2 FOREIGN KEY ("userId") REFERENCES public."user"(id)
+);
