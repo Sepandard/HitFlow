@@ -10,7 +10,7 @@ const routes: Routes = [
     component: ProductComponent,
     children: [
       {
-        path: ':id',
+        path: 'product/:id',
         component: ProductViewComponent,
       },
       {

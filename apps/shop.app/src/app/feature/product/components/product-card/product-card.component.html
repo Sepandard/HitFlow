@@ -4,7 +4,7 @@
       <h5 class="card-title" >{{model.name}}</h5>
       <span class="card-price">{{model.cost}}</span>
     </div>
-    <button class="btn card-btn-sale">
+    <button (click)="onClick(model)" class="btn card-btn-sale">
       <img src="../../../../../assets/svg/Light-Outline/add.svg" />
     </button>
   </div>
