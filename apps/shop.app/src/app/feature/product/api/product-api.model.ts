@@ -7,5 +7,18 @@ export interface Product {
   image: string;
   name: string;
   cost: number;
-  
+  comment:Comment[]
+}
+
+export interface Comment {
+  id: number,
+  content:string,
+  username:string,
+  status:CommentStatus
+}
+
+export enum CommentStatus {
+  Unspecified,
+  No,
+  Yes
 }

@@ -10,6 +10,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { DIRECTIVE } from './directive';
 import { RouterModule } from '@angular/router';
 import { SpecialOfferComponent } from './components/special-offer/special-offer.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const MAT_MODULES: Provider[] = [
   MatIconModule,
@@ -18,10 +20,12 @@ const MAT_MODULES: Provider[] = [
   MatButtonModule,
   MatSelectModule,
   MatTabsModule,
+  MatCardModule,
+  MatDialogModule
 ];
 @NgModule({
   declarations: [COMPONENT, DIRECTIVE],
   imports: [MAT_MODULES, CommonModule, RouterModule],
-  exports: [COMPONENT, MAT_MODULES, DIRECTIVE],
+  exports: [COMPONENT, MAT_MODULES, DIRECTIVE]
 })
 export class SharedModule {}
