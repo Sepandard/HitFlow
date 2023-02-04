@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { finalize } from 'rxjs';
 import { Product } from '../../api/product-api.model';
 import { ProductApiService } from '../../api/product-api.service';
-import { ProductCommentDialogComponent } from './product-comment-dialog/product-comment-dialog.component';
+import { ProductCommentDialogComponent } from '../product-comment-dialog/product-comment-dialog.component';
 
 @Component({
   selector: 'hit-flow-product-view',
@@ -39,7 +39,7 @@ export class ProductViewComponent {
   ) {
     this.route.paramMap.subscribe((params) => {
       this._id = Number(params.get('id'));
-      // this.getData();
+      this.getData();
     });
   }
 
@@ -55,7 +55,10 @@ export class ProductViewComponent {
       )
       .subscribe({
         next: (data) => {
+          console.log(data);
+          
           this.data = data;
+          this.data.comment = []
         },
         error: (error) => {
           console.log(error);
