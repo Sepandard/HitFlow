@@ -15,33 +15,31 @@
         </h2>
         <p>{{ data.description }}</p>
 
-        <h3 >{{ data.cost }} تومان    </h3>
-        <button mat-flat-button class="btn-primary mt-3">
+        <h3>{{ data.cost }} تومان</h3>
+        <button mat-flat-button class="m-3 btn-primary mt-3">
           اضافه کردن به سبد خرید
         </button>
       </div>
     </div>
   </div>
 
-  <footer>
-    <a href="https://stylustechnepal.com" target="_blank"
-      >anuzbvbmaniac123@gmail.com</a
-    >
-  </footer>
   <div>
-    <button
-    class="my-4"
-    mat-flat-button 
-      (click)="openDialog()"
-    >
-      ثبت دیدگاه جدید
-    </button>
-  </div>
-
-  <div>
-    <mat-card>
+    <div class="card p-2">
       <mat-card-content>
-        <h3>نظرات</h3>
+        <div>
+          <h3 class="comment-container">
+            دیدگاه
+
+            <button
+              class="my-4 "
+              mat-flat-button
+              (click)="openDialog()"
+            >
+              ثبت دیدگاه جدید
+            </button>
+          </h3>
+        </div>
+
         <div class="row justify-content-center">
           <ng-container
             *ngIf="data.comment.length > 0; else noComment"
@@ -56,12 +54,12 @@
             </div>
           </ng-container>
           <ng-template #noComment>
-            <div class="no-comment">
-              نظری ثبت نشده است
+            <div class="comment-empty">
+              دیدگاهی ثبت نشده است
             </div>
           </ng-template>
         </div>
       </mat-card-content>
-    </mat-card>
+    </div>
   </div>
 </div>
