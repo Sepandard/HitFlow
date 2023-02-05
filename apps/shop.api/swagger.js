@@ -7,7 +7,7 @@ const endpointsFiles = [
   './modules/product/endpoint/product.endpoint',
   './modules/category/endpoint/category.endpoint',
   './modules/order/endpoint/order.endpoint',
-  './modules/order/endpoint/order-item.endpoint',
+  './modules/comment/endpoint/comment.endpoint',
 ];
 
 swaggerAutogen(outputFile, endpointsFiles);
