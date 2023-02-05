@@ -6,13 +6,18 @@ import { linkNavbar } from './navbar.resourse';
 @Component({
   selector: 'hit-flow-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
+  styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent {  
-  @Input() navbarItems : NavbarItem[] = linkNavbar 
-  constructor(private route : Router){
-  }
+export class NavbarComponent {
+  username = 'کیارش حمدی';
+  @Input() navbarItems: NavbarItem[] = linkNavbar;
+  constructor(private route: Router) {}
   onClick(node: NavbarItem) {
     this.route.navigate([node.path]);
+  }
+
+  onLogoutClicked() {
+    console.log("logout");
+    
   }
 }
