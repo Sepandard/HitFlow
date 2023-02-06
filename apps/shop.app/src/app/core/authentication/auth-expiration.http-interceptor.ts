@@ -5,7 +5,7 @@ import {
   HttpHandler,
   HttpRequest,
   HttpErrorResponse,
-  HTTP_INTERCEPTORS,
+  HTTP_INTERCEPTORS
 } from '@angular/common/http';
 import { throwError, Observable, EMPTY } from 'rxjs';
 
@@ -15,10 +15,12 @@ import { Router } from '@angular/router';
 import { NotificationsService } from '@core/service';
 
 @Injectable()
-export class AuthExpirationHttpInterceptor implements HttpInterceptor {
+export class AuthExpirationHttpInterceptor
+  implements HttpInterceptor
+{
   constructor(
-    private notification : NotificationsService,
-    private identityService: IdentityService, 
+    private notification: NotificationsService,
+    private identityService: IdentityService,
     private router: Router
   ) {}
 
@@ -35,9 +37,9 @@ export class AuthExpirationHttpInterceptor implements HttpInterceptor {
             this.identityService.isTokenExpired()
           ) {
             // There is no token, or  the token is expired, navigate to login page
-            this.notification.showError('Logout!!')
+            this.notification.showError('لطفا وارد شوید');
             this.router.navigate(['auth/login'], {
-              queryParams: { returnUrl: this.router.url },
+              queryParams: { returnUrl: this.router.url }
             });
             return EMPTY;
           }
@@ -53,6 +55,6 @@ export const AuthExpirationHttpInterceptorProviders = [
   {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthExpirationHttpInterceptor,
-    multi: true,
-  },
+    multi: true
+  }
 ];

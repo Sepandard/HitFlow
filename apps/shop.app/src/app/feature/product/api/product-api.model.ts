@@ -7,18 +7,31 @@ export interface Product {
   image: string;
   name: string;
   cost: number;
-  comment:Comment[]
 }
 
 export interface Comment {
   id: number,
   content:string,
   username:string,
-  status:CommentStatus
+  isConfirmed:CommentStatus
+}
+
+export interface CreateComment{
+  content:string,
+  productId: number
 }
 
 export enum CommentStatus {
   Unspecified,
-  No,
-  Yes
+  Pending,
+  Confirmed,
+  Reject,
 }
+
+
+export const CommentStatusLabel = {
+  [CommentStatus.Unspecified]: 'نامشحص',
+  [CommentStatus.Pending]: 'در حال بررسی',
+  [CommentStatus.Confirmed]: 'تایید شده',
+  [CommentStatus.Reject]: 'رد شده',
+} as const;

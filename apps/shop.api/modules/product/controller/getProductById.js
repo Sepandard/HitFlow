@@ -33,6 +33,7 @@ exports.getById = asyncHandler(async (req, res, next) => {
     (err, result) => {
       if (!err) {
         if (result) {
+          console.log(result.rows);
           const data = result.rows.map((item) => {
             return {
               ...item,

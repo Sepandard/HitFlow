@@ -11,7 +11,6 @@ dotenv.config({ path: "./config/config.env" });
 require("./config/db");
 const fs = require("fs");
 //import routes
-const user = require("./routes/user.route");
 const Logger = require("./utils/logger");
 
 // init application
