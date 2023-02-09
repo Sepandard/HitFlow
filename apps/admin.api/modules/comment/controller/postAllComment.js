@@ -37,8 +37,7 @@ exports.create = asyncHandler(async (req, res, next) => {
         RETURNING *; `,
     [userId, productId, CommentStatus.Pending, content],
     (err, result) => {
-      console.log(result.fields);
-      if (!err) {
+      if (!err) { 
         res.status(200).json(result.fields);
         console.log(ResponseMessages.CREATE_SUCCESS);
       } else {
