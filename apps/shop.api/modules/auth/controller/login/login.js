@@ -39,7 +39,7 @@ exports.login = asyncHandler(async (req, res, next) => {
     RETURNING *; `,
     [email],
     (err, result) => {
-      if (result.rowCount !== 0) {
+      if (result) {
         if (!err) {
           const { id, password } = result.rows[0];
           bcryptPass(enterPassword, password).then(

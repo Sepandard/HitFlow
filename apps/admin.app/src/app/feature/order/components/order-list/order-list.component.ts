@@ -23,7 +23,6 @@ export class OrderListComponent {
       cellRenderer: (cell: any) => {
         const model: Order = cell.data;
         const { status } = model;
-        console.log(OrderStatusLabel[status]);
         
         return OrderStatusLabel[status];
       },

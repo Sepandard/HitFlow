@@ -10,7 +10,7 @@
       <textarea
         dir="ltr"
         matInput
-        [(ngModel)]="data"
+        [(ngModel)]="content"
         rows="2"
       ></textarea>
     </mat-form-field>
@@ -20,13 +20,15 @@
     class="btns-container"
     style="direction: rtl"
   >
+    <button mat-button (click)="onNoClick()">بستن</button>
     <button
-      
       mat-button
-      (click)="onNoClick()"
+      class="btn-primary"
+      [disabled]="!this.data"
+      mat-button
+      (click)="submit()"
     >
-      بستن
+      ثبت نظر
     </button>
-    <button mat-button mat-dialog-close class="btn-primary">ثبت نظر</button>
   </div>
 </div>

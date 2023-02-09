@@ -16,7 +16,7 @@
         <p>{{ data.description }}</p>
 
         <h3>{{ data.cost }} تومان</h3>
-        <button mat-flat-button class="m-3 btn-primary mt-3">
+        <button mat-flat-button class="m-3 btn-primary mt-3" (click)="handleOrder()">
           اضافه کردن به سبد خرید
         </button>
       </div>
@@ -40,15 +40,19 @@
           </h3>
         </div>
 
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" >
           <ng-container
-            *ngIf="data.comment.length > 0; else noComment"
+            *ngIf="comment.length > 0 ; else noComment"
           >
             <div
-              *ngFor="let comment of data.comment"
+              *ngFor="let comment of comment"
               class="p-2 my-3 comment-wrapper"
             >
-              <b>{{ comment.username }}</b>
+              <div class="d-flex justify-content-between">
+                <b>{{ comment.username }}</b>
+                
+                <b class="color-secondary">{{ commentStatusLabel[comment.isConfirmed] }}</b>
+              </div>
               <div class="my-2 name-seprator"></div>
               <div>{{ comment.content }}</div>
             </div>

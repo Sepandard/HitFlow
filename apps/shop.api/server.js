@@ -10,8 +10,6 @@ const colors = require('colors');
 dotenv.config({ path: './config/config.env' });
 require('./config/db');
 const fs = require('fs');
-//import routes
-const user = require('./routes/user.route');
 const Logger = require('./utils/logger');
 
 // init application
@@ -57,10 +55,10 @@ console.log(__dirname);
 // set static folder
 app.use(express.static(path.join(__dirname, '/public')));
 
-initModules(app);
+initModules(app); 
 
 //check log file
-if (fs.existsSync('./log/database-log.txt')) {
+if (fs.existsSync('./log/database-log.txt')) { 
   console.log(`Logger File is already exist...`.yellow.bold);
 } else {
   fs.writeFile('./log/database-log.txt', 'Logger File Started...', (err) => {
@@ -84,7 +82,7 @@ const server = app.listen(
       .yellow.bold
   )
 );
-
+ 
 //unhandle process probelm
 process.on('unhandledRejection', (err, promise) => {
   console.log(`Error : ${err.message}`.red);

@@ -1,17 +1,38 @@
 const asyncHandler = require('../../../middlewares/async');
 const client = require('../../../config/db.js');
 const ResponseMessages = require('../../../contract/responseMessages');
-const { codeGenerator } = require('../../../utils/codeGenerator');
+const {
+  codeGenerator
+} = require('../../../utils/codeGenerator');
 const OrderStatus = require('../../../contract/orderStatus');
 const ErrorHandler = require('../../../utils/errorHandler');
+const jwt = require('jsonwebtoken');
 
 exports.create = asyncHandler(async (req, res, next) => {
-  const { userId, productId } = req.body;
+  const token = req.headers.authorization.split(' ')[1];
+  const userId = jwt.decode(token).id;
+  const { productId } = req.body;
 
   //check REQUIRED fields
-  if (!userId || !productId) {
+  if (!productId) {
     // return 400 (BAD REQUEST) STATUS
-    return next(new ErrorHandler(res, ResponseMessages.FIELD_REQUIRED, 400));
+    return next(
+      new ErrorHandler(
+        res,
+        ResponseMessages.FIELD_REQUIRED,
+        400
+      )
+    );
+  }
+  if (!userId) {
+    // return 400 (BAD REQUEST) STATUS
+    return next(
+      new ErrorHandler(
+        res,
+        ResponseMessages.UNAUTHORIZED,
+        403
+      )
+    );
   }
 
   await client.query(
@@ -51,14 +72,22 @@ exports.create = asyncHandler(async (req, res, next) => {
                     if (!err) {
                       res
                         .status(200)
-                        .json(ResponseMessages.POST_PRODUCT_SUCCESS_CART);
+                        .json(
+                          ResponseMessages.POST_PRODUCT_SUCCESS_CART
+                        );
                     } else {
-                      res.status(500).json(ResponseMessages.UNKNOW_ERROR);
+                      res
+                        .status(500)
+                        .json(
+                          ResponseMessages.UNKNOW_ERROR
+                        );
                     }
                   }
                 );
               } else {
-                res.status(500).json(ResponseMessages.UNKNOW_ERROR);
+                res
+                  .status(500)
+                  .json(ResponseMessages.UNKNOW_ERROR);
                 console.log(err);
               }
             }
@@ -79,9 +108,13 @@ exports.create = asyncHandler(async (req, res, next) => {
               if (!err) {
                 res
                   .status(200)
-                  .json(ResponseMessages.POST_PRODUCT_SUCCESS_CART);
+                  .json(
+                    ResponseMessages.POST_PRODUCT_SUCCESS_CART
+                  );
               } else {
-                res.status(500).json(ResponseMessages.UNKNOW_ERROR);
+                res
+                  .status(500)
+                  .json(ResponseMessages.UNKNOW_ERROR);
               }
             }
           );

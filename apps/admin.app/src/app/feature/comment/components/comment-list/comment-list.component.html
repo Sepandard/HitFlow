@@ -1,0 +1,13 @@
+<hf-admin-breadcrumb>
+    <span current>Comment</span>
+  </hf-admin-breadcrumb>
+  <hf-admin-space></hf-admin-space>
+<hf-admin-panel>
+  <hf-admin-data-grid [columnDefs]="columnDefs" [listEndpoint]="endpoint"
+    ><ng-container>
+      <button color="primary" mat-icon-button [routerLink]="['./create']">
+        <mat-icon>add</mat-icon>
+      </button>
+    </ng-container>
+  </hf-admin-data-grid>
+</hf-admin-panel>

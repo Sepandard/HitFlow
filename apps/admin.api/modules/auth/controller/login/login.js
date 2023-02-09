@@ -10,6 +10,7 @@ const jwt = require('jsonwebtoken');
 // @route       POST /api/auth/login
 // @access      Public
 exports.login = asyncHandler(async (req, res, next) => {
+  console.log('asd');
   const { email, password: enterPassword } = req.body;
 
   if (!email) {
@@ -21,10 +22,11 @@ exports.login = asyncHandler(async (req, res, next) => {
   }
 
   await client.query(
-    `select id , password from public.user where "email" = $1`,
+    `select id , password from public.user where "email" = $1 and "roleId" = 1;`,
     [email],
     (err, result) => {
-      if (result.rowCount !== 0) {
+      console.log(result);
+      if (result) {
         if (!err) {
           const { id, password } = result.rows[0];
           bcryptPass(enterPassword, password).then((result) => {
@@ -47,7 +49,7 @@ exports.login = asyncHandler(async (req, res, next) => {
       }else{
         res
         .status(200)
-        .json({ loginStatus: LoginStatus.InvalidCredential });
+        .json({ loginStatus: LoginStatus.InvalidCredential, message : ResponseMessages.USERAME_NOT_AVAILABLE});
       }
     }
   );

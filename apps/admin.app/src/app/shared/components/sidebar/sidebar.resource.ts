@@ -5,7 +5,7 @@ export const sidebarLink: Sidebar[] = [
     id: 1,
     title: 'Dashboard',
     displayText: 'Dashboard',
-    route: '/feature/dashboard',
+    route: '/admin/dashboard',
     icon: {
       matIcon: 'dashboard',
     },
@@ -14,7 +14,7 @@ export const sidebarLink: Sidebar[] = [
     id: 2,
     title: 'Product',
     displayText: 'Product',
-    route: '/product',
+    route: 'admin/product',
     icon: {
       matIcon: 'inventory_2',
     },
@@ -23,7 +23,7 @@ export const sidebarLink: Sidebar[] = [
     id: 3,
     title: 'User',
     displayText: 'User',
-    route: '/user',
+    route: 'admin/user',
     icon: {
       matIcon: 'person_filled',
     },
@@ -32,7 +32,7 @@ export const sidebarLink: Sidebar[] = [
     id: 4,
     title: 'Category',
     displayText: 'Category',
-    route: '/category',
+    route: 'admin/category',
     icon: {
       matIcon: 'category',
     },
@@ -42,9 +42,18 @@ export const sidebarLink: Sidebar[] = [
     id: 5,
     title: 'Order',
     displayText: 'Order',
-    route: '/order',
+    route: 'admin/order',
     icon: {
       matIcon: 'shopping_cart',
+    },
+  },  
+  {
+    id: 6,
+    title: 'Comment',
+    displayText: 'Comment',
+    route: 'admin/comment',
+    icon: {
+      matIcon: 'comment',
     },
   },
 ];
