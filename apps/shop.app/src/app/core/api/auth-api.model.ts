@@ -29,6 +29,7 @@ export interface UserLogin {
 
 export interface LoginResponse {
   loginStatus: LoginStatus;
+  name: string;
   token: string;
 }
 export interface SignupResponse {
@@ -41,6 +42,7 @@ export enum LoginStatus {
   InvalidCredential,
   Error,
 }
+
 export enum SignupStatus {
   Unspecified,
   Success,
