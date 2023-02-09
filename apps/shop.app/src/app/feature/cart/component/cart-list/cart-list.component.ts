@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Cart, OrderStatus } from '../../api/cart.model';
+import { CartService } from '../../api/cart.service';
 
 @Component({
   selector: 'hit-flow-cart-list',
@@ -6,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./cart-list.component.scss']
 })
 export class CartListComponent {
+  model: Cart[] = []
   finalPrice = "30000000";
   data = [
     {
@@ -30,5 +33,15 @@ export class CartListComponent {
   buyProducts(){
     console.log("Buy");
     
+  }
+  constructor(private api:CartService){
+    this.getData()
+  }
+  getData(){
+    this.api.getAll(OrderStatus.Cart).subscribe(({
+      next:(data)=>{
+        this.model = data
+      }
+    }))
   }
 }

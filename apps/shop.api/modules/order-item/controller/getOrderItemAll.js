@@ -1,7 +1,6 @@
 const asyncHandler = require('../../../middlewares/async');
-const bcrypt = require('bcryptjs');
 const client = require('../../../config/db.js');
-const ResponseMessages = require('../../../contract/responseMessages');
+const jwt = require('jsonwebtoken');
 const ErrorHandler = require('../../../utils/errorHandler');
 
 exports.getAll = asyncHandler(async (req, res, next) => {

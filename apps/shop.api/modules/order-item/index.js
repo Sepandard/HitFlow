@@ -2,8 +2,8 @@ const orderItemRoutes = require("./routes/index");
 
 const orderItemModule = {
   init: (app) => {
-    app.use("/api/order-item", orderItemRoutes);
-    console.log("[module]: order item module loaded");
+    app.use("/api/cart", orderItemRoutes);
+    console.log("[module]: cart module loaded");
   },
 };
 
