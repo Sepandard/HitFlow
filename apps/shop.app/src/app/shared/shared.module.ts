@@ -9,10 +9,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DIRECTIVE } from './directive';
 import { RouterModule } from '@angular/router';
-import { SpecialOfferComponent } from './components/special-offer/special-offer.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatMenuModule} from '@angular/material/menu';
 
 const MAT_MODULES: Provider[] = [
   MatIconModule,
@@ -24,9 +24,8 @@ const MAT_MODULES: Provider[] = [
   MatCardModule,
   MatDialogModule,
   MatDividerModule
-];
+]
 @NgModule({
-  declarations: [COMPONENT, DIRECTIVE],
   imports: [MAT_MODULES, CommonModule, RouterModule],
   exports: [COMPONENT, MAT_MODULES, DIRECTIVE]
 })
