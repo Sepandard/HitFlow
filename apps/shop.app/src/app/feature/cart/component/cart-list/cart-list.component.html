@@ -3,40 +3,51 @@
     <div class="card p-2">
       <mat-card-content>
         <h3 class="comment-container p-3">لیست سبد خرید</h3>
-        <div *ngFor="let item of model">
-          <mat-divider></mat-divider>
-          <div class="d-flex m-3">
-            <img
-              class="img-container mt-2"
-              src="{{ item.image }}"
-              alt=""
-            />
-            <div>
-              <h4 class="m-3">
-                نام کالا:
-                {{ item.productName }}
-              </h4>
-              <h4 class="m-3">
-                دسته بندی کالا:
-                {{ item.productName }}
-              </h4>
-              <h4 class="m-3 color-primary">
-                قیمت کالا:
-                {{ item.productCost }}
-              </h4>
+        <div *ngIf="model.length > 0">
+          <div *ngFor="let item of model">
+            <mat-divider></mat-divider>
+            <div class="d-flex m-3">
+              <img
+                class="img-container mt-2"
+                src="{{ item.image }}"
+                alt=""
+              />
+              <div>
+                <h4 class="m-3">
+                  نام کالا:
+                  {{ item.productName }}
+                </h4>
+                <h4 class="m-3">
+                  دسته بندی کالا:
+                  {{ item.productName }}
+                </h4>
+                <h4 class="m-3 color-primary">
+                  قیمت کالا:
+                  {{ item.productCost }}
+                </h4>
+              </div>
             </div>
           </div>
-        </div>
-        <mat-divider></mat-divider>
+          <mat-divider></mat-divider>
 
-        <div class="mx-4 my-5">
-          <h3>قیمت نهایی سبد خرید: {{total}} ريال</h3>
+          <div class="mx-4 my-5">
+            <h3>قیمت نهایی سبد خرید: {{ total }} ريال</h3>
+          </div>
+          <div class="btn">
+            <button
+              class="btn bg-primary color-main"
+              (click)="buyProducts()"
+            >
+              <h3>ثبت نهایی</h3>
+            </button>
+          </div>
         </div>
-        <div class="btn">
-          <button class="btn bg-primary color-main" (click)="buyProducts()">
-            <h3>ثبت نهایی</h3>
-          </button>
-        </div>
+        <h2
+          class="m-5 p-5 empty-cart"
+          *ngIf="model.length === 0"
+        >
+          سبد خرید شما خالی می‌باشد
+        </h2>
       </mat-card-content>
     </div>
   </div>
