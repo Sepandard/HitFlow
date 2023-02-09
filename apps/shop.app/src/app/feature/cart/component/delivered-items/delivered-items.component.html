@@ -2,14 +2,25 @@
   <div class="my-4">
     <div class="card p-2">
       <mat-card-content>
-        <h3 class="comment-container p-3">خرید‌های قبلی</h3>
-        <div *ngIf="data.length > 0">
-          <!-- <div *ngFor="let item of data">
+        <div class="d-flex justify-content-between">
+          <h3 class="comment-container p-3 color-primary">
+            خرید های قبلی
+          </h3>
+          <h5
+            class
+            [routerLink]="['../']"
+            class="comment-container p-3 pointer"
+          >
+            لیست خرید
+          </h5>
+        </div>
+        <div *ngIf="model.length > 0">
+          <div *ngFor="let item of model">
             <mat-divider></mat-divider>
             <div class="d-flex m-3">
               <img
                 class="img-container mt-2"
-                src="{{ item.imgSrc }}"
+                src="{{ item.image }}"
                 alt=""
               />
               <div>
@@ -19,7 +30,7 @@
                 </h4>
                 <h4 class="m-3">
                   دسته بندی کالا:
-                  {{ item.catagory }}
+                  {{ item.productName }}
                 </h4>
                 <h4 class="m-3 color-primary">
                   قیمت کالا:
@@ -27,7 +38,18 @@
                 </h4>
               </div>
             </div>
-          </div> -->
+          </div>
+          <mat-divider></mat-divider>
+
+     
+          <div class="btn">
+            <button
+              class="btn bg-primary color-main"
+              (click)="buyProducts()"
+            >
+              <h3>ثبت نهایی</h3>
+            </button>
+          </div>
         </div>
         <h2
           class="m-5 p-5 empty-cart"

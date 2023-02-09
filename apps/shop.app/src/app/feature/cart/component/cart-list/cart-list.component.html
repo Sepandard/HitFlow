@@ -2,7 +2,17 @@
   <div class="my-4">
     <div class="card p-2">
       <mat-card-content>
-        <h3 class="comment-container p-3">لیست سبد خرید</h3>
+        <div class="d-flex justify-content-between">
+          <h3 class="comment-container p-3 color-primary">
+            لیست سبد خرید
+          </h3>
+          <h5
+            [routerLink]="['./delivered']"
+            class="comment-container p-3 pointer"
+          >
+            خرید های قبلی
+          </h5>
+        </div>
         <div *ngIf="model.length > 0">
           <div *ngFor="let item of model">
             <mat-divider></mat-divider>

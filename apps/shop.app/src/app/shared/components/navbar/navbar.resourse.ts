@@ -3,7 +3,7 @@ import { NavbarItem } from './navbar.interface';
 export const linkNavbar: NavbarItem[] = [
   {
     displayTitle: 'محصولات',
-    path: '#',
+    path: '/',
   },
   {
     displayTitle: 'سرویس ها',
