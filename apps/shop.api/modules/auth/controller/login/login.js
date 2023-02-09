@@ -21,10 +21,10 @@ exports.login = asyncHandler(async (req, res, next) => {
   }
 
   await client.query(
-    `select id , password from public.user where "email" = 'sep@gmail.com' and "roleId" = 1;`,
+    `select id , password from public.user where "email" = $1 ;`,
     [email],
     (err, result) => {
-      if (result.rowCount !== 0) {
+      if (result) {
         if (!err) {
           const { id, password } = result.rows[0];
           bcryptPass(enterPassword, password).then((result) => {

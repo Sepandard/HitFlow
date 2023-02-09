@@ -26,8 +26,7 @@ exports.login = asyncHandler(async (req, res, next) => {
     [email],
     (err, result) => {
       console.log(result);
-      if(result)
-      if (result.rowCount !== 0) {
+      if (result) {
         if (!err) {
           const { id, password } = result.rows[0];
           bcryptPass(enterPassword, password).then((result) => {
