@@ -1,0 +1,33 @@
+<div style="direction: rtl">
+  <div class="my-4">
+    <div class="card p-2">
+      <mat-card-content>
+        <h3 class="comment-container p-3">خرید‌های قبلی</h3>
+        <div *ngFor="let item of data">
+          <mat-divider></mat-divider>
+          <div class="d-flex m-3">
+            <img
+              class="img-container mt-2"
+              src="{{ item.imgSrc }}"
+              alt=""
+            />
+            <div>
+              <h4 class="m-3">
+                نام کالا:
+                {{ item.productName }}
+              </h4>
+              <h4 class="m-3">
+                دسته بندی کالا:
+                {{ item.catagory }}
+              </h4>
+              <h4 class="m-3 color-primary">
+                قیمت کالا:
+                {{ item.productCost }}
+              </h4>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </div>
+  </div>
+</div>
