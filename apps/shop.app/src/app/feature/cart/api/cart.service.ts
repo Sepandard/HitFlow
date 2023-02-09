@@ -18,5 +18,15 @@ export class CartService {
         }
       })
     });
+  }  
+  
+  total(orderStatus: OrderStatus) {
+    return this.http.get<string>(CartEndpoint.total, {
+      params: new HttpParams({
+        fromObject: {
+          status: orderStatus
+        }
+      })
+    });
   }
 }

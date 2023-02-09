@@ -9,6 +9,7 @@ import { CartService } from '../../api/cart.service';
 })
 export class CartListComponent {
   model: Cart[] = []
+  total: string = '0'
   finalPrice = "30000000";
   data = [
     {
@@ -36,11 +37,20 @@ export class CartListComponent {
   }
   constructor(private api:CartService){
     this.getData()
+    this.getTotal()
   }
   getData(){
     this.api.getAll(OrderStatus.Cart).subscribe(({
       next:(data)=>{
         this.model = data
+      }
+    }))
+  } 
+  
+  getTotal(){
+    this.api.total(OrderStatus.Cart).subscribe(({
+      next:(data)=>{
+        this.total = data
       }
     }))
   }
