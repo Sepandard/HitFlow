@@ -12,6 +12,7 @@ export interface UserCreationModel {
 }
 
 export enum Gender {
+  Unspecified,
   Male,
   Female,
   Other,

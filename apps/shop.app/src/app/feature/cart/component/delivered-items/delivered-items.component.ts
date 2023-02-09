@@ -3,11 +3,11 @@ import { Cart, OrderStatus } from '../../api/cart.model';
 import { CartService } from '../../api/cart.service';
 
 @Component({
-  selector: 'hit-flow-cart-list',
-  templateUrl: './cart-list.component.html',
-  styleUrls: ['./cart-list.component.scss']
+  selector: 'hit-flow-delivered-items',
+  templateUrl: './delivered-items.component.html',
+  styleUrls: ['./delivered-items.component.scss']
 })
-export class CartListComponent {
+export class DeliveredItemsComponent {
   model: Cart[] = [];
   total: string = '0';
   finalPrice = '30000000';
@@ -40,7 +40,7 @@ export class CartListComponent {
     this.getTotal();
   }
   getData() {
-    this.api.getAll(OrderStatus.Cart).subscribe({
+    this.api.getAll(OrderStatus.Delivered).subscribe({
       next: (data) => {
         this.model = data;
       }

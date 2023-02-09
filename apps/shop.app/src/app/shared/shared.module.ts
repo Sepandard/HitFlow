@@ -11,7 +11,8 @@ import { DIRECTIVE } from './directive';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatMenuModule } from '@angular/material/menu';
 
 const MAT_MODULES: Provider[] = [
   MatIconModule,
@@ -22,6 +23,7 @@ const MAT_MODULES: Provider[] = [
   MatTabsModule,
   MatCardModule,
   MatDialogModule,
+  MatDividerModule,
   MatMenuModule
 ];
 @NgModule({

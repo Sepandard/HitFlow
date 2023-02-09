@@ -4,13 +4,14 @@
       <mat-card-content>
         <div class="d-flex justify-content-between">
           <h3 class="comment-container p-3 color-primary">
-            لیست سبد خرید
+            خرید های قبلی
           </h3>
           <h5
-            [routerLink]="['./delivered']"
+            class
+            [routerLink]="['../']"
             class="comment-container p-3 pointer"
           >
-            خرید های قبلی
+            لیست خرید
           </h5>
         </div>
         <div *ngIf="model.length > 0">
@@ -40,9 +41,7 @@
           </div>
           <mat-divider></mat-divider>
 
-          <div class="mx-4 my-5">
-            <h3>قیمت نهایی سبد خرید: {{ total }} ريال</h3>
-          </div>
+     
           <div class="btn">
             <button
               class="btn bg-primary color-main"
@@ -54,9 +53,9 @@
         </div>
         <h2
           class="m-5 p-5 empty-cart"
-          *ngIf="model.length === 0"
+          *ngIf="data.length === 0"
         >
-          سبد خرید شما خالی می‌باشد
+          شما تابحال خریدی نداشته‌اید
         </h2>
       </mat-card-content>
     </div>
