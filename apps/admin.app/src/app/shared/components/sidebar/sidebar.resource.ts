@@ -1,15 +1,15 @@
 import { Sidebar } from './sidebar.interface';
 
 export const sidebarLink: Sidebar[] = [
-  {
-    id: 1,
-    title: 'Dashboard',
-    displayText: 'Dashboard',
-    route: '/admin/dashboard',
-    icon: {
-      matIcon: 'dashboard',
-    },
-  },
+  // {
+  //   id: 1,
+  //   title: 'Dashboard',
+  //   displayText: 'Dashboard',
+  //   route: '/admin/dashboard',
+  //   icon: {
+  //     matIcon: 'dashboard',
+  //   },
+  // },
   {
     id: 2,
     title: 'Product',

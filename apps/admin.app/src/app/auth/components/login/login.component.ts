@@ -25,7 +25,7 @@ export class LoginComponent {
     private notification: NotificationsService
   ) {
     this.initForm();
-    this.returnUrl =  'admin/user/list';
+    this.returnUrl =  'admin/product';
   }
 
   onLogin() {
