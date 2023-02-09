@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { SpecialOfferComponent } from './components/special-offer/special-offer.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatDividerModule} from '@angular/material/divider';
 
 const MAT_MODULES: Provider[] = [
   MatIconModule,
@@ -21,7 +22,8 @@ const MAT_MODULES: Provider[] = [
   MatSelectModule,
   MatTabsModule,
   MatCardModule,
-  MatDialogModule
+  MatDialogModule,
+  MatDividerModule
 ];
 @NgModule({
   declarations: [COMPONENT, DIRECTIVE],
