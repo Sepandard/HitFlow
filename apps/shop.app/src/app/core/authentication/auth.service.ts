@@ -16,6 +16,7 @@ export class AuthService {
     return this.authApi.login(model).pipe(
       tap((result) => {
         this.identityService.storeToken(result.token);
+        this.identityService.storeName(result.name);
         return result;
       })
     );
@@ -26,6 +27,7 @@ export class AuthService {
   }
 
   logout() {
+    this.identityService.clearName();
     this.identityService.clearToken();
   }
 }

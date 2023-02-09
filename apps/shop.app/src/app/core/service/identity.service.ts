@@ -12,10 +12,21 @@ export class IdentityService {
 
     // Tip: to increase performance and reduce the need to decode token every time,
     // we can decode the token while storing and store decoded values separately
+  }  
+  
+  public storeName(name: string) {
+    localStorage.setItem('name', name);
+
+    // Tip: to increase performance and reduce the need to decode token every time,
+    // we can decode the token while storing and store decoded values separately
   }
 
   public getToken(): string {
     return localStorage.getItem('token') ?? '';
+  }  
+
+  public getName(): string {
+    return localStorage.getItem('name') ?? '';
   }
 
   public hasRole(role: string): boolean {
@@ -80,6 +91,11 @@ export class IdentityService {
   public clearToken() {
     // remove user from local storage to log user out
     localStorage.removeItem('token');
+  } 
+  
+  public clearName() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('name');
   }
 
   public isAuthenticated() {

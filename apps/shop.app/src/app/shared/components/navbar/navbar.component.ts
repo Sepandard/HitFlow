@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '@core/authentication';
+import { IdentityService } from '@core/service/identity.service';
 import { NavbarItem } from './navbar.interface';
 import { linkNavbar } from './navbar.resourse';
 
@@ -9,15 +11,22 @@ import { linkNavbar } from './navbar.resourse';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  username = 'کیارش حمدی';
+  username :string = '';
+
   @Input() navbarItems: NavbarItem[] = linkNavbar;
-  constructor(private route: Router) {}
+  constructor(
+    private route: Router,
+    private auth: AuthService,
+    private identityService: IdentityService
+  ) {
+    this.username = this.identityService.getName()    
+  }
   onClick(node: NavbarItem) {
     this.route.navigate([node.path]);
   }
 
   onLogoutClicked() {
-    console.log("logout");
-    
+    this.username = ''
+    this.auth.logout();
   }
 }

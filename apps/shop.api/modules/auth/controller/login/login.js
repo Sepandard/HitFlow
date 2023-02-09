@@ -11,7 +11,6 @@ const jwt = require('jsonwebtoken');
 // @access      Public
 exports.login = asyncHandler(async (req, res, next) => {
   const { email, password: enterPassword } = req.body;
-
   if (!email) {
     return next(
       new ErrorHandler(
@@ -33,15 +32,16 @@ exports.login = asyncHandler(async (req, res, next) => {
   }
 
   await client.query(
-    `select id , password 
+    `select id , password ,name
     from public.user 
     where "email" = $1
-    RETURNING *; `,
+    `,
     [email],
     (err, result) => {
       if (result) {
         if (!err) {
-          const { id, password } = result.rows[0];
+          console.log(result.rows[0]);
+          const { id, password ,name} = result.rows[0];
           bcryptPass(enterPassword, password).then(
             (result) => {
               console.log(result);
@@ -49,6 +49,7 @@ exports.login = asyncHandler(async (req, res, next) => {
                 genToken(id).then((token) => {
                   res.status(200).json({
                     token: token,
+                    name:name,
                     loginStatus: LoginStatus.Success
                   });
                   updateLoginDate(id);
