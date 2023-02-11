@@ -10,15 +10,13 @@ import { CategoryApiService } from '../../api/category-api.service';
 @Component({
   selector: 'hit-flow-category-view',
   templateUrl: './category-view.component.html',
-  styleUrls: ['./category-view.component.scss'],
+  styleUrls: ['./category-view.component.scss']
 })
 export class CategoryViewComponent {
   form!: FormGroupType<Category>;
-
-  private _isEditing: boolean = false;
-
+  private _isEditing = false;
   private _id!: number;
-  public loading: boolean = false;
+  public loading = false;
   public model!: Category;
   constructor(
     private route: ActivatedRoute,
@@ -49,11 +47,12 @@ export class CategoryViewComponent {
         .subscribe({
           next: (value) => {
             this.model = value;
+            console.log(this.model);
             this.form.patchValue(Object.assign(this.model));
           },
           error: (error) => {
             console.error(error);
-          },
+          }
         });
     }
   }
@@ -68,17 +67,17 @@ export class CategoryViewComponent {
       .subscribe({
         next: () => {
           this.getDataById();
-          this.handleDisable()
+          this.handleDisable();
         },
         error: (error: any) => {
           this.notification.showError(error);
-        },
+        }
       });
   }
 
   private initForm() {
     this.form = this.fb.group({
-      title: [null, Validators.required],
+      title: [null, Validators.required]
     }) as FormGroupType<any>;
     this.form.disable();
   }
