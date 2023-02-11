@@ -20,7 +20,7 @@ exports.getById = asyncHandler(async (req, res, next) => {
 	  ,cat.title as categoryTitle
         from public.product prod
 	    INNER JOIN public.category cat  on prod."categoryId" = cat."id"
-        WHERE "isDeleted" = 0 AND id = $1
+        WHERE "isDeleted" = 0 AND prod.id = $1
         ORDER BY id ASC
       
     `,
