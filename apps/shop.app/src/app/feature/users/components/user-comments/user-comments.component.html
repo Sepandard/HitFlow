@@ -1,0 +1,36 @@
+<div style="direction: rtl">
+  <div class="my-4">
+    <div class="card p-2">
+      <mat-card-content>
+        <div *ngIf="model.length > 0">
+          <div *ngFor="let item of model">
+            <mat-divider></mat-divider>
+            <div class="d-flex m-3">
+              <div>
+                <h4 class="m-3 color-primary">
+                  وضعیت:
+                  {{ item.status }}
+                </h4>
+                <h4 class="m-3">
+                  تاریخ:
+                  {{ item.creationDate }}
+                </h4>
+                <h4 class="m-3">
+                  متن:
+                  {{ item.content }}
+                </h4>
+              </div>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+        </div>
+        <h2
+          class="m-5 p-5 empty-cart"
+          *ngIf="model.length === 0"
+        >
+          شما تابحال خریدی نداشته‌اید
+        </h2>
+      </mat-card-content>
+    </div>
+  </div>
+</div>
