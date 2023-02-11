@@ -1,6 +1,7 @@
 const asyncHandler = require('../../../middlewares/async');
 const client = require('../../../config/db.js');
 const ResponseMessages = require('../../../contract/responseMessages');
+const jwt = require('jsonwebtoken');
 
 exports.getCommentByUser = asyncHandler(async (req, res, next) => {
     const token = req.headers.authorization.split(' ')[1];

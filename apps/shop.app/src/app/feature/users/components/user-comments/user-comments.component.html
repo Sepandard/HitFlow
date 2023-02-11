@@ -3,29 +3,22 @@
     <div class="card p-2">
       <mat-card-content>
         <div class="d-flex justify-content-between">
-          <h3
-            class="comment-container p-3 color-primary"
-          >
-            نظرات شما:
-          </h3>
+          <h3 class="comment-container p-3">نظرات شما:</h3>
         </div>
         <div *ngIf="model.length > 0">
           <div *ngFor="let item of model">
             <mat-divider></mat-divider>
             <div class="d-flex m-3">
               <div>
-                <h4 class="m-3 color-primary">
-                  وضعیت:
-                  {{ item.status }}
-                </h4>
-                <h4 class="m-3">
-                  تاریخ:
-                  {{ item.creationDate }}
-                </h4>
-                <h4 class="m-3">
-                  متن:
+                <h4 class="m-3">وضعیت:</h4>
+                <p class="m-3 color-primary">
+                  {{ commentStatusLabel[item.isConfirmed] }}
+                </p>
+                <h4 class="m-3">متن:</h4>
+
+                <p class="m-3">
                   {{ item.content }}
-                </h4>
+                </p>
               </div>
             </div>
           </div>
@@ -34,7 +27,7 @@
           class="m-5 p-5 empty-cart"
           *ngIf="model.length === 0"
         >
-          شما تابحال خریدی نداشته‌اید
+          شما تابحال دیدگاهی نداشته‌اید
         </h2>
       </mat-card-content>
     </div>
