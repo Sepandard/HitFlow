@@ -19,7 +19,7 @@
       </div>
       <div class="col-4">
         <div class="d-flex justify-content-end gap-1">
-          <a class="" routerLink="#">
+          <a class="" routerLink="/cart">
             <img
               src="../../assets/svg/Light-Outline/Buy.svg"
               class="my-2 mx-1 h-3"
@@ -56,7 +56,7 @@
                 />
                 <span> {{ username }} </span>
               </button>
-              <button class="menu-item" mat-menu-item>
+              <button class="menu-item" mat-menu-item [routerLink]="['/cart/delivered']">
                 <img
                   src="../../assets/svg/Light-Outline/shopping_bag.svg"
                   alt=""
@@ -64,7 +64,7 @@
                 />
                 <span> سفارشات </span>
               </button>
-              <button class="menu-item" mat-menu-item>
+              <button class="menu-item" mat-menu-item [routerLink]="['/user/comments']"  >
                 <img
                   src="../../assets/svg/Light-Outline/comment.svg"
                   alt=""
