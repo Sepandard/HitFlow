@@ -2,16 +2,9 @@ const asyncHandler = require('../../../middlewares/async');
 const client = require('../../../config/db.js');
 const ResponseMessages = require('../../../contract/responseMessages');
 
-exports.getById = asyncHandler(async (req, res, next) => {
-  if (!Number(req.query.productId)) {
-    return next(
-      new ErrorHandler(
-        res,
-        ResponseMessages.INVALID_ID,
-        400
-      )
-    );
-  }
+exports.getCommentByUser = asyncHandler(async (req, res, next) => {
+    const token = req.headers.authorization.split(' ')[1];
+    const userId = jwt.decode(token).id;
   await client.query(
     `
     SELECT com.id,
@@ -24,12 +17,10 @@ exports.getById = asyncHandler(async (req, res, next) => {
 	      FROM public.comment com
 	      INNER JOIN public."user" usr  on com."userId" = usr."id"
 		  LEFT JOIN public.product prd  on com."userId" = prd."id"
-		  WHERE com."productId" = $1 AND com."isConfirmed" = 2
+		  WHERE usr."id" = $1
 		  ORDER BY id ASC
-		  
-		
     `,
-    [Number(req.query.productId)],
+    [Number(userId)],
     (err, result) => {
       if (!err) {
         if (result) {
