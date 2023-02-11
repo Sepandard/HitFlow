@@ -148,6 +148,17 @@
         }
       }
     },
+    "/api/product/search": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
     "/api/category": {
       "post": {
         "description": "",

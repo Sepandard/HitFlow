@@ -10,6 +10,8 @@
   border-radius: var(--base-raduis);
 
   &-img{
+    min-height: 400px;
+    max-height: 200px;
     width: 100%;
   }
 }
