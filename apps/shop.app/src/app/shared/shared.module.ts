@@ -13,6 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
+import { FormsModule } from '@angular/forms';
 
 const MAT_MODULES: Provider[] = [
   MatIconModule,
@@ -28,7 +29,7 @@ const MAT_MODULES: Provider[] = [
 ];
 @NgModule({
   declarations: [COMPONENT, DIRECTIVE],
-  imports: [MAT_MODULES, CommonModule, RouterModule],
+  imports: [MAT_MODULES, CommonModule, RouterModule,FormsModule],
   exports: [COMPONENT, MAT_MODULES, DIRECTIVE]
 })
 export class SharedModule {}

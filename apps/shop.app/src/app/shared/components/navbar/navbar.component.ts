@@ -11,22 +11,25 @@ import { linkNavbar } from './navbar.resourse';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  username :string = '';
-
+  username = '';
+  searchContent = '';
   @Input() navbarItems: NavbarItem[] = linkNavbar;
   constructor(
     private route: Router,
     private auth: AuthService,
     private identityService: IdentityService
   ) {
-    this.username = this.identityService.getName()    
+    this.username = this.identityService.getName();
   }
   onClick(node: NavbarItem) {
     this.route.navigate([node.path]);
   }
 
   onLogoutClicked() {
-    this.username = ''
+    this.username = '';
     this.auth.logout();
+  }
+  onSearchClicked() {
+    console.log(this.searchContent);
   }
 }
