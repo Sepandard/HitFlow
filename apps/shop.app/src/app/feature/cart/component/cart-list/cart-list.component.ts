@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Component } from '@angular/core';
 import { Cart, OrderStatus } from '../../api/cart.model';
 import { CartService } from '../../api/cart.service';

@@ -11,20 +11,32 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('./product/product.module').then((mod) => mod.ProductModule),
+          import('./product/product.module').then(
+            (mod) => mod.ProductModule
+          )
       },
       {
         path: 'cart',
         canActivate: [AuthGuard],
         loadChildren: () =>
-          import('./cart/cart.module').then((mod) => mod.CartModule),
+          import('./cart/cart.module').then(
+            (mod) => mod.CartModule
+          )
       },
-    ],
-  },
+      {
+        path: 'user',
+        canActivate: [AuthGuard],
+        loadChildren: () =>
+          import('./users/users.module').then(
+            (mod) => mod.UsersModule
+          )
+      }
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class FeatureRoutingModule {}

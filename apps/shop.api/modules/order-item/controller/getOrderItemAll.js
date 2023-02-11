@@ -2,7 +2,6 @@ const asyncHandler = require('../../../middlewares/async');
 const client = require('../../../config/db.js');
 const jwt = require('jsonwebtoken');
 const ErrorHandler = require('../../../utils/errorHandler');
-const { log } = require('console');
 
 exports.getAll = asyncHandler(async (req, res, next) => {
   const { status } = req.query;
