@@ -1,5 +1,5 @@
-const asyncHandler = require('../../../../admin.api/middlewares/async');
-const client = require('../../../../admin.api/config/db.js');
+const asyncHandler = require('../../../middlewares/async');
+const client = require('../../../config/db.js');
 
 // @desc        get all user
 // @route       GET /api/user

@@ -1,4 +1,4 @@
-<hit-flow-special-offer></hit-flow-special-offer>
+<hit-flow-special-offer *ngIf="!hasOff"></hit-flow-special-offer>
 <div class="row product-list">
   <ng-container *ngIf="!loading; else showLoading">
     <div

@@ -42,4 +42,9 @@ export class ProductApiService {
   postOrder(model: CreateOrder) {
     return this.http.post<void>(OrderEndpoint.base, model);
   }
+
+  getOff(){
+    return this.http.get<Product[]>(ProductEndpoint.off);
+
+  }
 }

@@ -10,6 +10,7 @@ import { ProductApiService } from './api/product-api.service';
 import { SharedModule } from '@shared/shared.module';
 import { ProductCommentDialogComponent } from './components/product-comment-dialog/product-comment-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { ProductOffComponent } from './components/product-off/product-off.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     ProductComponent,
     ProductViewComponent,
     ProductListComponent,
-    ProductCommentDialogComponent
+    ProductCommentDialogComponent,
+    ProductOffComponent
   ],
   imports: [
     CommonModule,
