@@ -2,6 +2,13 @@
   <div class="my-4">
     <div class="card p-2">
       <mat-card-content>
+        <div class="d-flex justify-content-between">
+          <h3
+            class="comment-container p-3 color-primary"
+          >
+            نظرات شما:
+          </h3>
+        </div>
         <div *ngIf="model.length > 0">
           <div *ngFor="let item of model">
             <mat-divider></mat-divider>
@@ -22,7 +29,6 @@
               </div>
             </div>
           </div>
-          <mat-divider></mat-divider>
         </div>
         <h2
           class="m-5 p-5 empty-cart"
