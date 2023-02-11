@@ -1,6 +1,7 @@
 const client = require('../../../config/db.js');
 const ResponseMessages = require('../../../contract/responseMessages');
 const ErrorHandler = require('../../../utils/errorHandler');
+const asyncHandler = require('../../../middlewares/async');
 
 
 exports.getById = asyncHandler(async (req, res, next) => {
