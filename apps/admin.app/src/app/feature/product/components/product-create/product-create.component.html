@@ -48,7 +48,6 @@
               min="0"
               max="100"
               matInput
-              [(ngModel)]="limitDiscount"
               (change)="
                 limitDiscount < 0 ? (limitDiscount = 0) : limitDiscount;
                 limitDiscount > 100 ? (limitDiscount = 100) : limitDiscount
