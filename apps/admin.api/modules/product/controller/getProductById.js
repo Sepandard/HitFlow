@@ -17,6 +17,8 @@ exports.getById = asyncHandler(async (req, res, next) => {
       ,prod.image
       ,prod.description
       ,prod.amount
+      ,prod.cost
+      ,prod.off
 	  ,cat.title as categoryTitle
         from public.product prod
 	    INNER JOIN public.category cat  on prod."categoryId" = cat."id"
@@ -28,7 +30,7 @@ exports.getById = asyncHandler(async (req, res, next) => {
       (err, result) => {
         if (!err) {
           if (result) {
-            res.status(200).json(result.rows);
+            res.status(200).json(result.rows[0]);
           } else {
             res.status(500).json('something went wrong');
           }
