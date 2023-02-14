@@ -7,8 +7,8 @@ export const sidebarLink: Sidebar[] = [
     displayText: 'Dashboard',
     route: '/admin/dashboard',
     icon: {
-      matIcon: 'dashboard',
-    },
+      matIcon: 'dashboard'
+    }
   },
   {
     id: 2,
@@ -16,8 +16,8 @@ export const sidebarLink: Sidebar[] = [
     displayText: 'Product',
     route: 'admin/product',
     icon: {
-      matIcon: 'inventory_2',
-    },
+      matIcon: 'inventory_2'
+    }
   },
   {
     id: 3,
@@ -25,8 +25,8 @@ export const sidebarLink: Sidebar[] = [
     displayText: 'User',
     route: 'admin/user',
     icon: {
-      matIcon: 'person_filled',
-    },
+      matIcon: 'person_filled'
+    }
   },
   {
     id: 4,
@@ -34,26 +34,35 @@ export const sidebarLink: Sidebar[] = [
     displayText: 'Category',
     route: 'admin/category',
     icon: {
-      matIcon: 'category',
-    },
-  },  
- 
+      matIcon: 'category'
+    }
+  },
+
   {
     id: 5,
     title: 'Order',
     displayText: 'Order',
     route: 'admin/order',
     icon: {
-      matIcon: 'shopping_cart',
-    },
-  },  
+      matIcon: 'shopping_cart'
+    }
+  },
   {
     id: 6,
     title: 'Comment',
     displayText: 'Comment',
     route: 'admin/comment',
     icon: {
-      matIcon: 'comment',
-    },
+      matIcon: 'comment'
+    }
   },
+  {
+    id: 6,
+    title: 'Search',
+    displayText: 'Search',
+    route: 'admin/order/search',
+    icon: {
+      matIcon: 'search'
+    }
+  }
 ];

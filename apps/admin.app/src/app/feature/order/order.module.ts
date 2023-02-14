@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderViewComponent } from './components/order-view/order-view.component';
 import { OrderApiService } from './api/order-api.service';
 import { OrderItemListComponent } from './components/order-item-list/order-item-list.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { OrderItemListComponent } from './components/order-item-list/order-item-
     OrderListComponent,
     OrderViewComponent,
     OrderItemListComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,

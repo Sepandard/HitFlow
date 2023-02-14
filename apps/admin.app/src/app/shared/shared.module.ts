@@ -16,7 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 const MAT_MODULES: Provider[] = [
   MatCardModule,
   MatSidenavModule,
@@ -30,6 +30,7 @@ const MAT_MODULES: Provider[] = [
   MatSelectModule,
   MatMenuModule,
   MatProgressBarModule,
+  MatAutocompleteModule,
 ];
 @NgModule({
   declarations: [COMPONENTS],
