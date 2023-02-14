@@ -30,6 +30,10 @@ export class NavbarComponent {
     this.auth.logout();
   }
   onSearchClicked() {
-    console.log(this.searchContent);
+    this.route.navigate(['/'], {
+      queryParams: {
+        search: this.searchContent
+      }
+    });
   }
 }
