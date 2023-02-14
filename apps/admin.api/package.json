@@ -12,6 +12,9 @@
     "author": "SepandarDerakhshandeh",
     "license": "MIT",
     "dependencies": {
+        "@elastic/elasticsearch": "^8.6.0",
+        "@elastic/transport": "^8.3.1",
+        "elasticsearch": "*",
         "bcryptjs": "^2.4.3",
         "colors": "^1.4.0",
         "dotenv": "^8.2.0",

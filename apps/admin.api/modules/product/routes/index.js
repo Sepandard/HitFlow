@@ -5,6 +5,7 @@ const { getAll, getCount } = require('../controller/getProductAll');
 const { create } = require('../controller/postProduct');
 const { update } = require('../controller/updateProduct');
 const { remove } = require('../controller/deleteProduct');
+const { search } = require('../controller/search-elastic');
 const { getById } = require('../controller/getProductById');
 
 // GET
@@ -20,6 +21,8 @@ router.route('/:id').put(protect, update);
 
 // DELETE
 router.route('/:id').delete(protect, remove);
+
+router.route('/search').get(search);
 
 
 

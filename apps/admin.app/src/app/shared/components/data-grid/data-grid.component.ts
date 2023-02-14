@@ -6,22 +6,33 @@ import {
   Input,
   OnDestroy,
   OnInit,
-  Output,
+  Output
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
-import { BehaviorSubject, finalize, Observable, of } from 'rxjs';
+import {
+  ColDef,
+  GridApi,
+  GridReadyEvent
+} from 'ag-grid-community';
+import {
+  BehaviorSubject,
+  finalize,
+  Observable,
+  of
+} from 'rxjs';
 
 @Component({
   selector: 'hf-admin-data-grid',
   templateUrl: './data-grid.component.html',
-  styleUrls: ['./data-grid.component.scss'],
+  styleUrls: ['./data-grid.component.scss']
 })
-export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
+export class DataGridComponent
+  implements OnInit, AfterViewInit, OnDestroy
+{
   @Input() rowSelection: 'multiple' | 'single' = 'single';
   @Input() suppressRowNavigate: boolean = false;
   @Input() loadingCellRendererParams: any = {
-    loadingMessage: 'One moment please...',
+    loadingMessage: 'One moment please...'
   };
   @Input() columnDefs: ColDef[] = [];
   /* 
@@ -35,7 +46,7 @@ export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Input() defaultColDef: ColDef = {
     sortable: true,
-    filter: true,
+    filter: true
   };
   @Input() set listEndpoint(value: string) {
     if (value) {
@@ -47,8 +58,10 @@ export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
   public get listEndpoint(): string {
     return this._listEndpoint;
   }
-  @Input() set clientSideData(value: any[]) {
+  @Input() set clientSideData(value: any) {
     if (value) {
+      console.log(value);
+      
       if (Array.isArray(value)) {
         this.rowData$.next(value);
       } else {
@@ -57,12 +70,16 @@ export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  @Output() onGridReady: EventEmitter<void> = new EventEmitter<void>();
-  @Output() dataInit: EventEmitter<void> = new EventEmitter<void>();
-  @Output() currentItemChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onGridReady: EventEmitter<void> =
+    new EventEmitter<void>();
+  @Output() dataInit: EventEmitter<void> =
+    new EventEmitter<void>();
+  @Output() currentItemChange: EventEmitter<any> =
+    new EventEmitter<any>();
 
   private gridApi!: GridApi;
-  public rowData$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  public rowData$: BehaviorSubject<any[]> =
+    new BehaviorSubject<any[]>([]);
 
   private _currentItem: any;
   private _loading: boolean = true;
@@ -77,7 +94,7 @@ export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {}
 
   ngAfterViewInit() {
-    this._getData();
+    if (this._listEndpoint) this._getData();
   }
   data: any[] = [];
 
@@ -94,13 +111,15 @@ export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
     this.gridApi.sizeColumnsToFit();
     this.gridApi.setDomLayout('autoHeight');
     this.gridApi.sizeColumnsToFit({
-      defaultMinWidth: 100,
+      defaultMinWidth: 100
     });
     this.onGridReady.emit();
   }
   protected _onCellDoubleClicked(row: any) {
     if (this.suppressRowNavigate) return;
-    this.router.navigate([`${row.data.id}`], { relativeTo: this.route });
+    this.router.navigate([`${row.data.id}`], {
+      relativeTo: this.route
+    });
   }
 
   protected _onCellClicked(row: any) {
@@ -111,17 +130,23 @@ export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
   private _createQueryParams(filter: any) {
     const _params = new URLSearchParams({});
     if (filter) {
-      const output = Object.entries(filter).map(([key, value]) => ({
-        key,
-        value,
-      }));
-      output.forEach((f: any) => _params.append(f.key, `${f.value}`));
+      const output = Object.entries(filter).map(
+        ([key, value]) => ({
+          key,
+          value
+        })
+      );
+      output.forEach((f: any) =>
+        _params.append(f.key, `${f.value}`)
+      );
     }
     return _params;
   }
 
   private _fetchData(params?: any) {
-    const url = `${this.listEndpoint}?${this._createQueryParams(this.filters)}`;
+    const url = `${
+      this.listEndpoint
+    }?${this._createQueryParams(this.filters)}`;
     return this.http.get<any[]>(url);
   }
 
@@ -138,7 +163,7 @@ export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
           this.data = value;
           this.rowData$.next(value);
           this.dataInit.emit();
-        },
+        }
       });
   }
 
