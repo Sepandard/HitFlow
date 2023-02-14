@@ -1,4 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpParams
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CommentEndpoint } from './comment-api.endpoint';
 import { OrderEndpoint } from './order.endpoint';
@@ -14,8 +17,15 @@ import {
 export class ProductApiService {
   constructor(private http: HttpClient) {}
 
-  getAll() {
-    return this.http.get<Product[]>(ProductEndpoint.base);
+  getAll(params: any) {
+    const productName = params.search ?? '';
+    return this.http.get<Product[]>(ProductEndpoint.base, {
+      params: new HttpParams({
+        fromObject: {
+          search: productName
+        }
+      })
+    });
   }
 
   getById(id: number) {
@@ -43,8 +53,7 @@ export class ProductApiService {
     return this.http.post<void>(OrderEndpoint.base, model);
   }
 
-  getOff(){
+  getOff() {
     return this.http.get<Product[]>(ProductEndpoint.off);
-
   }
 }

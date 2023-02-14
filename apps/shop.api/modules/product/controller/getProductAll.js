@@ -5,7 +5,6 @@ const client = require('../../../config/db.js');
 // @route       GET /api/user
 // @access      Private
 exports.getAll = asyncHandler(async (req, res, next) => {
-  console.log(req.headers.host);
   await client.query(
     `
     SELECT 
@@ -15,11 +14,12 @@ exports.getAll = asyncHandler(async (req, res, next) => {
       ,prod.image
       ,prod.description
       ,prod.amount
-      ,prod.cost
 	  ,cat.title as "categoryTitle"
     from public.product prod
 	INNER JOIN public.category cat  on prod."categoryId" = cat."id"
-    WHERE "isDeleted" = 0
+    WHERE "isDeleted" = 0 AND prod."name" LIKE '%${
+      req.query.search ? req.query.search : ''
+    }%'
     ORDER BY id ASC
   `,
     [],
