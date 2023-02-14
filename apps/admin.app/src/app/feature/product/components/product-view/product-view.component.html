@@ -1,0 +1,135 @@
+<hf-admin-space></hf-admin-space>
+<ng-container *ngIf="model">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ model.name }}</mat-card-title>
+      <mat-card-subtitle>product</mat-card-subtitle>
+    </mat-card-header>
+    <ng-container [formGroup]="form" *ngIf="form">
+      <div class="flex-wrap p-3">
+        <div class="col-3">
+          <div class="m-2">
+            <mat-form-field appearance="outline">
+              <mat-label>Name</mat-label>
+              <input
+                matInput
+                formControlName="name"
+                required
+              />
+              <mat-error *ngIf="form.get('name').invalid">{{
+                getErrorMessage()
+              }}</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="m-2">
+            <mat-form-field appearance="outline">
+              <mat-label>cost</mat-label>
+              <input
+                type="number"
+                matInput
+                formControlName="cost"
+                required
+              />
+              <mat-error
+                *ngIf="form.get('cost')?.invalid"
+                >{{ getErrorMessage() }}</mat-error
+              >
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="m-2">
+            <mat-form-field appearance="outline">
+              <mat-label>amount</mat-label>
+              <input
+                type="number"
+                matInput
+                formControlName="amount"
+                required
+              />
+              <mat-error
+                *ngIf="form.get('amount').invalid"
+                >{{ getErrorMessage() }}</mat-error
+              >
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="m-2">
+            <mat-form-field appearance="outline">
+              <mat-label>discount</mat-label>
+              <input
+                type="number"
+                min="0"
+                max="100"
+                matInput
+                (change)="
+                  limitDiscount < 0
+                    ? (limitDiscount = 0)
+                    : limitDiscount;
+                  limitDiscount > 100
+                    ? (limitDiscount = 100)
+                    : limitDiscount
+                "
+                formControlName="off"
+                required
+              />
+              <mat-error *ngIf="form.get('off')?.invalid">{{
+                getErrorMessage()
+              }}</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="m-2">
+            <mat-form-field
+              appearance="outline"
+              class="w-100"
+            >
+              <mat-label>Description</mat-label>
+              <mat-label></mat-label>
+              <textarea
+                matInput
+                formControlName="description"
+                placeholder="Enter description..."
+              ></textarea>
+              <mat-error *ngIf="form.get('off')?.invalid">{{
+                getErrorMessage()
+              }}</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <mat-card-actions align="end">
+      <ng-container *ngIf="!isEditing; else editMode">
+        <button mat-button (click)="handleEdit()">
+          Edit
+        </button>
+      </ng-container>
+      <ng-template #editMode>
+        <button
+          class="m-1"
+          mat-button
+          (click)="handleDisable()"
+        >
+          Cancel
+        </button>
+        <button
+          class="btn-primary"
+          mat-flat-button
+          (click)="submitForm()"
+        >
+          Save Changes
+        </button>
+      </ng-template>
+    </mat-card-actions>
+    <mat-card-footer *ngIf="loading">
+      <mat-progress-bar
+        mode="indeterminate"
+      ></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>
+</ng-container>

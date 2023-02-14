@@ -1,17 +1,24 @@
-<hit-flow-special-offer></hit-flow-special-offer>
-<div class="row product-list">
+<hit-flow-special-offer
+  *ngIf="!hasOff"
+></hit-flow-special-offer>
+<div dir="rtl" class="row product-list">
   <ng-container *ngIf="!loading; else showLoading">
-    <div
-      *ngFor="let item of data"
-      class="col-xl-3 col-lg-4 col-md-6 col-sm-12"
-    >
-      <hit-flow-product-card
-        [model]="item"
-      ></hit-flow-product-card>
-    </div>
+    <ng-container *ngIf="data.length > 0; else noData">
+      <div
+        *ngFor="let item of data"
+        class="col-xl-3 col-lg-4 col-md-6 col-sm-12"
+      >
+        <hit-flow-product-card
+          [model]="item"
+        ></hit-flow-product-card>
+      </div>
+    </ng-container>
+    <ng-template #noData>
+      <p >محصولی برای نمایش وجود ندارد</p>
+    </ng-template>
   </ng-container>
   <ng-template #showLoading>
-    <div class="col-12"> 
+    <div class="col-12">
       <hit-flow-card-skeleton></hit-flow-card-skeleton>
     </div>
   </ng-template>

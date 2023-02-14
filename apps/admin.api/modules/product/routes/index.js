@@ -5,9 +5,11 @@ const { getAll, getCount } = require('../controller/getProductAll');
 const { create } = require('../controller/postProduct');
 const { update } = require('../controller/updateProduct');
 const { remove } = require('../controller/deleteProduct');
+const { getById } = require('../controller/getProductById');
 
 // GET
 router.route('/').get(protect, getAll);
+router.route('/:id').get(protect, getById);
 router.route('/count').get(protect, getCount);
 
 // POST
