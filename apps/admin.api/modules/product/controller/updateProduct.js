@@ -10,7 +10,8 @@ exports.update = asyncHandler(async (req, res, next) => {
     image,
     cost,
     description,
-    amount
+    amount,
+    off
   } = req.body;
 
   //check REQUIRED fields
@@ -47,7 +48,8 @@ exports.update = asyncHandler(async (req, res, next) => {
          "name" = $3,
          cost = $4,
          description = $5,
-         amount = $6
+         amount = $6,
+         off = $7
         WHERE "id" = $1`,
     [
       Number(req.params.id),
@@ -55,9 +57,11 @@ exports.update = asyncHandler(async (req, res, next) => {
       name,
       cost,
       description,
-      amount
+      amount,
+      off 
     ],
     (err, result) => {
+      console.log(err);
       if (!err) {
         if (result) {
           res.status(200).json(result.rows);

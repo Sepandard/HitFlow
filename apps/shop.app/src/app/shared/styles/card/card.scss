@@ -15,9 +15,9 @@
     width: 100%;
   }
 }
-  
-.card > .card-desc {  
-  display: flex;  
+
+.card > .card-desc {
+  display: flex;
   justify-content: space-between;
 }
 
@@ -30,6 +30,8 @@
 }
 
 .card-desc > .card-price {
+  display: flex;
+  justify-content: space-between;
   color: var(----pure-black);
   margin: 0.5rem;
   margin-top: 1rem;

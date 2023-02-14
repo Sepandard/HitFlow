@@ -14,6 +14,7 @@ exports.getAll = asyncHandler(async (req, res, next) => {
       ,prod.image
       ,prod.description
       ,prod.amount
+      ,prod.off
 	  ,cat.title as "categoryTitle"
     from public.product prod
 	INNER JOIN public.category cat  on prod."categoryId" = cat."id"

@@ -7,6 +7,7 @@ export interface Product {
   image: string;
   name: string;
   cost: number;
+  off?: number
 }
 
 export interface Comment {
