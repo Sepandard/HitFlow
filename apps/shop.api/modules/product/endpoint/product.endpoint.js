@@ -16,5 +16,8 @@ module.exports = function (app) {
   });
   app.delete('/api/product/:id', (req, res) => {
     return res.status(404).send(false);
+  });  
+  app.get('/api/product/search', (req, res) => {
+    return res.status(404).send(false);
   });
 };

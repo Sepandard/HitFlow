@@ -15,13 +15,13 @@ exports.getById = asyncHandler(async (req, res, next) => {
   await client.query(
     `
     SELECT com.id,
-	com."userId",
-	com."productId",
-	com."isConfirmed",
-	com."content",
-	com."creationTime",
-	usr."name" as "username"
-	FROM public.comment com
+	      com."userId",
+	      com."productId",
+	      com."isConfirmed",
+	      com."content",
+	      com."creationTime",
+	      usr."name" as "username"
+	      FROM public.comment com
 	      INNER JOIN public."user" usr  on com."userId" = usr."id"
 		  LEFT JOIN public.product prd  on com."userId" = prd."id"
 		  WHERE com."productId" = $1 AND com."isConfirmed" = 2

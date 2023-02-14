@@ -11,43 +11,66 @@ const jwt = require('jsonwebtoken');
 // @access      Public
 exports.login = asyncHandler(async (req, res, next) => {
   const { email, password: enterPassword } = req.body;
-
   if (!email) {
-    return next(new ErrorHandler(res, ResponseMessages.EMAIL_REQUIRED, 400));
+    return next(
+      new ErrorHandler(
+        res,
+        ResponseMessages.EMAIL_REQUIRED,
+        400
+      )
+    );
   }
 
   if (!enterPassword) {
-    return next(new ErrorHandler(res, ResponseMessages.PASSWORD_REQUIRED, 400));
+    return next(
+      new ErrorHandler(
+        res,
+        ResponseMessages.PASSWORD_REQUIRED,
+        400
+      )
+    );
   }
 
   await client.query(
-    `select id , password from public.user where "email" = 'sep@gmail.com' and "roleId" = 1;`,
+    `select id , password ,name
+    from public.user 
+    where "email" = $1
+    `,
     [email],
     (err, result) => {
-      if (result.rowCount !== 0) {
+      if (result) {
         if (!err) {
-          const { id, password } = result.rows[0];
-          bcryptPass(enterPassword, password).then((result) => {
-            console.log(result); 
-            if (result) {
-              genToken(id).then((token) => {
-                res.status(200).json({
-                  token: token,
-                  loginStatus: LoginStatus.Success,
+          console.log(result.rows[0]);
+          const { id, password ,name} = result.rows[0];
+          bcryptPass(enterPassword, password).then(
+            (result) => {
+              console.log(result);
+              if (result) {
+                genToken(id).then((token) => {
+                  res.status(200).json({
+                    token: token,
+                    name:name,
+                    loginStatus: LoginStatus.Success
+                  });
+                  updateLoginDate(id);
                 });
-                updateLoginDate(id);
-              });
-            } else {
-              res
-                .status(200)
-                .json({ loginStatus: LoginStatus.InvalidCredential });
+              } else {
+                res
+                  .status(200)
+                  .json({
+                    loginStatus:
+                      LoginStatus.InvalidCredential
+                  });
+              }
             }
-          });
+          );
         }
-      }else{
+      } else {
         res
-        .status(200)
-        .json({ loginStatus: LoginStatus.InvalidCredential });
+          .status(200)
+          .json({
+            loginStatus: LoginStatus.InvalidCredential
+          });
       }
     }
   );
@@ -80,6 +103,6 @@ encryptPass = async (password) => {
 
 genToken = async (id) => {
   return await jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRE,
+    expiresIn: process.env.JWT_EXPIRE
   });
 };

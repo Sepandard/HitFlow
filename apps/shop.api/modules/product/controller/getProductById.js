@@ -1,6 +1,7 @@
 const asyncHandler = require('../../../middlewares/async');
 const client = require('../../../config/db.js');
 const ResponseMessages = require('../../../contract/responseMessages');
+const ErrorHandler = require('../../../utils/errorHandler');
 
 exports.getById = asyncHandler(async (req, res, next) => {
   if (!Number(req.params.id)) {
@@ -8,7 +9,7 @@ exports.getById = asyncHandler(async (req, res, next) => {
       new ErrorHandler(
         res,
         ResponseMessages.INVALID_ID,
-        400
+        400 
       )
     );
   }

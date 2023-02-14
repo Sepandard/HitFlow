@@ -1,9 +1,10 @@
 const client = require('../../../config/db.js');
 const ResponseMessages = require('../../../contract/responseMessages');
 const ErrorHandler = require('../../../utils/errorHandler');
+const asyncHandler = require('../../../middlewares/async');
 
 
-exports.getAll = asyncHandler(async (req, res, next) => {
+exports.getById = asyncHandler(async (req, res, next) => {
     if (!Number(req.params.id)) {
         return next(new ErrorHandler(res, ResponseMessages.INVALID_ID, 400));
       }
@@ -16,18 +17,20 @@ exports.getAll = asyncHandler(async (req, res, next) => {
       ,prod.image
       ,prod.description
       ,prod.amount
+      ,prod.cost
+      ,prod.off
 	  ,cat.title as categoryTitle
         from public.product prod
 	    INNER JOIN public.category cat  on prod."categoryId" = cat."id"
-        WHERE "isDeleted" = 0
+        WHERE "isDeleted" = 0 AND prod.id = $1
         ORDER BY id ASC
-        WHERE id = $1
+      
     `,
       [Number(req.params.id)],
       (err, result) => {
         if (!err) {
           if (result) {
-            res.status(200).json(result.rows);
+            res.status(200).json(result.rows[0]);
           } else {
             res.status(500).json('something went wrong');
           }

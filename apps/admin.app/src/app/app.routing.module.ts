@@ -13,6 +13,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./auth/auth.module').then((mod) => mod.AuthModule),
   },
+  {
+    path: "**",
+    redirectTo: "/admin"
+  }
 ];
 
 @NgModule({

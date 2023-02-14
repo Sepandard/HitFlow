@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 exports.create = asyncHandler(async (req, res, next) => {
   const { productId, content } = req.body;
   const token = req.headers.authorization.split(' ')[1];
+  console.log(jwt.decode(token));
   const userId = jwt.decode(token).id;
 
   //check REQUIRED fields

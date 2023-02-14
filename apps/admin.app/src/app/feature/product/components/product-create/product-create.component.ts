@@ -56,6 +56,7 @@ export class ProductCreateComponent {
       .subscribe({
         next: () => {
           this.getDataById();
+          this.router.navigate(['admin/product'])
         },
         error: (error: any) => {
           this.notification.showError(error);

@@ -5,7 +5,7 @@ const asyncHandler = require('../../../middlewares/async');
 
 
 exports.update = asyncHandler(async (req, res, next) => {
-    const { categoryId, name, image, cost, description, amount } = req.body;
+    const { categoryId, name, image, cost, description, amount,off } = req.body;
   
     //check REQUIRED fields
     if (!name || !categoryId || !cost || !description || !amount) {
@@ -27,6 +27,7 @@ exports.update = asyncHandler(async (req, res, next) => {
          cost = $5,
          description = $6,
          amount = $7
+         off = $7
         WHERE "id" = $1`,
       [
         Number(req.params.id),
@@ -36,6 +37,7 @@ exports.update = asyncHandler(async (req, res, next) => {
         cost,
         description,
         amount,
+        off,
       ],
       (err, result) => {
         if (!err) {
