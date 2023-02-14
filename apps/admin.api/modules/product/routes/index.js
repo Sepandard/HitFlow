@@ -10,6 +10,7 @@ const { getById } = require('../controller/getProductById');
 
 // GET
 router.route('/').get(protect, getAll);
+router.route('/search').get(search);
 router.route('/:id').get(protect, getById);
 router.route('/count').get(protect, getCount);
 
@@ -22,7 +23,6 @@ router.route('/:id').put(protect, update);
 // DELETE
 router.route('/:id').delete(protect, remove);
 
-router.route('/search').get(search);
 
 
 
