@@ -1,1 +1,0 @@
-cd ../apps/admin.api/ && call npm run swagger-autogen && call npm run dev
