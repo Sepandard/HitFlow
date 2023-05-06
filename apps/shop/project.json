@@ -2,7 +2,7 @@
   "name": "shop",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "hitflow",
+  "prefix": "hf",
   "sourceRoot": "apps/shop/src",
   "tags": [],
   "targets": {
