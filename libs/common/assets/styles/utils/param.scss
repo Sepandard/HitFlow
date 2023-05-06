@@ -1,0 +1,8 @@
+
+@use './variables';
+
+
+
+@function param($key, $fallback: null) {
+    @return css-variables.use($key, $fallback);
+}
