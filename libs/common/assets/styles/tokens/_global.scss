@@ -7,6 +7,10 @@ $color: (
   secondary: #f0f0f0,
 );
 
+$font:(
+
+);
+
 $spaces: (
   space-1: map.get($spacing, 1),
   space-2: map.get($spacing, 2),
