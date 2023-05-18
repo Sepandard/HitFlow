@@ -1,0 +1,8 @@
+@use 'common' as *;
+
+.suggest {
+    height: 40px;
+    background-color: get-color(primary);
+    color:get-color(secondary);
+    text-align: center;
+}
