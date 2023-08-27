@@ -1,0 +1,21 @@
+<div class="nav">
+  <a [routerLink]="['/']">
+    <img [ngSrc]="'assets/Logo.svg'" width="95" height="38" />
+  </a>
+  <div class="nav-item">
+    <ng-container *ngFor="let item of configs; let i = index">
+      <a [routerLink]="[item.route]"
+        >{{ item.name }} 
+        <ng-template #dot>
+          <span class="circle" *ngIf="configs.length - 1 !== i"></span>
+        </ng-template>
+      </a>
+      <ng-container *ngTemplateOutlet="dot"></ng-container>
+    </ng-container>
+  </div>
+  <div class="nav-icon">
+    <a [routerLink]="['/']">
+      <img [ngSrc]="'assets/icon/user.svg'" height="24" width="24" />
+    </a>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+@use 'common' as *;
+
+:host {
+  --nav-item-font-size: 1.2rem;
+}
+
+.nav {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+  height: param(space-12);
+
+  padding: 0 param(space-8);
+  &-item {
+    display: flex;
+    justify-content: center;
+    gap: param(space-6);
+    align-items: center;
+    font-weight: bold;
+    font-size: var(--nav-item-font-size);
+    line-height: 24px;
+    text-align: center;
+    text-transform: uppercase;
+    & > a {
+      @include link();
+      color: get-color(primary);
+    }
+  }
+  &-icon {
+    display: flex;
+    gap: param(space-5);
+  }
+}
+
+.circle {
+  display: inline-block;
+  width: param(space-4);
+  height: param(space-4);
+  background-color: get-color(primary);
+  border-radius: 100%;
+}

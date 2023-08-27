@@ -1,4 +1,8 @@
+@use 'common' as *;
+ .wrapper {
+  height: 100vh;
+  overflow-x: hidden;
+}
 .content {
-    height: 100vh;
-    overflow: hidden;
+  padding-inline: 25px;
 }

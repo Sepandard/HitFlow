@@ -1,1 +1,1 @@
-<div class="suggest">sepandar</div>
+<div class="suggest" *ngIf="message$ | async">{{ message$ | async }}</div>
