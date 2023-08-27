@@ -5,8 +5,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SuggestService {
-  public readonly message = new BehaviorSubject<string>(null)
-  public readonly $message : Observable<string> = this.message.asObservable()
+  public readonly message = new BehaviorSubject<string | null>(null)
+  public readonly $message : Observable<string |  null> = this.message.asObservable()
   constructor() { }
 
   public sync(message: string){
