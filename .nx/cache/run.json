@@ -1,0 +1,21 @@
+{
+  "run": {
+    "command": "nx s shop --port 4321",
+    "startTime": "2024-03-01T11:48:05.738Z",
+    "endTime": "2024-03-01T11:48:06.174Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "shop:serve:development",
+      "target": "serve",
+      "projectName": "shop",
+      "hash": "8087afe0641f9f112912b77dc70ec6ada07abc8f237bbf57724a4d149025dea6",
+      "startTime": "2024-03-01T11:48:05.743Z",
+      "endTime": "2024-03-01T11:48:06.174Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 1
+    }
+  ]
+}

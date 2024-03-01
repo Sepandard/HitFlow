@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@hitflow/common": ["libs/common/src/index.ts"]
+      "@hitflow/common": ["libs/common/src/index.ts"],
+      "@hitflow/hit": ["libs/hit/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
