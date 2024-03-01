@@ -1,8 +1,9 @@
 @use 'common' as *;
- .wrapper {
+.wrapper {
   height: 100vh;
   overflow-x: hidden;
 }
 .content {
   padding-inline: 25px;
+  height: calc(100% - 115px);
 }

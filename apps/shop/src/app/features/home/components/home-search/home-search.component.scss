@@ -1,0 +1,87 @@
+@use 'common' as *;
+
+
+form {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 1s;
+  width: 50px;
+  height: 50px;
+  background: param(secondary);
+  box-sizing: border-box;
+  border-radius: 25px;
+  border: 4px solid param(secondary);
+  padding: 5px;
+}
+
+input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 43px;
+  line-height: 30px;
+  outline: 0;
+  border: 0;
+  display: none;
+  font-size: 1em;
+  border-radius: 20px;
+  padding: 0 20px;
+}
+
+.fa {
+  box-sizing: border-box;
+  padding: 10px;
+  width: 42.5px;
+  height: 42.5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  color: param(primary);
+  text-align: center;
+  font-size: 1.2em;
+  transition: all 1s;
+}
+
+form,
+form:valid {
+  width: 450px;
+  cursor: pointer;
+}
+
+form:hover input,
+form:valid input {
+  display: block;
+}
+
+form .fa,
+form:valid .fa {
+  background: param(primary);
+  color: param(secondary);
+}
+
+a {
+  display: none;
+  position: absolute;
+  top: 70px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 20px;
+  color: param(secondary);
+  text-align: center;
+  width: 100%;
+}
+
+form:valid a {
+  display: block;
+}
+
+input::placeholder {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+}

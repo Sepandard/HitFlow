@@ -6,6 +6,7 @@ import { NAVBAR_CONFIG } from './navbar.resource';
   selector: 'hf-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
+  
 })
 export class NavbarComponent {
   public readonly configs: Navbar[] = NAVBAR_CONFIG;

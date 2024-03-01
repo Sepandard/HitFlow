@@ -1,0 +1,24 @@
+.market-message {
+  display: flex;
+  justify-content: space-evenly;
+  border-radius: var(--card-radius);
+  flex-direction: column;
+  height: 100%;
+  margin-inline: 25px;
+
+  & > img {
+    object-fit: cover;
+    border-radius: var(--card-radius);
+    width: 100%;
+  }
+
+  &-text {
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 33px;
+    letter-spacing: 0rem;
+    color: #fff;
+    text-transform: uppercase;
+  }
+}

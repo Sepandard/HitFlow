@@ -1,15 +1,94 @@
+@use 'common' as *;
+
+:host {
+  --card-radius: 8px;
+  --tag-color: #fff;
+}
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 60px;
+  gap: param(space-4);
+  padding-block: param(space-5);
+
+  & > .card {
+    display: flex;
+    border-radius: var(--card-radius);
+    border: 1px solid black;
+    position: relative;
+
+    & > .card-text-hashtag {
+      display: flex;
+      align-items: flex-end;
+      color: param(secondary);
+      font-style: italic;
+      font-weight: 400;
+      text-transform: uppercase;
+      font-size: 20px;
+      margin: 0px 0px 16px 16px;
+    }  
+
+    & > hf-home-search {
+      position: absolute;
+      bottom: 0;
+      right: 15%;
+    }
+
+    & > hf-home-market-message {
+      background-color: param(primary);
+      border-radius: var(--card-radius);
+    }
+
+    & > .card-tag {
+      border: var(--tag-color) 2px solid;
+      height: 5rem;
+      width: 5rem;
+      padding: 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      position: absolute;
+      color: var(--tag-color);
+      right: 1rem;
+      top: 0.5rem;
+      transform: rotate(335deg);
+    }
+
+    & > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--card-radius);
+    }
+
+    &:nth-of-type(1) {
+      grid-row: 8 span;
+      grid-column: 6 span;
+      
+    }
+    &:nth-of-type(2) {
+      grid-row: 5 span;
+      grid-column: 6 span;
+    }
+    &:nth-of-type(3) {
+      grid-row: 3 span;
+      grid-column: 3 span;
+      background: url('../../../assets/images/home/1.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    &:nth-of-type(4) {
+      grid-row: 3 span;
+      grid-column: 3 span;
+      background: url('../../../assets/images/home/2.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+  }
 }
 
-.card {
-  border: 1px solid black;
-  border-radius: 8px;
-  &-1 {
-  }
-  &-2 {
-  }
-  &-3 {
-  }
-}
+

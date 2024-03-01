@@ -8,8 +8,8 @@ export const appRoutes: Route[] = [
     children: [
       {
         path: '',
-        loadChildren: () =>
-          import('./features/home/home.module').then((m) => m.HomeModule),
+        loadComponent: () =>
+          import('./features/home/home.component').then((m) => m.HomeComponent),
       },
     ],
   },

@@ -1,15 +1,11 @@
-import {
-  ModuleWithProviders,
-  NgModule,
-  Optional,
-  SkipSelf,
-} from '@angular/core';
+import { Injector, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LayoutComponent, SuggestComponent } from './components';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { IS_DESKTOP } from './tokens/tokens';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { AppInjectorsService } from './services/app-injector.service';
 @NgModule({
   declarations: [LayoutComponent, SuggestComponent, NavbarComponent],
   imports: [CommonModule, RouterModule, NgOptimizedImage],
@@ -17,7 +13,8 @@ import { DeviceDetectorService } from 'ngx-device-detector';
   providers: [
     {
       provide: IS_DESKTOP,
-      useValue: isDesktopFactory,
+      useFactory: isDesktop,
+      deps:[DeviceDetectorService]
     },
   ],
 })
@@ -26,17 +23,18 @@ export class CoreModule {
     @Optional()
     @SkipSelf()
     parentModule: CoreModule,
-    private deviceDetector: DeviceDetectorService
+    injector:Injector
   ) {
     if (parentModule) {
       throw new Error(
         'CoreModule is already loaded in app module. Import only in AppModule'
       );
     }
-    isDesktopFactory(deviceDetector.isDesktop());
+    AppInjectorsService.setInjector(injector);
   }
 }
 
-function isDesktopFactory(value: boolean) {
-  return value;
+
+export function isDesktop(deviceDetectService: DeviceDetectorService) {
+  return deviceDetectService.isDesktop();
 }
