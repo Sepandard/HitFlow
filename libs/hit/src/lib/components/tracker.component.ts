@@ -1,32 +1,41 @@
-import { Component, Input, Renderer2, ViewChild } from '@angular/core';
-import { NgIf, NgOptimizedImage } from '@angular/common';
+import { Component, Input, OnDestroy, ViewChild } from '@angular/core';
+import { CommonModule, NgIf, NgOptimizedImage } from '@angular/common';
+import { webSocket } from 'rxjs/webSocket';
+import { Subscription } from 'rxjs';
+import { GeneralValue } from '../config/general';
 
 declare let h337: any;
 
 @Component({
   standalone: true,
   selector: 'hf-tracker',
-  imports: [NgIf, NgOptimizedImage],
+  imports: [NgIf, NgOptimizedImage, CommonModule],
   template: `
-    <div (click)="onTrack($event)">
+    <div>
       <div
-        *ngIf="showHeatMap; else userView"
+        (click)="onTrack($event, generalValue.CLICK)"
+        (mousemove)="onTrack($event, generalValue.MOVEMENT)"
+        *ngIf="showHeatMap"
         class="w-100"
-        id="heatmapContainer"
         #heatMap
       >
         <ng-content></ng-content>
       </div>
     </div>
-    <ng-template #userView><ng-content></ng-content></ng-template>
+    <!-- <ng-template #userView><ng-content></ng-content></ng-template> -->
   `,
   styleUrls: ['./tracker.component.scss'],
 })
-export class TrackerComponent {
+export class TrackerComponent implements OnDestroy {
+  @Input() showHeatMap: boolean = true;
+  @Input() disableTracking: boolean = false;
+  @Input() isDesktop: boolean = true;
   @ViewChild('heatMap')
   private heatMapDiv: any;
 
-  @Input() showHeatMap: boolean = false;
+  public readonly generalValue = GeneralValue;
+  private socketSubscription!: Subscription;
+  private socketConnection = webSocket('ws://localhost:5020/api/hit');
 
   @Input()
   public set configurations(config) {
@@ -43,7 +52,6 @@ export class TrackerComponent {
   public get configurations(): any {
     return this.configs;
   }
-
 
   @Input()
   public set heatPoints(data: any) {
@@ -76,9 +84,10 @@ export class TrackerComponent {
   private dataMax!: number;
   private data: any;
 
-  constructor() {}
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void {
+    this.socketSubscription = this.socketConnection.subscribe();
+  }
 
   public ngAfterViewInit(): void {
     this.setHeatMapData();
@@ -88,15 +97,22 @@ export class TrackerComponent {
     this.heatMapInstance = this.heatMapInstance.addData(point);
   }
 
-  onTrack(clickEvent: any) {
-    this.coordinates.push({
+  onTrack(clickEvent: any, value = 15) {
+    // !Do NOT delete this one this is for demo
+    // this.coordinates.push({
+    //   x: clickEvent.layerX,
+    //   y: clickEvent.layerY,
+    //   value: 15,
+    // });
+    if (this.disableTracking) return;
+    const hit = {
       x: clickEvent.layerX,
       y: clickEvent.layerY,
-      value: 15,
-    });
-
-    console.log(this.coordinates);
-
+      isDesktop: this.isDesktop,
+      value,
+    };
+    console.log(hit);
+    this.socketConnection.next({ message: hit });
     this.setHeatMapData();
   }
 
@@ -106,6 +122,10 @@ export class TrackerComponent {
       .create({
         container: this.heatMapDiv.nativeElement,
       })
-      .setData({ max: 10000, data: this.coordinates, min: 315 });
+      .setData({ max: 1000, data: this.coordinates, min: 100 });
+  }
+
+  ngOnDestroy(): void {
+    this.socketSubscription.unsubscribe();
   }
 }
