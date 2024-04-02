@@ -3,7 +3,7 @@ import { NgClass, NgOptimizedImage } from '@angular/common';
 import { IS_DESKTOP } from '@app/core/tokens/tokens';
 import { HomeSearchComponent } from './components/home-search/home-search.component';
 import { HomeMarketMessageComponent } from './components/home-market-message/home-market-message.component';
-import { TrackerComponent } from '../../../../../../libs/hit/src/index'
+import { TrackerComponent } from '../../../../../../libs/hit/src'
 @Component({
   standalone: true,
   selector: 'hf-home',
