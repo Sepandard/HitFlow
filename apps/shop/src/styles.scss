@@ -11,3 +11,7 @@ body {
   background-color: get-color(secondary);
   font-size: var(--global-font-size);
 }
+
+.mat-bottom-sheet-container {
+  padding: 0 !important;
+}
