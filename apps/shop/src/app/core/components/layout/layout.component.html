@@ -1,9 +1,12 @@
 <div class="wrapper">
-  <hf-tracker>
-    <hf-suggest></hf-suggest>
-    <hf-navbar></hf-navbar>
-    <div class="content">
-      <router-outlet></router-outlet>
-    </div>
-  </hf-tracker>
+  <!-- <hf-tracker> -->
+  <hf-suggest></hf-suggest>
+  <hf-navbar></hf-navbar>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+  <!-- </hf-tracker> -->
+  <div class="feedback-button" (click)="openFeedbackBottomSheet()">
+    Any Feedback?
+  </div>
 </div>

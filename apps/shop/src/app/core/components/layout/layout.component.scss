@@ -2,8 +2,21 @@
 .wrapper {
   height: 100%;
   overflow-x: hidden;
+  position: relative;
 }
 .content {
   padding-inline: 25px;
   height: calc(100% - 115px);
+}
+
+.feedback-button {
+  position: absolute;
+  right: 0;
+  top: 30%;
+  padding: 6px 6px;
+  border-radius: 4px;
+  background-color: #538ed2;
+  color: #fff;
+  transform: translateX(38%) rotate(-90deg);
+  cursor: pointer;
 }

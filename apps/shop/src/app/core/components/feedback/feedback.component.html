@@ -1,0 +1,21 @@
+<div class="wrapper">
+  <div class="header">
+    <h3>Feedback</h3>
+  </div>
+  <div class="content">
+    <p>Any feedbacks are welcome...!</p>
+    <ul>
+      <li *ngFor="let item of feedbackItems" #feedbacks (click)="onActiveFeedback(item)">
+        {{ item.label }}
+      </li>
+    </ul>
+    <div class="message">
+      <p>Message:</p>
+      <mat-form-field  appearance="outline">
+        <mat-label>Message</mat-label>
+        <textarea matInput rows="6"></textarea>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" (click)="submitForm()">Submit</button>
+  </div>
+</div>

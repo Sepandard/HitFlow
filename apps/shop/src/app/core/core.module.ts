@@ -8,16 +8,38 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { AppInjectorsService } from './services/app-injector.service';
 import { TrackerComponent } from '../../../../../libs/hit/src';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { FeedbackComponent } from './components/feedback/feedback.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-  declarations: [LayoutComponent, SuggestComponent, NavbarComponent],
-  imports: [CommonModule, RouterModule, NgOptimizedImage,   MatSnackBarModule,TrackerComponent],
+  declarations: [
+    LayoutComponent,
+    SuggestComponent,
+    NavbarComponent,
+    FeedbackComponent,
+  ],
+  imports: [
+    CommonModule,
+    RouterModule,
+    NgOptimizedImage,
+    MatSnackBarModule,
+    TrackerComponent,
+    MatBottomSheetModule,
+    MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+  ],
   exports: [LayoutComponent],
   providers: [
     {
       provide: IS_DESKTOP,
       useFactory: isDesktop,
-      deps:[DeviceDetectorService]
+      deps: [DeviceDetectorService],
     },
   ],
 })
@@ -26,7 +48,7 @@ export class CoreModule {
     @Optional()
     @SkipSelf()
     parentModule: CoreModule,
-    injector:Injector
+    injector: Injector
   ) {
     if (parentModule) {
       throw new Error(
@@ -36,7 +58,6 @@ export class CoreModule {
     AppInjectorsService.setInjector(injector);
   }
 }
-
 
 export function isDesktop(deviceDetectService: DeviceDetectorService) {
   return deviceDetectService.isDesktop();

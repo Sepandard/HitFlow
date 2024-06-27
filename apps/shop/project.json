@@ -16,7 +16,7 @@
         "polyfills": ["zone.js"],
         "tsConfig": "apps/shop/tsconfig.app.json",
         "assets": ["apps/shop/src/favicon.ico", "apps/shop/src/assets"],
-        "styles": ["apps/shop/src/styles.scss"],
+        "styles": ["apps/shop/src/styles.scss", "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"],
         "scripts": ["libs/hit/heatmap.min.js"],
         "stylePreprocessorOptions": {
           "includePaths": [

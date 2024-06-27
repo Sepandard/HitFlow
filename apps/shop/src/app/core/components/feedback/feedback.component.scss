@@ -1,0 +1,46 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+
+  .header {
+    padding: 8px;
+    background-color: #538ed2;
+  }
+
+  .content {
+    padding: 8px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+    ul {
+      display: flex;
+      justify-content: space-evenly;
+      gap: 4px;
+      padding: 0;
+      margin: 0;
+      li {
+        cursor: pointer;
+        width: fit-content;
+        list-style: none;
+        padding: 10px 18px;
+        border: 2px solid rgba(0, 0, 0, 0.411);
+        border-radius: 50%;
+      }
+      li:hover {
+        border-color: #538ed2;
+        background-color: #538ed261;
+      }
+    }
+  }
+
+  .message mat-form-field {
+    width: 100%;
+  }
+}
+
+.active {
+  border-color: #538ed2;
+  background-color: #538ed261;
+}
