@@ -1,0 +1,7 @@
+<div class="page">
+  <mat-form-field appearance="outline">
+    <mat-label>Enter page Url</mat-label>
+    <input matInput [(ngModel)]="url"/>
+  </mat-form-field>
+  <button mat-button color="primary" (click)="goToFrame()" [disabled]="!url">Open Page</button>
+</div>

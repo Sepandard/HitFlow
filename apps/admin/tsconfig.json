@@ -7,7 +7,14 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": "./",
+    "paths": {
+      "@app/core": ["src/app/core/index.ts"],
+      "@app/core/*": ["src/app/core/*"],
+      "@app/shared": ["src/app/shared/index.ts"],
+      "@app/shared/*": ["src/app/shared/*"]
+    },
   },
   "files": [],
   "include": [],

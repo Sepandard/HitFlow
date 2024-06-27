@@ -6,9 +6,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { IS_DESKTOP } from './tokens/tokens';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { AppInjectorsService } from './services/app-injector.service';
+import { TrackerComponent } from '../../../../../libs/hit/src';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 @NgModule({
   declarations: [LayoutComponent, SuggestComponent, NavbarComponent],
-  imports: [CommonModule, RouterModule, NgOptimizedImage],
+  imports: [CommonModule, RouterModule, NgOptimizedImage,   MatSnackBarModule,TrackerComponent],
   exports: [LayoutComponent],
   providers: [
     {

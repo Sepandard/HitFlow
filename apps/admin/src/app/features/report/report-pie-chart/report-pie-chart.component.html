@@ -1,0 +1,11 @@
+<apx-chart
+      *ngIf="donutChartOptions"
+      [chart]="donutChartOptions.chart"
+      [series]="(chartSeries | async) ?? []"
+      [labels]="donutChartOptions.labels"
+      [colors]="donutChartOptions.colors"
+      [dataLabels]="donutChartOptions.dataLabels"
+      [plotOptions]="donutChartOptions.plotOptions"
+      [stroke]="donutChartOptions.stroke"
+      [legend]="donutChartOptions.legend"
+    ></apx-chart>

@@ -1,0 +1,41 @@
+@use 'common' as *;
+
+
+.border-card {
+  border: 1px solid #e0e0e2;
+  border-radius: 8px;
+}
+  
+
+.login {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+
+  &-card {
+    display: flex;
+    flex-direction: column;
+    padding: param(space-3);
+
+    &-header {
+      display: flex;
+      justify-content: center;
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      padding: param(space-3);
+
+
+      
+    }
+
+    &> .action-submit {
+      width: 100%;
+      color:param(primary)
+    }
+  }
+}

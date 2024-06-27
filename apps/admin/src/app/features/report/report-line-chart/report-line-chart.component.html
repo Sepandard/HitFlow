@@ -1,0 +1,13 @@
+<ng-container *ngIf="chartSeries | async as series">
+  <apx-chart
+    *ngIf="donutChartOptions"
+    [chart]="donutChartOptions.chart"
+    [series]="series ?? {}"
+    [labels]="donutChartOptions.labels"
+    [colors]="donutChartOptions.colors"
+    [dataLabels]="donutChartOptions.dataLabels"
+    [plotOptions]="donutChartOptions.plotOptions"
+    [stroke]="donutChartOptions.stroke"
+    [legend]="donutChartOptions.legend"
+  ></apx-chart>
+</ng-container>

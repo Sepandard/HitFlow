@@ -1,0 +1,33 @@
+<div class="report" *ngIf=" data | async as report">
+    <div
+      ngClass="col-{{ responsiveService.columnCount | async }}"
+      *ngFor="let item of report"
+    >   
+      <div class="card">
+        <span class="card-summery-title" >{{ item.title }}</span>
+        <span class="card-summery-description">{{ item.description }}</span>
+        <span class="card-summery-title">{{ item.value }}</span>
+      </div>
+    </div>
+
+    <div class="card chart-container">
+      <span class="card-summery-title" >Impression chart</span>
+      <span class="card-summery-description">This chart show general view of Impression</span>
+      <div class="card-summery-chart">
+      <hitflow-report-pie-chart [data]="data"></hitflow-report-pie-chart>
+  </div>
+
+  </div>    
+  <div class="card chart-container">
+      <span class="card-summery-title" >Impression chart</span>
+      <span class="card-summery-description">This chart show general view of Impression</span>
+      <div class="card-summery-chart">
+      <hitflow-report-line-chart></hitflow-report-line-chart>
+  </div>
+
+  </div>
+    
+</div>
+
+
+

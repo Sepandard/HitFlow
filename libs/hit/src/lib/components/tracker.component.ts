@@ -1,17 +1,20 @@
-import { Component, Input, OnDestroy, ViewChild } from '@angular/core';
-import { CommonModule, NgIf, NgOptimizedImage } from '@angular/common';
+import { Component, ElementRef, HostListener, Input, OnDestroy, ViewChild, inject } from '@angular/core';
+import { CommonModule, DOCUMENT, NgIf, NgOptimizedImage } from '@angular/common';
 import { webSocket } from 'rxjs/webSocket';
-import { Subscription } from 'rxjs';
-import { GeneralValue } from '../config/general';
+import { Subscription, filter, tap } from 'rxjs';
+import { HitGeneralValue } from '../config/general';
+import { HttpClientModule } from '@angular/common/http';
+import { TrackerService } from '../api/tracker-api.service';
+import { ActivatedRoute } from '@angular/router';
 
 declare let h337: any;
 
 @Component({
   standalone: true,
   selector: 'hf-tracker',
-  imports: [NgIf, NgOptimizedImage, CommonModule],
+  imports: [NgIf, NgOptimizedImage, CommonModule, HttpClientModule],
+  providers: [TrackerService],
   template: `
-    <div>
       <div
         (click)="onTrack($event, generalValue.CLICK)"
         (mousemove)="onTrack($event, generalValue.MOVEMENT)"
@@ -19,10 +22,9 @@ declare let h337: any;
         class="w-100"
         #heatMap
       >
-        <ng-content></ng-content>
+        <ng-content ></ng-content>
       </div>
-    </div>
-    <!-- <ng-template #userView><ng-content></ng-content></ng-template> -->
+
   `,
   styleUrls: ['./tracker.component.scss'],
 })
@@ -31,9 +33,9 @@ export class TrackerComponent implements OnDestroy {
   @Input() disableTracking: boolean = false;
   @Input() isDesktop: boolean = true;
   @ViewChild('heatMap')
-  private heatMapDiv: any;
+  private heatMapDiv: any;  
 
-  public readonly generalValue = GeneralValue;
+  public readonly generalValue = HitGeneralValue;
   private socketSubscription!: Subscription;
   private socketConnection = webSocket('ws://localhost:5020/api/hit');
 
@@ -77,6 +79,11 @@ export class TrackerComponent implements OnDestroy {
     }
   }
   coordinates: any[] = [];
+  private api = inject(TrackerService);
+  private route = inject(ActivatedRoute);
+  private document = inject(DOCUMENT);
+
+  
 
   private heatMapInstance: any;
   private configs: any;
@@ -84,13 +91,45 @@ export class TrackerComponent implements OnDestroy {
   private dataMax!: number;
   private data: any;
 
-
   public ngOnInit(): void {
     this.socketSubscription = this.socketConnection.subscribe();
+    this.route.queryParamMap
+      .pipe(
+        tap((param) => {
+          console.log(param.get('heatmap'));
+        }),
+        filter((param) => !!param.get('heatmap'))
+      )
+      .subscribe({
+        next: () => {
+          this.showHeatMap = true;
+          this.disableTracking = true;
+          this.getData();
+        },
+      });
   }
 
-  public ngAfterViewInit(): void {
-    this.setHeatMapData();
+  getData() {
+    this.api.getHits().subscribe({
+      next: (data) => {
+        console.log(data);
+        data.forEach((data) => {
+          this.coordinates.push({
+            x: data.value.x,
+            y: data.value.y,
+            value: data.value.value,
+          });
+          console.log(this.coordinates);
+
+        });
+        if (this.heatMapDiv) {
+          this.setHeatMapData();
+        }
+      },
+    });
+  }
+
+  ngAfterViewInit() {
   }
 
   public addPoint(point: any): void {
@@ -98,20 +137,13 @@ export class TrackerComponent implements OnDestroy {
   }
 
   onTrack(clickEvent: any, value = 15) {
-    // !Do NOT delete this one this is for demo
-    // this.coordinates.push({
-    //   x: clickEvent.layerX,
-    //   y: clickEvent.layerY,
-    //   value: 15,
-    // });
     if (this.disableTracking) return;
     const hit = {
-      x: clickEvent.layerX,
-      y: clickEvent.layerY,
+      x: clickEvent.x ,
+      y: clickEvent.y + this.document.documentElement.scrollTop,
       isDesktop: this.isDesktop,
       value,
     };
-    console.log(hit);
     this.socketConnection.next({ message: hit });
     this.setHeatMapData();
   }
@@ -122,7 +154,7 @@ export class TrackerComponent implements OnDestroy {
       .create({
         container: this.heatMapDiv.nativeElement,
       })
-      .setData({ max: 1000, data: this.coordinates, min: 100 });
+      .setData({ max: 30, data: this.coordinates, min: 10 });
   }
 
   ngOnDestroy(): void {

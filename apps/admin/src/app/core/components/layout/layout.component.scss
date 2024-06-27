@@ -1,0 +1,36 @@
+@use '../../../../assets/styles' as *;
+
+.container {
+  z-index: 0;
+  // display: flex;
+  // flex-wrap: wrap;
+  // align-items: center;
+  padding: 8px 16px;
+  .item {
+    font-size: 16px;
+    color: #005cbb;
+    font-weight: 500;
+  }
+
+  .toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background-color:#d7e3ff ;
+
+    &-mobile {
+      justify-content: center;
+    }
+  }
+
+  .sidenav {
+    width: $sidenav-width;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .wrapper {
+    height: calc(100vh - 60px);
+  }
+}

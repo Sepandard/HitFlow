@@ -1,0 +1,64 @@
+:host {
+  --image-height: 156px;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-block: 1.5rem;
+  padding-inline: 0.5rem;
+}
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  background: white;
+  margin: 0.5rem;
+  cursor: pointer;
+  min-height: 150px;
+
+  & > img {
+    height: var(--image-height);
+    width: 100%;
+  }
+
+  &-summery-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  &-summery-description {
+    padding: 0 1rem 1rem;
+    display: block;
+    min-height: 2.4em;
+    font-size: 1rem;
+    color: #0000008a;
+  }  
+  
+  &-summery-chart {
+    display: flex;
+    justify-content: center;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+}
+
+p {
+  margin: 1rem;
+}
+
+.report {
+  display: flex ;
+  flex-wrap: wrap;
+}
+
+
+.chart-container {
+  width: 100%;
+}

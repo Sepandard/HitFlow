@@ -1,0 +1,11 @@
+app-root {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+app-root > router-outlet {
+    margin-top: 56px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}

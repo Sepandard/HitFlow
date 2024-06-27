@@ -1,0 +1,45 @@
+<div
+  class="login"
+>
+  <div class="border-card login-card">
+    <div class="login-card-header">
+      <img src="../../../../assets/logo/logo Dark.svg" alt="" height="60" />
+    </div>
+    <h3>Login</h3>
+    <p>Welcome Back please username and password:</p>
+    <div class="login-card-content">
+      <ng-container [formGroup]="form" *ngIf="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Enter your email</mat-label>
+          <input
+            matInput
+            placeholder="pat@example.com"
+            formControlName="email"
+            required
+          />
+          <mat-error *ngIf="form.get('email').invalid">{{
+            getErrorMessage()
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Enter your Password</mat-label>
+          <input
+            matInput
+            type="password"
+            placeholder="Password"
+            formControlName="password"
+            required
+          />
+          <mat-error *ngIf="form.get('password').invalid">{{
+            getErrorMessage()
+          }}</mat-error>
+        </mat-form-field>
+
+        <button (click)="onLogin()" class="action-submit" mat-flat-button>
+          Login
+        </button>
+      </ng-container>
+    </div>
+  </div>
+</div>
