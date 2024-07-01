@@ -11,5 +11,12 @@ export class NotificationsService {
       horizontalPosition: 'start',
       verticalPosition: 'bottom',
     });
+  }  
+  
+  showSuccess(message: string) {
+    this._snackBar.open(message, 'Done', {
+      horizontalPosition: 'start',
+      verticalPosition: 'bottom',
+    });
   }
 }
