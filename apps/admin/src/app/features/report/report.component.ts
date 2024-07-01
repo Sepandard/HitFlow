@@ -15,6 +15,7 @@ import { ChartOptions } from '@app/core/model';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ReportPieChartComponent } from './report-pie-chart/report-pie-chart.component';
 import { ReportLineChartComponent } from './report-line-chart/report-line-chart.component';
+import { ReportPieFeedbackComponent } from './report-pie-feedback/report-pie-feedback.component';
 
 const MAT_MODULES = [MatCardModule];
 @Component({
@@ -31,6 +32,7 @@ const MAT_MODULES = [MatCardModule];
     HttpClientModule,
     ReportPieChartComponent,
     ReportLineChartComponent,
+    ReportPieFeedbackComponent,
   ],
   providers: [ReportApiService],
 })
