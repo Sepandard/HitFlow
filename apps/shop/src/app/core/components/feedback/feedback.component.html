@@ -11,9 +11,9 @@
     </ul>
     <div class="message">
       <p>Message:</p>
-      <mat-form-field  appearance="outline">
+      <mat-form-field   appearance="outline">
         <mat-label>Message</mat-label>
-        <textarea matInput rows="6"></textarea>
+        <textarea [(ngModel)]="message"  matInput rows="6"></textarea>
       </mat-form-field>
     </div>
     <button mat-raised-button color="primary" (click)="submitForm()">Submit</button>
