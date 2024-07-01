@@ -47,3 +47,26 @@ export interface ReportRangeHit {
   measurement: string;
   value: number;
 }
+
+
+export interface FeedbackListItem {
+  id: number;
+  message?: string;
+  feeling: FeedbackFeeling;
+}
+
+export enum FeedbackFeeling {
+  TERRIBLE = 1,
+  BAD = 2,
+  NORMAL = 3,
+  GOOD = 4,
+  FANATIC = 5,
+}
+
+export const FeedbackFeelingTitle = {
+  [FeedbackFeeling.TERRIBLE]: 'Terrible',
+  [FeedbackFeeling.BAD] :'Bad',
+  [FeedbackFeeling.NORMAL] :'Normal',
+  [FeedbackFeeling.GOOD] :'Good',
+  [FeedbackFeeling.FANATIC] :'Fantastic',
+}
