@@ -85,3 +85,10 @@ input::placeholder {
   font-weight: 500;
   line-height: 22px;
 }
+
+
+@media (max-width: 800px){
+  form {
+    display: none;
+  }
+}

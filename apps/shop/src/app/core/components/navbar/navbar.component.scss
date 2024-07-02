@@ -40,3 +40,13 @@
   background-color: get-color(primary);
   border-radius: 100%;
 }
+
+@media (max-width: 800px){
+
+.nav {
+  &-item {
+    display: none;
+  }
+}
+
+}
