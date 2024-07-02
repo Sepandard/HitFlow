@@ -1,4 +1,4 @@
-const base = 'api/auth';
+const base = 'api/';
 
 export const AuthEndpoint = {
   login: `${base}/login`,
