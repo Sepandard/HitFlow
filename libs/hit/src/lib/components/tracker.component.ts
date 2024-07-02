@@ -144,6 +144,7 @@ export class TrackerComponent implements OnDestroy {
       isDesktop: this.isDesktop,
       value,
     };
+    
     this.socketConnection.next({ message: hit });
     this.setHeatMapData();
   }
