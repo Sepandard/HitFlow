@@ -20,6 +20,6 @@ export class PageHeatmapComponent {
 
   goToFrame() {
     if (!this.url) return;
-      window.open('http://localhost:4100?heatmap=true')
+      window.open('http://localhost:4100/shop?heatmap=true')
   }
 }
