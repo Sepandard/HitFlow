@@ -79,7 +79,7 @@ export class ReportPieFeedbackComponent implements OnInit {
               total: {
                 show: true,
                 showAlways: true,
-                label: 'Impression',
+                label: 'Total Feedback',
                 fontSize: '18px',
                 fontWeight: 700,
                 color: '#6E798D',
